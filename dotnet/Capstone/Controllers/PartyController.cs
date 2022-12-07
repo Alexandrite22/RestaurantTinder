@@ -13,8 +13,10 @@ namespace Capstone.Controllers
     public class PartyController : ControllerBase
     {
         private readonly string connectionString;
-
+        // TODO: add partyDao, guestsDAO, restaurantDAO
         private IPartyDao PartyDao { get; set; }
+        private IGuestsDAO GuestsDao { get; set; }
+        private IRestaurantsDAO RestaurantsDao { get; set; }
         PartyController(string dbConnectionString)
         {
             PartyDao = new PartySqlDao(dbConnectionString);
@@ -24,6 +26,11 @@ namespace Capstone.Controllers
         public string Get(int id)
         {
             // TODO: Call "GetParty" in partySqlDAO, "GetRestaurants" from restaurantDAO, "GetGuests" from guestsDAO
+            Party party = PartyDao.GetParty(id);
+            List<Restaurant> restaurants = RestaurantsDao.GetRestaurants(id);
+            List<Guest> guests = GuestsDao.GetGuests(id);
+            List<Guest> restaurantsGuests = RestaurantsDao.GetRestaurants(id);
+            Party
             return "value";
         }
 
