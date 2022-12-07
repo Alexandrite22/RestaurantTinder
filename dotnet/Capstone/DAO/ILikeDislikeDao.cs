@@ -7,6 +7,6 @@ namespace Capstone.DAO
 {
     public class ILikeDislikeDao
     {
-        private readonly string 
+        
     }
 }

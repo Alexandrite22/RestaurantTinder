@@ -13,5 +13,7 @@ namespace Capstone.Models
         public string Owner { get; set; }
         public string Description { get; set; }
         public string NameOfParty { get; set; }
+
+        public string InviteLink { get; set; }
     }
 }

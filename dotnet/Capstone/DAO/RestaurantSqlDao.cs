@@ -39,9 +39,9 @@ namespace Capstone.DAO
         }
 
         // Get restaurant choices based on party id... 
-        public Restaurant GetRestaurants (int partyId)
+        public IList<Restaurant> GetRestaurants (int partyId)
         {
-            Restaurant restaurant = null;
+            IList<Restaurant> restaurants = null;
             using (SqlConnection conn = new SqlConnection(connectionString))
             {
                 conn.Open();
@@ -51,13 +51,14 @@ namespace Capstone.DAO
 
                 SqlDataReader reader = cmd.ExecuteReader();
 
-                if (reader.Read())
+                while (reader.Read())
                 {
-                    restaurant = CreateRestaurantFromReader(reader);
+                    Restaurant restaurant = CreateRestaurantFromReader(reader);
+                    restaurants.Add(restaurant);
                 }
      
             }
-            return restaurant;
+            return restaurants;
         }
 
         private Restaurant CreateRestaurantFromReader(SqlDataReader reader)

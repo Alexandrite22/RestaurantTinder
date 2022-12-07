@@ -18,6 +18,7 @@ namespace Capstone.DAO
 
 
         // Get full guest table information based on party ID
+        // TODO: do we need GetGuest (singular)?
         public Guest GetGuest(int partyId)
         {
             Guest guest = null;
@@ -37,6 +38,30 @@ namespace Capstone.DAO
 
             }
             return guest;
+        }
+
+        public IList<Guest> GetGuests(int partyID)
+        {
+            IList<Guest> guests = new List<Guest>();
+
+            //Restaurant restaurant = null;
+            using (SqlConnection conn = new SqlConnection(connectionString))
+            {
+                conn.Open();
+                SqlCommand cmd = new SqlCommand("SELECT * FROM guest", conn);
+                /*                cmd.Parameters.AddwithVualue("@...", ...)
+                */
+
+                SqlDataReader reader = cmd.ExecuteReader();
+
+                while (reader.Read())
+                {
+                    Guest guest = CreateGuestFromReader(reader);
+                    guests.Add(guest);
+                }
+
+            }
+            return guests;
         }
 
         private Guest CreateGuestFromReader(SqlDataReader reader)
