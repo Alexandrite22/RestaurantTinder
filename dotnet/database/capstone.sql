@@ -64,7 +64,7 @@ CREATE TABLE liked_disliked (
 --> restaurant w/ like_dislike
 --populate default data
 
-CREATE UNIQUE INDEX users ON capstone.users(username)
+--CREATE UNIQUE INDEX users ON users(username)
 
 INSERT INTO users (username, password_hash, salt, user_role) VALUES ('user','Jg45HuwT7PZkfuKTz6IB90CtWY4=','LHxP4Xh7bN0=','user');
 INSERT INTO users (username, password_hash, salt, user_role) VALUES ('admin','YhyGVQ+Ch69n4JMBncM4lNF/i9s=', 'Ar/aB2thQTI=','admin');
@@ -74,24 +74,4 @@ INSERT INTO users (username, password_hash, salt, user_role) VALUES ('Kevin','Jg
 INSERT INTO users (username, password_hash, salt, user_role) VALUES ('Nick','Jg45HuwT7PZkfuKTz6IB90CtWY4=','LHxP4Xh7bN0=','user');
 INSERT INTO users (username, password_hash, salt, user_role) VALUES ('Colin','Jg45HuwT7PZkfuKTz6IB90CtWY4=','LHxP4Xh7bN0=','user');
 
-INSERT INTO party (location, date, owner, description, name_of_party) VALUES ('1234 Party Drive','2022-12-25th 19:00:00','LHxP4Xh7bN0=','user');
-
-
-
-
-
-
-
-
-
-
-
-Message Peri Long
-
-
-
-
-
-
-
-
+--INSERT INTO party (location, date, owner, description, name_of_party) VALUES ('1234 Party Drive','2022-12-25th 19:00:00', ,'user');

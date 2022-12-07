@@ -33,7 +33,7 @@
         required
       />
       <router-link :to="{ name: 'login' }">Have an account?</router-link>
-      <button class="btn btn-lg btn-primary btn-block" type="submit">
+      <button class="btn btn-lg btn-primary btn-block" type="submit" @click="register">
         Create Account
       </button>
     </form>
@@ -59,6 +59,7 @@ export default {
   },
   methods: {
     register() {
+      this.clearErrors(); // clear any previous errors
       if (this.user.password != this.user.confirmPassword) {
         this.registrationErrors = true;
         this.registrationErrorMsg = 'Password & Confirm Password do not match.';
