@@ -7,7 +7,7 @@ using System.Data.SqlClient;
 
 namespace Capstone.DAO
 {
-    public class GuestsqlDao
+    public class GuestsqlDao : IGuestDao
     {
         private readonly string connectionString;
 

@@ -7,7 +7,7 @@ using System.Data.SqlClient;
 
 namespace Capstone.DAO
 {
-    public class RestaurantSqlDao
+    public class RestaurantSqlDao : IRestaurantDao
     {
         private readonly string connectionString;
 
@@ -39,7 +39,7 @@ namespace Capstone.DAO
         }
 
         // Get restaurant choices based on party id... 
-        public IList<Restaurant> GetRestaurants (int partyId)
+        public IList<Restaurant> GetRestaurants(int partyId)
         {
             IList<Restaurant> restaurants = null;
             using (SqlConnection conn = new SqlConnection(connectionString))
@@ -56,7 +56,7 @@ namespace Capstone.DAO
                     Restaurant restaurant = CreateRestaurantFromReader(reader);
                     restaurants.Add(restaurant);
                 }
-     
+
             }
             return restaurants;
         }

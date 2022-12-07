@@ -7,7 +7,7 @@ using System.Data.SqlClient;
 
 namespace Capstone.DAO
 {
-    public class LikeDislikeSqlDao
+    public class LikeDislikeSqlDao : ILikeDislikeDao
     {
         private readonly string connectionString;
 
