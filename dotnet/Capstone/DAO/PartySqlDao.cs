@@ -7,13 +7,36 @@ using System.Data.SqlClient;
 
 namespace Capstone.DAO
 {
-    public class PartySqlDao
+    public class PartySqlDao : IPartyDao
     {
         private readonly string connectionString;
 
         public PartySqlDao(string dbConnectionString)
         {
             connectionString = dbConnectionString;
+        }
+
+
+        public Party GetParty(int partyId)
+        {
+            Party party = new Party();
+
+            //Restaurant restaurant = null;
+            using (SqlConnection conn = new SqlConnection(connectionString))
+            {
+                conn.Open();
+                SqlCommand cmd = new SqlCommand("SELECT * FROM party where party_id = @party_id", conn);
+                cmd.Parameters.AddWithValue("@party_id", partyId);
+
+
+                SqlDataReader reader = cmd.ExecuteReader();
+
+                while (reader.Read())
+                {
+                    party = CreatePartyFromReader(reader);
+                }
+            }
+            return party;
         }
 
 

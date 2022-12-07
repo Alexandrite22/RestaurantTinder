@@ -1,11 +1,11 @@
-﻿using System;
+﻿using Capstone.Models;
 using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace Capstone.DAO
 {
-    public class IPartyDao
+    public interface IPartyDao
     {
+        IList<Party> GetParties(int userId);
+        Party GetParty(int partyId);
     }
 }
