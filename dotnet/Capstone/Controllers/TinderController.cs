@@ -19,11 +19,14 @@ namespace Capstone.Controllers
         private IPartyDao PartyDao { get; set; }
         private IGuestDao GuestsDao { get; set; }
         private IRestaurantDao RestaurantsDao { get; set; }
+        private List<Restaurant> tempList = new List<Restaurant>();
         TinderController(string dbConnectionString)
         {
             PartyDao = new PartySqlDao(dbConnectionString);
             GuestsDao = new GuestSqlDao(dbConnectionString);
             RestaurantsDao = new RestaurantSqlDao(dbConnectionString);
+            
+            
         }
 
 
@@ -46,26 +49,29 @@ namespace Capstone.Controllers
         [HttpGet("{partyId}")]
         public string Get(int partyId)
         {
-            //
+         
             return "value";
         }
 
-        // POST /<TinderController>
+        // POST /<TinderController>/like
         [HttpPost]
-        public void Post([FromBody] string value)
+        public void Post([FromBody] LikeDislike swipe)
         {
+            throw new NotImplementedException();
         }
 
         // PUT /<TinderController>/5
         [HttpPut("{id}")]
         public void Put(int id, [FromBody] string value)
         {
+            throw new NotImplementedException();
         }
 
         // DELETE /<TinderController>/5
         [HttpDelete("{id}")]
         public void Delete(int id)
         {
+            throw new NotImplementedException();
         }
     }
 }

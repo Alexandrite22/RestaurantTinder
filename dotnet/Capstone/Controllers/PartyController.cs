@@ -5,6 +5,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Capstone.DAO;
 using Capstone.Models;
+using RestSharp;
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
 namespace Capstone.Controllers
@@ -68,10 +69,16 @@ namespace Capstone.Controllers
         /// 
         public IList<Restaurant> Post([FromBody] string zipcode)
         {
-            //TODO: CALL YELP API AND GET 25 Restaurants AND DETAILS FROM ZIP CODE 
+            //TODO: CALL YELP API AND GET 25 Restaurants AND DETAILS FROM ZIP CODE
+            //
+            var client = new RestClient("https://api.yelp.com/v3/businesses/search?sort_by=best_match&limit=20");
+            var request = new RestRequest(Method.GET);
+            request.AddHeader("accept", "application/json");
+            IRestResponse response = client.Execute(request);
+
             throw new NotImplementedException();
         }
 
-
+       
     }
 }
