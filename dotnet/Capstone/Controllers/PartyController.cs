@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Capstone.DAO;
+using Capstone.Models;
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
 namespace Capstone.Controllers
@@ -15,30 +16,34 @@ namespace Capstone.Controllers
         private readonly string connectionString;
         // TODO: add partyDao, guestsDAO, restaurantDAO
         private IPartyDao PartyDao { get; set; }
-        private IGuestsDAO GuestsDao { get; set; }
-        private IRestaurantsDAO RestaurantsDao { get; set; }
+        private IGuestDao GuestsDao { get; set; }
+        private IRestaurantDao RestaurantsDao { get; set; }
         PartyController(string dbConnectionString)
         {
             PartyDao = new PartySqlDao(dbConnectionString);
         }
         // GET api/<PartyController>/5
         [HttpGet("{id}")]
-        public string Get(int id)
+        public PartyViewModel Get(int id)
         {
-            // TODO: Call "GetParty" in partySqlDAO, "GetRestaurants" from restaurantDAO, "GetGuests" from guestsDAO
+            //Here we Call "GetParty" in partySqlDAO, "GetRestaurants" from restaurantDAO, "GetGuests" from guestsDAO
             Party party = PartyDao.GetParty(id);
-            List<Restaurant> restaurants = RestaurantsDao.GetRestaurants(id);
-            List<Guest> guests = GuestsDao.GetGuests(id);
-            List<Guest> restaurantsGuests = RestaurantsDao.GetRestaurants(id);
-            Party
-            return "value";
+            IList<Restaurant> restaurants = RestaurantsDao.GetRestaurants(id);
+            IList<Guest> guests = GuestsDao.GetGuests(id);
+            //make partyviewmodel from values above. 
+            // A viewModel is the model of data returned to the view
+            PartyViewModel partyGuestsAndRestaurants = new PartyViewModel(party, guests, restaurants);
+            return partyGuestsAndRestaurants;
         }
 
         // POST api/<PartyController>
         [HttpPost]
-        public void Post([FromBody] string value)
+        public void Post([FromBody] Party newParty)
         {
+            // Set current user as owner value
+            var owner = 
            // TODO: Call "CreatyParty" in partySqlDAO
+
         }
 
         // PUT api/<PartyController>/5

@@ -28,7 +28,18 @@ namespace Capstone.Models
 
         public string InviteLink { get; set; }
 
-        public List<Guest> GuestList { get; set; }
-        public List<Restaurant> RestaurantList { get; set; }
+        public IList<Guest> GuestList { get; set; }
+        public IList<Restaurant> RestaurantList { get; set; }
+        // Default Constructor to 
+        public PartyViewModel()
+        {
+            GuestList = new List<Guest>();
+            RestaurantList = new List<Restaurant>();
+        }
+        public PartyViewModel(Party party, IList<Guest> guests, IList<Restaurant> restaurants)
+        {
+            GuestList = guests;
+            RestaurantList = restaurants;
+        }
     }
 }

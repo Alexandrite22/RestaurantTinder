@@ -11,12 +11,18 @@ namespace Capstone.DAO
     {
         private readonly string connectionString;
 
-        public PartySqlDao(string dbConnectionString)
+        
+        public PartySqlDao(string dbConnectionString)// The Constructor for the class.
         {
-            connectionString = dbConnectionString;
+            connectionString = dbConnectionString; //Dependency injecting the connection string
         }
 
-
+        /// <summary>
+        /// Gets a party using a partyId
+        /// takes in a partyId and returns a party
+        /// </summary>
+        /// <param name="partyId"></param>
+        /// <returns></returns>
         public Party GetParty(int partyId)
         {
             Party party = new Party();
@@ -40,7 +46,12 @@ namespace Capstone.DAO
         }
 
 
-
+        /// <summary>
+        /// Get all parties from a particular user 
+        /// Takes in a user id and returns a list of parties
+        /// </summary>
+        /// <param name="userId"></param>
+        /// <returns></returns>
         // Get all parties based on the user 
         public IList<Party> GetParties(int userId)
         {
@@ -66,6 +77,11 @@ namespace Capstone.DAO
             return parties;
         }
 
+        /// <summary>
+        /// Create a party C# object from a sql reader
+        /// </summary>
+        /// <param name="reader"></param>
+        /// <returns></returns>
         private Party CreatePartyFromReader(SqlDataReader reader)
         {
             Party party = new Party();
@@ -76,8 +92,46 @@ namespace Capstone.DAO
             return party;
         }
 
+        /// <summary>
+        /// Create a new party in the database from a Party object
+        /// Takes in a Party object and returns the new party ID
+        /// </summary>
+        public Party CreateParty(Party party)
+        {
+            using (SqlConnection conn = new SqlConnection(connectionString))
+            {
 
+                conn.Open(); //Open the connection to the DB    
 
+                // Create a new SQL command that inserts a new party into the database and returns the new party_id
+                SqlCommand cmd = new SqlCommand("INSERT INTO party (location, owner, name_of_party, description) VALUES (@location, @owner, @name_of_party, @description); SELECT @@IDENTITY", conn);
+                // Add the parameters to the SQL command
+                cmd.Parameters.AddWithValue("@location", party.Location);
+                cmd.Parameters.AddWithValue("@owner", party.Owner);
+                cmd.Parameters.AddWithValue("@name_of_party", party.NameOfParty);
+                cmd.Parameters.AddWithValue("@description", party.Description);
+                // Execute the SQL command and get the new party_id.
+                //Convert the new party_id to an int32 and set it to the partyId property of the party object
+                party.PartyId = Convert.ToInt32(cmd.ExecuteScalar());// ExecuteScalar returns the first column of the first row in the result set returned by the query.
+                return party; //return party with updated new party_id
+            }
+        }
+        /// <summary>
+        /// Update a party in the database using a Party object
+        /// Takes in a Party object and returns the updated party
+        /// </summary>
+        public Party UpdateParty(Party updatedParty)
+        {
+            // Using a connection to the database
+            using (SqlConnection conn = new SqlConnection(connectionString))
+            {
+
+                conn.Open(); //Open the connection to the DB    
+
+                // TODO: Create a new SQL command that updates a party in the database
+                //SqlCommand cmd = new SqlCommand("UPDATE ");
+            }
+        }
 
 
     }
