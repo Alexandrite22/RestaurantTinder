@@ -5,6 +5,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Capstone.DAO;
 using Capstone.Models;
+using Capstone.Services;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
@@ -14,21 +15,12 @@ namespace Capstone.Controllers
     [ApiController]
     public class TinderController : ControllerBase
     {
-        private readonly string connectionString;
+        private readonly string connectionString = "Server=.\\SQLEXPRESS;Database=final_capstone;Trusted_Connection=True;";
         // TODO: add partyDao, guestsDAO, restaurantDAO
-        private IPartyDao PartyDao { get; set; }
-        private IGuestDao GuestsDao { get; set; }
-        private IRestaurantDao RestaurantsDao { get; set; }
+        private IPartyDao PartyDao = new PartySqlDao("Server=.\\SQLEXPRESS;Database=final_capstone;Trusted_Connection=True;");
+        private IGuestDao GuestsDao = new GuestSqlDao("Server=.\\SQLEXPRESS;Database=final_capstone;Trusted_Connection=True;");
+        private IRestaurantDao RestaurantsDao = new RestaurantSqlDao("Server=.\\SQLEXPRESS;Database=final_capstone;Trusted_Connection=True;");
         private List<Restaurant> tempList = new List<Restaurant>();
-        TinderController(string dbConnectionString)
-        {
-            PartyDao = new PartySqlDao(dbConnectionString);
-            GuestsDao = new GuestSqlDao(dbConnectionString);
-            RestaurantsDao = new RestaurantSqlDao(dbConnectionString);
-            
-            
-        }
-
 
 
 
@@ -47,10 +39,10 @@ namespace Capstone.Controllers
         /// <param name="id"></param>
         /// <returns></returns>
         [HttpGet("{partyId}")]
-        public string Get(int partyId)
+        public List<RestaurantViewModel> GetRestaurants(int partyId)
         {
-         
-            return "value";
+           YelpApiService yelpService = new YelpApiService();            return yelpService.CreatePracticeRestaurants();
+           
         }
 
         // POST /<TinderController>/like
