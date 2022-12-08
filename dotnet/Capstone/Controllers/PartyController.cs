@@ -4,6 +4,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Capstone.DAO;
+using Capstone.Models;
+using RestSharp;
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
 namespace Capstone.Controllers
@@ -13,39 +15,70 @@ namespace Capstone.Controllers
     public class PartyController : ControllerBase
     {
         private readonly string connectionString;
-
+        // TODO: add partyDao, guestsDAO, restaurantDAO
         private IPartyDao PartyDao { get; set; }
+        private IGuestDao GuestsDao { get; set; }
+        private IRestaurantDao RestaurantsDao { get; set; }
         PartyController(string dbConnectionString)
         {
             PartyDao = new PartySqlDao(dbConnectionString);
+            GuestsDao = new GuestSqlDao(dbConnectionString);
+            RestaurantsDao = new RestaurantSqlDao(dbConnectionString);
         }
-        // GET api/<PartyController>/5
+        // GET /<PartyController>/5
         [HttpGet("{id}")]
-        public string Get(int id)
+        public PartyViewModel Get(int id)
         {
-            // TODO: Call "GetParty" in partySqlDAO, "GetRestaurants" from restaurantDAO, "GetGuests" from guestsDAO
-            return "value";
+            //Here we Call "GetParty" in partySqlDAO, "GetRestaurants" from restaurantDAO, "GetGuests" from guestsDAO
+            Party party = PartyDao.GetParty(id);
+            IList<Restaurant> restaurants = RestaurantsDao.GetRestaurants(id);
+            IList<Guest> guests = GuestsDao.GetGuests(id);
+            //make partyviewmodel from values above. 
+            // A viewModel is the model of data returned to the view
+            PartyViewModel partyGuestsAndRestaurants = new PartyViewModel(party, guests, restaurants);
+            return partyGuestsAndRestaurants;
         }
 
-        // POST api/<PartyController>
-        [HttpPost]
-        public void Post([FromBody] string value)
+        /// POST /<PartyController>
+        /// 
+        public int Post([FromBody] Party newParty)
         {
-           // TODO: Call "CreatyParty" in partySqlDAO
+            //Use partyDao.CreateParty(newParty) to create a new party, and return the ID of the party
+
+            // newPartyId is the Id of the newly created party
+            int newPartyId = PartyDao.CreateParty(newParty).PartyId;
+            return newPartyId;
         }
 
-        // PUT api/<PartyController>/5
+        // PUT /<PartyController>/5
         [HttpPut("{id}")]
-        public void Put(int id, [FromBody] string value)
+        public void Put(int id, [FromBody] Party updatedParty)
         {
             //TODO: Call "UpdateParty" in partySqlDAO
         }
 
-        // DELETE api/<PartyController>/5
+        // DELETE /<PartyController>/5
         [HttpDelete("{id}")]
         public void Delete(int id)
         {
             //TODO: Call "DeleteParty" in partySqlDAO
         }
+
+
+        /// POST /<PartyController>/location
+        /// 
+        public IList<Restaurant> Post([FromBody] string zipcode)
+        {
+            //TODO: CALL YELP API AND GET 25 Restaurants AND DETAILS FROM ZIP CODE
+            //
+            var client = new RestClient("https://api.yelp.com/v3/businesses/search?sort_by=best_match&limit=20");
+            var request = new RestRequest(Method.GET);
+            request.AddHeader("accept", "application/json");
+            IRestResponse response = client.Execute(request);
+
+            throw new NotImplementedException();
+        }
+
+       
     }
 }
