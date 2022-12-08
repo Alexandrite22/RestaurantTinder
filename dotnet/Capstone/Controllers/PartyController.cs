@@ -17,15 +17,16 @@ namespace Capstone.Controllers
     {
         private readonly string connectionString;
         // TODO: add partyDao, guestsDAO, restaurantDAO
-        private IPartyDao PartyDao { get; set; }
-        private IGuestDao GuestsDao { get; set; }
-        private IRestaurantDao RestaurantsDao { get; set; }
-        PartyController(string dbConnectionString)
-        {
-            PartyDao = new PartySqlDao(dbConnectionString);
-            GuestsDao = new GuestSqlDao(dbConnectionString);
-            RestaurantsDao = new RestaurantSqlDao(dbConnectionString);
-        }
+        private IPartyDao PartyDao = new PartySqlDao("Server=.\\SQLEXPRESS;Database=final_capstone;Trusted_Connection=True;");
+        private IGuestDao GuestsDao = new GuestSqlDao("Server=.\\SQLEXPRESS;Database=final_capstone;Trusted_Connection=True;");
+        private IRestaurantDao RestaurantsDao = new RestaurantSqlDao("Server=.\\SQLEXPRESS;Database=final_capstone;Trusted_Connection=True;");
+
+        //PartyController()
+        //{
+        //    //PartyDao = new PartySqlDao(dbConnectionString);
+        //    //GuestsDao = new GuestSqlDao(dbConnectionString);
+        //    //RestaurantsDao = new RestaurantSqlDao(dbConnectionString);
+        //}
         // GET /<PartyController>/5
         [HttpGet("{id}")]
         public PartyViewModel Get(int id)
@@ -48,11 +49,12 @@ namespace Capstone.Controllers
 
         /// POST /<PartyController>
         /// 
-        public int Post([FromBody] Party newParty)
+        public int Post()
         {
             //Use partyDao.CreateParty(newParty) to create a new party, and return the ID of the party
 
             // newPartyId is the Id of the newly created party
+            Party newParty = new Party();            newParty.NameOfParty = "test + + test";            newParty.Date = " test date";            newParty.Owner = "test owner";            newParty.Location = "test location";            newParty.Description = "test description";            newParty.InviteLink = "test inviteLink";            
             int newPartyId = PartyDao.CreateParty(newParty).PartyId;
             return newPartyId;
         }

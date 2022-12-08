@@ -1,5 +1,5 @@
 <template>
-    <div><h1>I am important</h1></div>
+    <div class="border"><h1>I am important</h1></div>
 </template>
 
 <script>

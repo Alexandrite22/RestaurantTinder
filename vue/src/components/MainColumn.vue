@@ -1,22 +1,27 @@
 <template>
-    <div style="background-color: blue;">
+    <div class="border" style="background-color: blue;">
         <h1>I am important but less so</h1>
-        <party-form />
+        <!-- <party-list />
+        <party-form /> -->
     </div>
 </template>
 
 <script>
-import PartyForm from "./NewPartyForm.vue";
+// import PartyList from "../PartyList.vue";
+// import NewPartyForm from "../NewPartyForm.vue";
 export default {
  name: 'MainColumn',
     data() {
-        return {};
+        return {
+            newPartyId: -1,
+        };
     },
     created() {
         console.log("MainColumn created");
     },
     components: {
-        PartyForm,
+        // NewPartyForm,
+        // PartyList
     }
 }
 </script>

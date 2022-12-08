@@ -1,5 +1,5 @@
 <template>
-    <div class="details-column">Hello I hate frontend</div>
+    <div class="details-column border">Hello I hate frontend</div>
 </template>
 
 <script>

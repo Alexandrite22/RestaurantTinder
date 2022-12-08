@@ -26,7 +26,7 @@ const router = new Router({
       name: 'home',
       component: Home,
       meta: {
-        requiresAuth: true
+        
       }
     },
     {
@@ -53,6 +53,17 @@ const router = new Router({
         requiresAuth: false
       }
     },
+    {
+      path: '/dashboard',
+      name: 'dashboard',
+      component: () => import('../views/Dashboard.vue'),
+    },    {
+      path: '/newParty',
+      name: 'newParty',
+      component: () => import('../views/NewPartyForm.vue'),
+    }
+
+
   ]
 })
 
