@@ -88,7 +88,7 @@ namespace Capstone.DAO
             Restaurant restaurant = new Restaurant();
             restaurant.RestaurantId = Convert.ToInt32(reader["restaurant_id"]);
             restaurant.PartyId = Convert.ToInt32(reader["party_id"]);
-            restaurant.Name = Convert.ToString(reader["name"]);
+            //restaurant.Name = Convert.ToString(reader["name"]);
             restaurant.ApiAddress = Convert.ToString(reader["Api_address"]);
             return restaurant;
         }
