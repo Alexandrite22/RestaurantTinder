@@ -1,12 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using Capstone.Models;
 
 namespace Capstone.DAO
 {
-    public class ILikeDislikeDao
+    public interface ILikeDislikeDao
     {
-        
+        LikeDislike GetLikeDislike(int partyId, int guestId);
     }
 }
