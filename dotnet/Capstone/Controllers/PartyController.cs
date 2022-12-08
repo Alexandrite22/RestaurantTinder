@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using Capstone.DAO;
 using Capstone.Models;
 using RestSharp;
+using Capstone.Services;
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
 namespace Capstone.Controllers
@@ -37,6 +38,12 @@ namespace Capstone.Controllers
             // A viewModel is the model of data returned to the view
             PartyViewModel partyGuestsAndRestaurants = new PartyViewModel(party, guests, restaurants);
             return partyGuestsAndRestaurants;
+        }
+        [HttpGet("restaurants/{partyId}")]
+        public List<RestaurantViewModel> GetRestaurants(int partyId)
+        {
+           YelpApiService yelpService = new YelpApiService();
+            return yelpService.CreatePracticeRestaurants();
         }
 
         /// POST /<PartyController>
