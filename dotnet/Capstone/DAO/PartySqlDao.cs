@@ -117,6 +117,7 @@ namespace Capstone.DAO
             }
         }
         /// <summary>
+        /// TODO: ADD THIS METHOD
         /// Update a party in the database using a Party object
         /// Takes in a Party object and returns the updated party
         /// </summary>
@@ -131,6 +132,18 @@ namespace Capstone.DAO
                 // TODO: Create a new SQL command that updates a party in the database
                 //SqlCommand cmd = new SqlCommand("UPDATE ");
             }
+            return new Party();
+        }
+
+        /// <summary>
+        /// TODO: ADD THIS METHOD
+        /// </summary>
+        /// <param name="partyId"></param>
+        /// <returns></returns>
+        /// <exception cref="NotImplementedException"></exception>
+        public bool DeleteParty(int partyId)
+        {
+            throw new NotImplementedException();
         }
 
 

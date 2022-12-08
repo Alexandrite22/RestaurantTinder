@@ -7,39 +7,53 @@ using System.Data.SqlClient;
 
 namespace Capstone.DAO
 {
-    public class GuestsqlDao : IGuestDao
+    public class GuestSqlDao : IGuestDao
     {
         private readonly string connectionString;
 
-        public GuestsqlDao(string dbConnectionString)
+        public GuestSqlDao(string dbConnectionString)
         {
             connectionString = dbConnectionString;
         }
 
 
-        // Get full guest table information based on party ID
         // TODO: do we need GetGuest (singular)?
-        public Guest GetGuest(int partyId)
+        /// <summary>
+        /// Get a guest's name based on their guest ID
+        /// </summary>
+        /// <param name="guestId"></param>
+        /// <returns></returns>
+        public Guest GetGuest(int guestId)
         {
             Guest guest = null;
             using (SqlConnection conn = new SqlConnection(connectionString))
             {
+                // Open connection to db
                 conn.Open();
-                SqlCommand cmd = new SqlCommand("SELECT * FROM guest", conn);
-                /*                cmd.Parameters.AddwithVualue("@...", ...)
-                */
+                // Create new sql command to select guest where guestId and guest_id match
+                SqlCommand cmd = new SqlCommand("SELECT * FROM guest WHERE guest_id = @guest_id", conn);
 
+                // Add guestId to sql command
+                cmd.Parameters.AddWithValue("@guest_id", guestId);
+                
+                // Run query and save values to reader
                 SqlDataReader reader = cmd.ExecuteReader();
 
-                if (reader.Read())
+                while (reader.Read()) //while there are results to read
                 {
+                    //the guest we return is the guest we read
                     guest = CreateGuestFromReader(reader);
                 }
-
             }
             return guest;
         }
 
+        /// <summary>
+        /// Get full guest table information based on party ID
+        /// Takes in partyId and returns list of guests
+        /// </summary>
+        /// <param name="partyID"></param>
+        /// <returns></returns>
         public IList<Guest> GetGuests(int partyID)
         {
             IList<Guest> guests = new List<Guest>();
@@ -47,23 +61,34 @@ namespace Capstone.DAO
             //Restaurant restaurant = null;
             using (SqlConnection conn = new SqlConnection(connectionString))
             {
+                // Open connection to DB
                 conn.Open();
-                SqlCommand cmd = new SqlCommand("SELECT * FROM guest", conn);
-                /*                cmd.Parameters.AddwithVualue("@...", ...)
-                */
+                // Create SQL command that selects all guests where party_id = partyID
+                SqlCommand cmd = new SqlCommand("SELECT * FROM guest WHERE party_id = @party_id", conn);
+                // Add params
+                cmd.Parameters.AddWithValue("@party_id", partyID);
 
+                //Execute SQL command, store results in reader
                 SqlDataReader reader = cmd.ExecuteReader();
 
-                while (reader.Read())
+                while (reader.Read()) // While there are more results
                 {
+                    // Create a new guest object from the reader
                     Guest guest = CreateGuestFromReader(reader);
+                    // Add the guest to the list of guests
                     guests.Add(guest);
                 }
 
             }
+            // return guests
             return guests;
         }
 
+        /// <summary>
+        /// Create a guest from a row in the db
+        /// </summary>
+        /// <param name="reader"></param>
+        /// <returns></returns>
         private Guest CreateGuestFromReader(SqlDataReader reader)
         {
             Guest guest = new Guest();

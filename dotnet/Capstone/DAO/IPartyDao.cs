@@ -7,5 +7,7 @@ namespace Capstone.DAO
     {
         IList<Party> GetParties(int userId);
         Party GetParty(int partyId);
+        Party CreateParty(Party newParty);
+        //Party UpdateParty(Party updatedParty);
     }
 }

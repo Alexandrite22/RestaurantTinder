@@ -21,8 +21,10 @@ namespace Capstone.Controllers
         PartyController(string dbConnectionString)
         {
             PartyDao = new PartySqlDao(dbConnectionString);
+            GuestsDao = new GuestSqlDao(dbConnectionString);
+            RestaurantsDao = new RestaurantSqlDao(dbConnectionString);
         }
-        // GET api/<PartyController>/5
+        // GET /<PartyController>/5
         [HttpGet("{id}")]
         public PartyViewModel Get(int id)
         {
@@ -36,28 +38,40 @@ namespace Capstone.Controllers
             return partyGuestsAndRestaurants;
         }
 
-        // POST api/<PartyController>
-        [HttpPost]
-        public void Post([FromBody] Party newParty)
+        /// POST /<PartyController>
+        /// 
+        public int Post([FromBody] Party newParty)
         {
-            // Set current user as owner value
-            var owner = 
-           // TODO: Call "CreatyParty" in partySqlDAO
+            //Use partyDao.CreateParty(newParty) to create a new party, and return the ID of the party
 
+            // newPartyId is the Id of the newly created party
+            int newPartyId = PartyDao.CreateParty(newParty).PartyId;
+            return newPartyId;
         }
 
-        // PUT api/<PartyController>/5
+        // PUT /<PartyController>/5
         [HttpPut("{id}")]
-        public void Put(int id, [FromBody] string value)
+        public void Put(int id, [FromBody] Party updatedParty)
         {
             //TODO: Call "UpdateParty" in partySqlDAO
         }
 
-        // DELETE api/<PartyController>/5
+        // DELETE /<PartyController>/5
         [HttpDelete("{id}")]
         public void Delete(int id)
         {
             //TODO: Call "DeleteParty" in partySqlDAO
         }
+
+
+        /// POST /<PartyController>/location
+        /// 
+        public IList<Restaurant> Post([FromBody] string zipcode)
+        {
+            //TODO: CALL YELP API AND GET 25 Restaurants AND DETAILS FROM ZIP CODE 
+            throw new NotImplementedException();
+        }
+
+
     }
 }

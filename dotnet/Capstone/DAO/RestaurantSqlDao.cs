@@ -16,47 +16,69 @@ namespace Capstone.DAO
             connectionString = dbConnectionString;
         }
 
-        // Get a restaurant based on restaurant id...
+        /// <summary>
+        /// Get a restaurant based on a restaurantId
+        /// takes in restaurantId int and returns a restaurant object
+        /// </summary>
+        /// <param name="restaurantId"></param>
+        /// <returns></returns>
         public Restaurant GetRestaurant(int restaurantId)
         {
             Restaurant restaurant = null;
             using (SqlConnection conn = new SqlConnection(connectionString))
             {
+                // Open connection to db
                 conn.Open();
-                SqlCommand cmd = new SqlCommand("SELECT * FROM restaurant", conn);
-                /*                cmd.Parameters.AddwithVualue("@...", ...)
-                */
 
+                // Create new sql command to select restaurant where restaurantId and restaurant_id match
+                SqlCommand cmd = new SqlCommand("SELECT * FROM restaurant WHERE restaurant_id = @restaurant_id", conn);
+
+                // Add restaurantId to sql command
+                cmd.Parameters.AddWithValue("@restaurant_id", restaurantId);
+
+                // Run query and save values to reader
                 SqlDataReader reader = cmd.ExecuteReader();
 
-                if (reader.Read())
+                while (reader.Read()) //while there are results to read
                 {
+                    //the restaurant we return is the restaurant we read
                     restaurant = CreateRestaurantFromReader(reader);
                 }
-
             }
             return restaurant;
         }
 
-        // Get restaurant choices based on party id... 
+        /// <summary>
+        /// Get restaurant choices based on a partyId
+        /// takes in partyId int, returns IList<Restaurants>
+        /// </summary>
+        /// <param name="partyId"></param>
+        /// <returns></returns>
         public IList<Restaurant> GetRestaurants(int partyId)
         {
             IList<Restaurant> restaurants = null;
             using (SqlConnection conn = new SqlConnection(connectionString))
             {
+                // Open connection to db
                 conn.Open();
-                SqlCommand cmd = new SqlCommand("SELECT * FROM restaurant", conn);
-                /*                cmd.Parameters.AddwithVualue("@...", ...)
-                */
 
+                // Create new sql command to select all restaurants where partyId and party_id match
+                SqlCommand cmd = new SqlCommand("SELECT * FROM restaurant WHERE party_id = @party_id", conn);
+
+                // Add partyId to sql command
+                cmd.Parameters.AddWithValue("@party_id", partyId);
+
+                // Run query and save values to reader
                 SqlDataReader reader = cmd.ExecuteReader();
 
-                while (reader.Read())
-                {
-                    Restaurant restaurant = CreateRestaurantFromReader(reader);
-                    restaurants.Add(restaurant);
-                }
+                // Create new list of restaurants
+                restaurants = new List<Restaurant>();
 
+                while (reader.Read()) //while there are results to read
+                {
+                    // Add restaurant to list of restaurants
+                    restaurants.Add(CreateRestaurantFromReader(reader));
+                }
             }
             return restaurants;
         }
