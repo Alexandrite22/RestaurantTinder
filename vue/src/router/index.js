@@ -27,7 +27,7 @@ const router = new Router({
       name: 'home',
       component: Home,
       meta: {
-        requiresAuth: true
+        
       }
     },
     {
@@ -55,6 +55,7 @@ const router = new Router({
       }
     },
     {
+<<<<<<< HEAD
       path: "/restaurant/:id",
       name: "restaurant",
       component: Restaurant,
@@ -64,6 +65,20 @@ const router = new Router({
     }],
 }
 )
+=======
+      path: '/dashboard',
+      name: 'dashboard',
+      component: () => import('../views/Dashboard.vue'),
+    },    {
+      path: '/newParty',
+      name: 'newParty',
+      component: () => import('../views/NewPartyForm.vue'),
+    }
+
+
+  ]
+})
+>>>>>>> ade15cedf01812cf98aedfcdc6e7d2ebad0cb1a7
 
 router.beforeEach((to, from, next) => {
   // Determine if the route requires Authentication

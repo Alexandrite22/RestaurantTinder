@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using Capstone.DAO;
 using Capstone.Models;
 using RestSharp;
+using Capstone.Services;
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
 namespace Capstone.Controllers
@@ -16,15 +17,39 @@ namespace Capstone.Controllers
     {
         private readonly string connectionString;
         // TODO: add partyDao, guestsDAO, restaurantDAO
-        private IPartyDao PartyDao { get; set; }
-        private IGuestDao GuestsDao { get; set; }
-        private IRestaurantDao RestaurantsDao { get; set; }
-        PartyController(string dbConnectionString)
+        private IPartyDao PartyDao = new PartySqlDao("Server=.\\SQLEXPRESS;Database=final_capstone;Trusted_Connection=True;");
+        private IGuestDao GuestsDao = new GuestSqlDao("Server=.\\SQLEXPRESS;Database=final_capstone;Trusted_Connection=True;");
+        private IRestaurantDao RestaurantsDao = new RestaurantSqlDao("Server=.\\SQLEXPRESS;Database=final_capstone;Trusted_Connection=True;");
+
+
+
+
+        //PartyController()
+        //{
+        //    //PartyDao = new PartySqlDao(dbConnectionString);
+        //    //GuestsDao = new GuestSqlDao(dbConnectionString);
+        //    //RestaurantsDao = new RestaurantSqlDao(dbConnectionString);
+        //}
+        // GET /<PartyController>/5
+        [HttpGet]
+        public List<PartyViewModel> Get()
         {
-            PartyDao = new PartySqlDao(dbConnectionString);
-            GuestsDao = new GuestSqlDao(dbConnectionString);
-            RestaurantsDao = new RestaurantSqlDao(dbConnectionString);
+            //Here we Call "GetParty" in partySqlDAO, "GetRestaurants" from restaurantDAO, "GetGuests" from guestsDAO
+            Party party = PartyDao.GetParty(1);
+            //make partyviewmodel from values above. 
+            // A viewModel is the model of data returned to the view
+            List<PartyViewModel> partyViewModels = new List<PartyViewModel>();
+            PartyViewModel partyGuestsAndRestaurants = new PartyViewModel(party, new List<Guest>(), new List<Restaurant>());
+            partyViewModels.Add(partyGuestsAndRestaurants);
+            return partyViewModels;
         }
+
+        //PartyController()
+        //{
+        //    //PartyDao = new PartySqlDao(dbConnectionString);
+        //    //GuestsDao = new GuestSqlDao(dbConnectionString);
+        //    //RestaurantsDao = new RestaurantSqlDao(dbConnectionString);
+        //}
         // GET /<PartyController>/5
         [HttpGet("{id}")]
         public PartyViewModel Get(int id)
@@ -39,13 +64,23 @@ namespace Capstone.Controllers
             return partyGuestsAndRestaurants;
         }
 
+
+
+        [HttpGet("restaurants/{partyId}")]
+        public List<RestaurantViewModel> GetRestaurants(int partyId)
+        {
+           YelpApiService yelpService = new YelpApiService();
+            return yelpService.CreatePracticeRestaurants();
+        }
+
         /// POST /<PartyController>
         /// 
-        public int Post([FromBody] Party newParty)
+        public int Post()
         {
             //Use partyDao.CreateParty(newParty) to create a new party, and return the ID of the party
 
             // newPartyId is the Id of the newly created party
+            Party newParty = new Party();            newParty.NameOfParty = "test + + test";            newParty.Date = " test date";            newParty.Owner = "test owner";            newParty.Location = "test location";            newParty.Description = "test description";            newParty.InviteLink = "test inviteLink";            Console.WriteLine();
             int newPartyId = PartyDao.CreateParty(newParty).PartyId;
             return newPartyId;
         }

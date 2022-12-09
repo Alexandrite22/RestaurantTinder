@@ -107,7 +107,7 @@ namespace Capstone.DAO
                 SqlCommand cmd = new SqlCommand("INSERT INTO party (location, owner, name_of_party, description) VALUES (@location, @owner, @name_of_party, @description); SELECT @@IDENTITY", conn);
                 // Add the parameters to the SQL command
                 cmd.Parameters.AddWithValue("@location", party.Location);
-                cmd.Parameters.AddWithValue("@owner", party.Owner);
+                cmd.Parameters.AddWithValue("@owner", 1);
                 cmd.Parameters.AddWithValue("@name_of_party", party.NameOfParty);
                 cmd.Parameters.AddWithValue("@description", party.Description);
                 // Execute the SQL command and get the new party_id.
