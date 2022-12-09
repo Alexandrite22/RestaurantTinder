@@ -1,7 +1,7 @@
 <template>
     <div class="border new-party-form">
         <h1>New Party Form</h1>
-        <form v-on:submit.prevent="addNewParty">
+        <form v-on:submit.prevent="addNewParty" v-if="showForm === true">
             <div class="form-element">
                 <label for="name">Name:</label>
                 <input id="name" type="text" v-model="party.name" placeholder="Party Name" />
@@ -26,8 +26,8 @@
                 <label for="location">Location:</label> <!--// TODO Make this a location picker -->
                 <input id="location" type="text" v-model="party.location" placeholder="Ex. Cleveland OH" />
             </div>
-            <input type="submit" value="Save" variant="btn btn-default"  class="btn btn-default" >
-            <input type="button" value="Cancel" v-on:click="resetForm($event)">
+            <input type="submit" value="Save" class="btn btn-success"  />
+            <input type="button" value="Cancel" v-on:click="resetForm($event)" class="btn btn-success">
 
             <!-- <b-button type="submit" variant="btn btn-default" >Create</b-button> -->
         </form>
@@ -41,13 +41,9 @@ export default {
     data() {
         return {
             party: {
-                name: '',
-                description: '',
-                date: '',
-                time: '',
-                location: '',
                 owner: 1,//TODO make this current user_id
             },
+            showForm: true,
 
             // party: {
             //     name: 'name_placeholder_set_in_vue_Party_Form',
@@ -72,7 +68,13 @@ export default {
                 .catch(error => {
                     console.log(error);
                 });
+        },
+        resetForm(event) {
+            this.party = { owner: 1 }; //empty out the review 
+            console.log(event.type );
+            this.showForm = false; //hide the form
         }
+
     }
 
 }
