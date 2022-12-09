@@ -61,9 +61,11 @@ namespace Capstone.DAO
             using (SqlConnection conn = new SqlConnection(connectionString))
             {
                 conn.Open();
-                SqlCommand cmd = new SqlCommand("SELECT * FROM party", conn);
+                SqlCommand cmd = new SqlCommand("SELECT * FROM party where owner = @user_id", conn);
                 /*                cmd.Parameters.AddwithVualue("@...", ...)
                 */
+                cmd.Parameters.AddWithValue("@user_id", userId);
+
 
                 SqlDataReader reader = cmd.ExecuteReader();
 
@@ -88,7 +90,10 @@ namespace Capstone.DAO
             party.PartyId = Convert.ToInt32(reader["party_id"]);
             party.Location = Convert.ToString(reader["location"]);
             party.Owner = Convert.ToString(reader["owner"]);
-            party.NameOfParty = Convert.ToString(reader["name_of_party"]);
+            party.Name = Convert.ToString(reader["name_of_party"]);
+            party.Date = Convert.ToString(reader["date"]);
+            party.Description = Convert.ToString(reader["description"]);            //TODO ADD INVITE LINK TO DB PARTY TABLE AND ADD TO CREATE CODE FOR READING IT HERE
+            //party.InviteLink = Convert.ToString(reader["date"]);
             return party;
         }
 
@@ -107,8 +112,8 @@ namespace Capstone.DAO
                 SqlCommand cmd = new SqlCommand("INSERT INTO party (location, owner, name_of_party, description) VALUES (@location, @owner, @name_of_party, @description); SELECT @@IDENTITY", conn);
                 // Add the parameters to the SQL command
                 cmd.Parameters.AddWithValue("@location", party.Location);
-                cmd.Parameters.AddWithValue("@owner", party.Owner);
-                cmd.Parameters.AddWithValue("@name_of_party", party.NameOfParty);
+                cmd.Parameters.AddWithValue("@owner", 1);
+                cmd.Parameters.AddWithValue("@name_of_party", party.Name);
                 cmd.Parameters.AddWithValue("@description", party.Description);
                 // Execute the SQL command and get the new party_id.
                 //Convert the new party_id to an int32 and set it to the partyId property of the party object

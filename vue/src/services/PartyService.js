@@ -9,7 +9,8 @@ export default {
     },
     getParties(userId) {
         console.log("getParties() in PartyService.js")
-        return axios.get('/Party/' + userId)
+        userId; //just getting rid of the warning
+        return axios.get('/Party/')
     }
 
 }
