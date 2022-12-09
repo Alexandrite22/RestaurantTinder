@@ -2,7 +2,7 @@
     <div class="border">
         <h1>Party List</h1>
         <h3>TODO: Finish this component</h3>
-        <!-- <b-table-lite striped hover :parties="parties"></b-table-lite> TODO: Figure out bootstrap-vue table --> 
+        <b-table-lite striped hover :parties="parties"></b-table-lite> TODO: Figure out bootstrap-vue table 
 
         <table >
             <tr>

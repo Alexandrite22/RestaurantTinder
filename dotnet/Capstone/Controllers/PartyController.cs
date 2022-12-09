@@ -78,12 +78,19 @@ namespace Capstone.Controllers
 
         /// POST /<PartyController>
         /// 
-        public int Post()
+        public int Post([FromBody] Party updatedParty)
         {
             //Use partyDao.CreateParty(newParty) to create a new party, and return the ID of the party
-
+            
             // newPartyId is the Id of the newly created party
-            Party newParty = new Party();            newParty.Name = "test + + test";            newParty.Date = " test date";            newParty.Owner = "test owner";            newParty.Location = "test location";            newParty.Description = "test description";            newParty.InviteLink = "test inviteLink";            Console.WriteLine();
+            Party newParty = new Party();
+            newParty.Name = updatedParty.Name;
+            newParty.Date = updatedParty.Date;
+            newParty.Owner = updatedParty.Owner;
+            newParty.Location = updatedParty.Location;
+            newParty.Description = updatedParty.Description;
+            newParty.InviteLink = updatedParty.InviteLink;
+
             int newPartyId = PartyDao.CreateParty(newParty).PartyId;
             return newPartyId;
         }
