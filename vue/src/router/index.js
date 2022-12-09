@@ -73,6 +73,9 @@ const router = new Router({
       path: '/newParty',
       name: 'newParty',
       component: () => import('../views/NewPartyForm.vue'),
+      meta:{
+        requiresAuth: true  
+      }
     }
 
 
