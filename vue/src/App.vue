@@ -7,7 +7,7 @@
       </span>
     </b-row>    
     <div id = "main-container">
-      <b-row >
+      <b-row id = "sub-container">
         <b-col id="menuColumn"  class="col-2 panel">
           <menu-column id="menu"/>
         </b-col>
@@ -53,7 +53,8 @@ body {
   background: white;
   opacity: 50%;
   margin: 1vw;
-  width: 90vw;
+  width: 100vw;
+  margin-bottom: 0vw;
   border:solid;
   border-color: black;
   border-radius: 15px;
@@ -70,9 +71,17 @@ body {
 }
 #main-container
 {
-  padding: 2vw;
+  padding: 4vw;
+  padding-top: 1vw;
   justify-content: center;
   align-content: center;
+  min-height: 95%;
+}
+#sub-container
+{
+  min-height: 95%;
+  display: flex;
+  flex-grow: fill;
 }
 @keyframes gradient {
 	0% {
@@ -89,10 +98,15 @@ body {
 {
   margin: 2vw;
   width: 94vw;
+  margin-bottom: 0vw;
 }
 .solid-text
 {
   opacity: 100%;
   font-weight: bolder;
+}
+#app
+{
+min-height: 99vh;
 }
 </style>
