@@ -9,13 +9,13 @@
     <div id = "main-container">
       <b-row id = "sub-container">
         <b-col id="menuColumn"  class="col-2 panel">
-          <menu-column id="menu"/>
+          <menu-column class = "content" id="menu"/>
         </b-col>
         <b-col id="homeColumn" class="col-8 panel">
-          <router-view />
+          <router-view class = "content"/>
         </b-col>
         <b-col id="detailsColumn" class="col-2 panel">
-          <details-column id="details" />
+          <details-column class = "content" id="details" />
         </b-col>
       </b-row>
     </div>
@@ -42,7 +42,6 @@ body {
   background-repeat: no-repeat;
   background-size: 100vw;
   margin: 1vw;
-
 }
 #header
 {
@@ -50,8 +49,7 @@ body {
   flex-direction: row;
   justify-content: center;
   align-content: center;
-  background: white;
-  opacity: 50%;
+  background: rgba(255,255,255,0.5); 
   margin: 1vw;
   width: 100vw;
   margin-bottom: 0vw;
@@ -66,8 +64,7 @@ body {
   border-color: black;
   border-radius: 15px;
   border-width: 3px;
-  background-color: white;
-  opacity: 50%;
+  background: rgba(255,255,255,0.5);
 }
 #main-container
 {
@@ -104,6 +101,7 @@ body {
 {
   opacity: 100%;
   font-weight: bolder;
+  color: black;
 }
 #app
 {
