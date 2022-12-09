@@ -9,13 +9,29 @@
     <div id = "main-container">
       <b-row id = "sub-container">
         <b-col id="menuColumn"  class="col-2 panel">
-          <menu-column class = "content" id="menu"/>
+          <div>
+            <menu-column class = "content" id="menu" style = "  border:solid !important;
+  border-color: black !important;
+  border-radius: 15px !important;
+  border-width: 3px !important;
+  background: rgba(255,255,255,0.5);
+  height: 80vh;"/>
+          </div>
         </b-col>
         <b-col id="homeColumn" class="col-8 panel">
-          <router-view class = "content"/>
+          <div>
+            <router-view class = "content"/>
+          </div>
         </b-col>
         <b-col id="detailsColumn" class="col-2 panel">
-          <details-column class = "content" id="details" />
+          <div>
+            <details-column class = "content" id="details" style = "  border:solid !important;
+  border-color: black !important;
+  border-radius: 15px !important;
+  border-width: 3px !important;
+  background: rgba(255,255,255,0.5);
+  height: 80vh;"/>
+          </div>
         </b-col>
       </b-row>
     </div>
@@ -42,6 +58,7 @@ body {
   background-repeat: no-repeat;
   background-size: 100vw;
   margin: 1vw;
+  min-height: 95vh;
 }
 #header
 {
@@ -58,27 +75,37 @@ body {
   border-radius: 15px;
   border-width: 3px;
 }
+#app
+{
+  height: 100%;
+  min-height: 100%;
+}
 .panel
 {
-  border:solid;
-  border-color: black;
-  border-radius: 15px;
-  border-width: 3px;
+  height: 80vh;
+}
+.content
+{
+  border:solid !important;
+  border-color: black !important;
+  border-radius: 15px !important;
+  border-width: 3px !important;
   background: rgba(255,255,255,0.5);
+  height: 80vh;
+  padding:0.5em;
 }
 #main-container
 {
   padding: 4vw;
   padding-top: 1vw;
+  padding-bottom: 0vh;
   justify-content: center;
   align-content: center;
-  min-height: 95%;
+  height: 90vh;
 }
 #sub-container
 {
-  min-height: 95%;
-  display: flex;
-  flex-grow: fill;
+  height: 85vh;
 }
 @keyframes gradient {
 	0% {
@@ -93,8 +120,8 @@ body {
 }
 #nav-bar
 {
-  margin: 2vw;
-  width: 94vw;
+  margin: 3vw;
+  width: 92vw;
   margin-bottom: 0vw;
 }
 .solid-text
@@ -102,9 +129,5 @@ body {
   opacity: 100%;
   font-weight: bolder;
   color: black;
-}
-#app
-{
-min-height: 99vh;
 }
 </style>
