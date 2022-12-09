@@ -32,15 +32,18 @@ namespace Capstone.Controllers
         //}
         // GET /<PartyController>/5
         [HttpGet]
-        public List<PartyViewModel> Get()
+        public IList<PartyViewModel> Get()
         {
             //Here we Call "GetParty" in partySqlDAO, "GetRestaurants" from restaurantDAO, "GetGuests" from guestsDAO
-            Party party = PartyDao.GetParty(1);
+            IList<Party> parties = PartyDao.GetParties(1);
             //make partyviewmodel from values above. 
             // A viewModel is the model of data returned to the view
-            List<PartyViewModel> partyViewModels = new List<PartyViewModel>();
-            PartyViewModel partyGuestsAndRestaurants = new PartyViewModel(party, new List<Guest>(), new List<Restaurant>());
-            partyViewModels.Add(partyGuestsAndRestaurants);
+            IList<PartyViewModel> partyViewModels = new List<PartyViewModel>();
+            foreach (var party in parties)
+            {
+                PartyViewModel partyGuestsAndRestaurants = new PartyViewModel(party, new List<Guest>(), new List<Restaurant>());
+                partyViewModels.Add(partyGuestsAndRestaurants);
+            }
             return partyViewModels;
         }
 
@@ -75,12 +78,19 @@ namespace Capstone.Controllers
 
         /// POST /<PartyController>
         /// 
-        public int Post()
+        public int Post([FromBody] Party updatedParty)
         {
             //Use partyDao.CreateParty(newParty) to create a new party, and return the ID of the party
-
+            
             // newPartyId is the Id of the newly created party
-            Party newParty = new Party();            newParty.NameOfParty = "test + + test";            newParty.Date = " test date";            newParty.Owner = "test owner";            newParty.Location = "test location";            newParty.Description = "test description";            newParty.InviteLink = "test inviteLink";            Console.WriteLine();
+            Party newParty = new Party();
+            newParty.Name = updatedParty.Name;
+            newParty.Date = updatedParty.Date;
+            newParty.Owner = updatedParty.Owner;
+            newParty.Location = updatedParty.Location;
+            newParty.Description = updatedParty.Description;
+            newParty.InviteLink = updatedParty.InviteLink;
+
             int newPartyId = PartyDao.CreateParty(newParty).PartyId;
             return newPartyId;
         }
