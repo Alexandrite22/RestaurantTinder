@@ -10,6 +10,9 @@
                 <label for="password">Password:</label>
                 <input type="text" id="password" name="password"><br>
             </form>
+            <v-button>
+                SUBMIT
+            </v-button>
         </b-row>
     </div>
 </template>
