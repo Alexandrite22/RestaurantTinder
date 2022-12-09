@@ -12,7 +12,7 @@ namespace Capstone.Models
         public string Date { get; set; }
         public string Owner { get; set; }
         public string Description { get; set; }
-        public string NameOfParty { get; set; }
+        public string Name { get; set; }
 
         public string InviteLink { get; set; }
     }
@@ -24,7 +24,7 @@ namespace Capstone.Models
         public string Date { get; set; }
         public string Owner { get; set; }
         public string Description { get; set; }
-        public string NameOfParty { get; set; }
+        public string Name { get; set; }
 
         public string InviteLink { get; set; }
 
@@ -38,6 +38,13 @@ namespace Capstone.Models
         }
         public PartyViewModel(Party party, IList<Guest> guests, IList<Restaurant> restaurants)
         {
+            PartyId = party.PartyId;
+            Location = party.Location;
+            Date = party.Date;
+            Owner = party.Owner;
+            Description = party.Description;
+            Name = party.Name;
+            InviteLink = party.InviteLink;
             GuestList = guests;
             RestaurantList = restaurants;
         }
