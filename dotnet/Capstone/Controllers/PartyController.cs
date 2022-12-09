@@ -78,6 +78,7 @@ namespace Capstone.Controllers
 
         /// POST /<PartyController>
         /// 
+        [HttpPost]
         public int Post([FromBody] Party updatedParty)
         {
             //Use partyDao.CreateParty(newParty) to create a new party, and return the ID of the party
@@ -89,7 +90,7 @@ namespace Capstone.Controllers
             newParty.Owner = updatedParty.Owner;
             newParty.Location = updatedParty.Location;
             newParty.Description = updatedParty.Description;
-            newParty.InviteLink = updatedParty.InviteLink;
+            newParty.InviteLink = "https://localhost:44315/tinder/{partyId}";
 
             int newPartyId = PartyDao.CreateParty(newParty).PartyId;
             return newPartyId;
