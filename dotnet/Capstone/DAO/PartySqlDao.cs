@@ -140,7 +140,7 @@ namespace Capstone.DAO
                 // Execute the SQL command and get the new party_id.
                 //Convert the new party_id to an int32 and set it to the partyId property of the party object
                
-                return "https://localhost:44315/tinder/{partyId}" +(Convert.ToInt32(cmd.ExecuteScalar()) +1);
+                return "https://localhost:44315/tinder/" +(Convert.ToInt32(cmd.ExecuteScalar()) +1);
                 
                 // ExecuteScalar returns the first column of the first row in the result set returned by the query.
                //return party with updated new party_id
