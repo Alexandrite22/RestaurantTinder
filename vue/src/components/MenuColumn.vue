@@ -1,5 +1,23 @@
 <template>
-    <div class="border"><h1>I am important</h1></div>
+    <div class="border">
+        <h1>Menu Column</h1>
+        <h4><router-link to="home">Home</router-link></h4>
+        <h4><router-link to="/dashboard">dashboard</router-link></h4>
+        <h4><a href="http://localhost:8080/newParty">Create a new event</a></h4>
+        <br/>
+        <br/>
+        <h4><a href="http://localhost:8080/cookies">My current plans</a></h4>
+        <ul>
+            <li><a href="#">Kevins pizza party</a></li>
+            <li><a href="#">Kevins celabratory hiring party</a></li>
+            <li><a href="#">Colin's birthday bash</a></li>
+            <li><a href="#">Nick's birthday</a></li>
+            <li><a href="#">Alex's birthday Party</a></li>
+            <li><a href="#">Tax day</a></li>
+            <li><a href="#">Peri's birthday</a></li>
+            <li><a href="#">Kevins pizza party</a></li>
+        </ul>
+    </div>
 </template>
 
 <script>

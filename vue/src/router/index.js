@@ -5,6 +5,7 @@ import Login from '../views/Login.vue'
 import Logout from '../views/Logout.vue'
 import Register from '../views/Register.vue'
 import store from '../store/index'
+import Restaurant from '../views/Restaurant.vue'
 
 Vue.use(Router)
 
@@ -26,7 +27,7 @@ const router = new Router({
       name: 'home',
       component: Home,
       meta: {
-        
+
       }
     },
     {
@@ -54,13 +55,25 @@ const router = new Router({
       }
     },
     {
+      path: "/restaurant/:id",
+      name: "restaurant",
+      component: Restaurant,
+      meta: {
+        requiresAuth: false
+      }
+    },
+    {
       path: '/dashboard',
       name: 'dashboard',
       component: () => import('../views/Dashboard.vue'),
-    },    {
+    },
+    {
       path: '/newParty',
       name: 'newParty',
       component: () => import('../views/NewPartyForm.vue'),
+      meta: {
+        requiresAuth: true
+      }
     }
 
 

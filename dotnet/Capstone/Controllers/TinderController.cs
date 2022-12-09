@@ -26,9 +26,10 @@ namespace Capstone.Controllers
 
         // GET: api/<TinderController>
         [HttpGet]
-        public IEnumerable<string> Get()
+        public List<RestaurantViewModel> Get()
         {
-            return new string[] { "value1", "value2" };
+            YelpApiService yelpService = new YelpApiService();            return yelpService.CreatePracticeRestaurants();
+            //return new string[] { "value1", "value2" };
         }
 
         // GET /<TinderController>/5
@@ -41,9 +42,11 @@ namespace Capstone.Controllers
         [HttpGet("{partyId}")]
         public List<RestaurantViewModel> GetRestaurants(int partyId)
         {
-           YelpApiService yelpService = new YelpApiService();            return yelpService.CreatePracticeRestaurants();
+          YelpApiService yelpService = new YelpApiService();            return yelpService.CreatePracticeRestaurants();
            
         }
+
+
 
         // POST /<TinderController>/like
         [HttpPost]

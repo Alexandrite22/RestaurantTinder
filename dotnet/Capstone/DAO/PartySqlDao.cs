@@ -92,7 +92,8 @@ namespace Capstone.DAO
             party.Owner = Convert.ToString(reader["owner"]);
             party.Name = Convert.ToString(reader["name_of_party"]);
             party.Date = Convert.ToString(reader["date"]);
-            party.Description = Convert.ToString(reader["description"]);            //TODO ADD INVITE LINK TO DB PARTY TABLE AND ADD TO CREATE CODE FOR READING IT HERE
+            party.Description = Convert.ToString(reader["description"]);
+            //TODO ADD INVITE LINK TO DB PARTY TABLE AND ADD TO CREATE CODE FOR READING IT HERE
             //party.InviteLink = Convert.ToString(reader["date"]);
             return party;
         }
@@ -103,22 +104,46 @@ namespace Capstone.DAO
         /// </summary>
         public Party CreateParty(Party party)
         {
+            string link = GetNextPartyLink();
             using (SqlConnection conn = new SqlConnection(connectionString))
             {
 
                 conn.Open(); //Open the connection to the DB    
 
                 // Create a new SQL command that inserts a new party into the database and returns the new party_id
-                SqlCommand cmd = new SqlCommand("INSERT INTO party (location, owner, name_of_party, description) VALUES (@location, @owner, @name_of_party, @description); SELECT @@IDENTITY", conn);
+                SqlCommand cmd = new SqlCommand("INSERT INTO party (location, owner, name_of_party, description, invite_link) VALUES (@location, @owner, @name_of_party, @description, @invite_link); SELECT @@IDENTITY", conn);
                 // Add the parameters to the SQL command
                 cmd.Parameters.AddWithValue("@location", party.Location);
                 cmd.Parameters.AddWithValue("@owner", 1);
                 cmd.Parameters.AddWithValue("@name_of_party", party.Name);
                 cmd.Parameters.AddWithValue("@description", party.Description);
+                cmd.Parameters.AddWithValue("@invite_link", link);
+                //, ((SELECT MAX(party_id) FROM party) +1)
+
+                // Execute the SQL command and get the new party_id.
+                int newId = Convert.ToInt32(cmd.ExecuteScalar());
+                //Convert the new party_id to an int32 and set it to the partyId property of the party object
+                return party; //return party with updated new party_id
+            }
+        }
+        private string GetNextPartyLink()
+        {
+            using (SqlConnection conn = new SqlConnection(connectionString))
+            {
+
+                conn.Open(); //Open the connection to the DB    
+
+                // Create a new SQL command that inserts a new party into the database and returns the new party_id
+                SqlCommand cmd = new SqlCommand("SELECT MAX(party_id) FROM party", conn);
+                // Add the parameters to the SQL command
+
                 // Execute the SQL command and get the new party_id.
                 //Convert the new party_id to an int32 and set it to the partyId property of the party object
-                party.PartyId = Convert.ToInt32(cmd.ExecuteScalar());// ExecuteScalar returns the first column of the first row in the result set returned by the query.
-                return party; //return party with updated new party_id
+               
+                return "https://localhost:44315/tinder/{partyId}" +(Convert.ToInt32(cmd.ExecuteScalar()) +1);
+                
+                // ExecuteScalar returns the first column of the first row in the result set returned by the query.
+               //return party with updated new party_id
             }
         }
         /// <summary>
