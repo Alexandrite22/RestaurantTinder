@@ -31,8 +31,17 @@
         v-model="user.password"
         required
       />
-      <router-link :to="{ name: 'register' }">Need an account?</router-link>
-      <button type="submit" @click="login">Sign in</button>
+      <div class = "button">
+        <b-row >
+          <b-col class="col-5 button"></b-col>
+          <button class = "col-2" type="submit" @click="login">Sign in</button>
+          <b-col class="col-5 button"></b-col>
+        </b-row>
+        <b-row>
+          <router-link id :to="{ name: 'register' }">Need an account?</router-link>
+        </b-row>
+      </div>
+      
     </form>
   </div>
 </template>
@@ -74,3 +83,9 @@ export default {
   },
 };
 </script>
+<style scoped>
+.button
+{
+  margin-top: 10px;
+}
+</style>
