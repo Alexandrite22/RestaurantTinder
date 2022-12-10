@@ -74,8 +74,24 @@ const router = new Router({
       meta: {
         requiresAuth: true
       }
-    }
-
+    },
+    {
+      path: '/party/:id',
+      name: 'party',
+      component: () => import('../views/Party.vue'),
+      meta: {
+        requiresAuth:false
+      }
+    },
+    {
+      path: '/tinder/:id',
+      name: 'tinder',
+      component: () => import('../views/Tinder.vue'),
+      meta: {
+        requiresAuth: false
+      }
+    },
+    
 
   ]
 })
