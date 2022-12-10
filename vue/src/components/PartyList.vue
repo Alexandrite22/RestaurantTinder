@@ -10,6 +10,7 @@
                 <th>Date</th>
                 <th>Time</th>
                 <th>Location</th>
+                <th>LINK</th>
                 <!--<th>RSVPs</th> should we have a count of guests as rsvp -->
             </tr>
             <tr v-for="party in parties" v-bind:key="party.Id">
@@ -17,6 +18,7 @@
                 <td>{{party.Date}}</td>
                 <td>{{party.Time}}</td>
                 <td>{{party.Location}}</td>
+                <td>{{party.InviteLink}}</td>
                 
                 <!--<td>{{party.partyRsvp}}</td> should we have a count of guests as rsvp -->
             </tr>
