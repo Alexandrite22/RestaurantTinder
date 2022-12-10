@@ -28,21 +28,19 @@ namespace Capstone.Controllers
         [HttpGet]
         public List<RestaurantViewModel> Get()
         {
-            YelpApiService yelpService = new YelpApiService();            return yelpService.CreatePracticeRestaurants();
-            //return new string[] { "value1", "value2" };
+            YelpApiService yelpService = new YelpApiService();
+            return yelpService.CreatePracticeRestaurants();
         }
 
         // GET /<TinderController>/5
-        /// <summary>
         /// Get the restaurants for a particular party
-        /// takes in partyId in json
-        /// </summary>
-        /// <param name="id"></param>
-        /// <returns></returns>
+        /// takes in partyId as an int in endpoint path
         [HttpGet("{partyId}")]
         public List<RestaurantViewModel> GetRestaurants(int partyId)
         {
-          YelpApiService yelpService = new YelpApiService();            return yelpService.CreatePracticeRestaurants();
+            YelpApiService yelpService = new YelpApiService();
+            return yelpService.CreatePracticeRestaurants();
+
            
         }
 
@@ -50,7 +48,7 @@ namespace Capstone.Controllers
 
         // POST /<TinderController>/like
         [HttpPost]
-        public void Post([FromBody] LikeDislike swipe)
+        public void Post([FromBody] LikeDislike LikeDislike)
         {
             throw new NotImplementedException();
         }
@@ -63,10 +61,17 @@ namespace Capstone.Controllers
         }
 
         // DELETE /<TinderController>/5
-        [HttpDelete("{id}")]
-        public void Delete(int id)
+        [HttpDelete("guest/{guestId}")]
+        public void Delete(int guestId)
         {
+            // TODO: Nick! You wanted to set up a delete party method/api endpoint, right?
+            // This takes in a guestId and should delete the guest from the party. 
+            // You'll need to use/edit the GuestSqlDao and IGuestDao add a delete guest method to the IGuestDao interface
             throw new NotImplementedException();
         }
+
+
+                 
+
     }
 }
