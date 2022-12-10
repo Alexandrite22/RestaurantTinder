@@ -1,12 +1,12 @@
 <template>
     <div class="border">
         <h1>Menu Column</h1>
-        <h4><router-link to="home">Home</router-link></h4>
+        <h4><router-link to="/">Home</router-link></h4>
         <h4><router-link to="/dashboard">dashboard</router-link></h4>
         <h4><a href="http://localhost:8080/newParty">Create a new event</a></h4>
         <br/>
         <br/>
-        <h4><a href="http://localhost:8080/cookies">My current plans</a></h4>
+        <h4><a href="http://localhost:8080/dashboard">My current plans</a></h4>
         <ul>
             <li><a href="#">Kevins pizza party</a></li>
             <li><a href="#">Kevins celabratory hiring party</a></li>

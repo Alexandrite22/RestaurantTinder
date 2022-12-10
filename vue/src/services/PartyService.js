@@ -11,6 +11,11 @@ export default {
         console.log("getParties() in PartyService.js")
         userId; //just getting rid of the warning
         return axios.get('/Party/')
+    },
+    getParty(partyId) {
+        console.log("getParty() in PartyService.js")
+        partyId; //just getting rid of the warning
+        return axios.get(`/Party/${partyId}`)
     }
 
 }

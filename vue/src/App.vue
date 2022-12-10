@@ -2,8 +2,7 @@
   <span id="app">
     <b-row id="nav-bar">
       <span id = "header">
-        TESST
-        <router-link class="solid-text" v-bind:to="{ name: 'home' }">Home</router-link>&nbsp;|&nbsp;
+        <router-link class="solid-text" v-bind:to="'/'">Home</router-link>&nbsp;|&nbsp;
         <router-link class="solid-text" v-bind:to="{ name: 'logout' }" v-if="$store.state.token != ''">Logout</router-link>
       </span>
     </b-row>    
@@ -12,11 +11,11 @@
         <b-col id="menuColumn"  class="col-2 panel">
           <div>
             <menu-column class = "content" id="menu" style = "  border:solid !important;
-  border-color: black !important;
-  border-radius: 15px !important;
-  border-width: 3px !important;
-  background: rgba(255,255,255,0.5);
-  height: 80vh;"/>
+                                                                border-color: black !important;
+                                                                border-radius: 15px !important;
+                                                                border-width: 3px !important;
+                                                                background: rgba(255,255,255,0.5);
+                                                                height: 80vh;"/>
           </div>
         </b-col>
         <b-col id="homeColumn" class="col-8 panel">

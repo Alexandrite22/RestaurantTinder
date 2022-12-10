@@ -74,8 +74,41 @@ const router = new Router({
       meta: {
         requiresAuth: true
       }
-    }
+    },
+    {
+      path: '/party/:id',
+      name: 'party',
+      component: () => import('../views/Party.vue'),
+      meta: {
+        requiresAuth:false
+      }
+    },
+    {
+      path: '/tinder/:id',
+      name: 'tinder',
+      component: () => import('../views/Tinder.vue'),
+      meta: {
+        requiresAuth: false
+      }
+    },
+    // {  TODO: Add these routes back in when they are ready
+    //   path: '/tinder/:id/restaurant/:id',
+    //   name: 'restaurant',
+    //   component: () => import('../views/Restaurant.vue'),
+    //   meta: {
+    //     requiresAuth: false
+    //   }
+    // },
+    // {
+    //   path: '/tinder/:id/standings',
+    //   name: 'restaurant',
+    //   component: () => import('../views/Restaurant.vue'),
+    //   meta: {
+    //     requiresAuth: false
+    //   }
+    // },
 
+    
 
   ]
 })

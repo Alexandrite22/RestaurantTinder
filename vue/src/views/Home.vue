@@ -9,7 +9,7 @@
 </template>
 
 <script>
-import Description from "../components/Description.vue";
+import Description from "../components/SiteDescription.vue";
 export default {
   name: "home",
   components: {
