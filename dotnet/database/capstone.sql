@@ -66,7 +66,7 @@ CREATE TABLE liked_disliked (
 --populate default data
 
 --CREATE UNIQUE INDEX users ON users(username)
-
+--create default users for testing
 INSERT INTO users (username, password_hash, salt, user_role) VALUES ('user','Jg45HuwT7PZkfuKTz6IB90CtWY4=','LHxP4Xh7bN0=','user');
 INSERT INTO users (username, password_hash, salt, user_role) VALUES ('admin','YhyGVQ+Ch69n4JMBncM4lNF/i9s=', 'Ar/aB2thQTI=','admin');
 INSERT INTO users (username, password_hash, salt, user_role) VALUES ('Peri','Jg45HuwT7PZkfuKTz6IB90CtWY4=','LHxP4Xh7bN0=','user');
@@ -75,4 +75,6 @@ INSERT INTO users (username, password_hash, salt, user_role) VALUES ('Kevin','Jg
 INSERT INTO users (username, password_hash, salt, user_role) VALUES ('Nick','Jg45HuwT7PZkfuKTz6IB90CtWY4=','LHxP4Xh7bN0=','user');
 INSERT INTO users (username, password_hash, salt, user_role) VALUES ('Colin','Jg45HuwT7PZkfuKTz6IB90CtWY4=','LHxP4Xh7bN0=','user');
 
---INSERT INTO party (location, date, owner, description, name_of_party) VALUES ('1234 Party Drive','2022-12-25th 19:00:00', ,'user');
+--create 6 default parties for testing, invite link is https://localhost:44315/tin
+
+INSERT INTO party (name_of_party, owner, invite_link, description, date, location,   ) VALUES ('Peri''s Party', 1, 'https://localhost:44315/tinder/1', 'This is a party', '2020-12-12 12:00:00', '123 Main St');
