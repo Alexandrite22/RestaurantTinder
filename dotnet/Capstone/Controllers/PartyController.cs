@@ -69,7 +69,7 @@ namespace Capstone.Controllers
 
 
 
-        [HttpGet("restaurants/{partyId}")]
+        [HttpGet("{partyId}/restaurants")]
         public List<RestaurantViewModel> GetRestaurants(int partyId)
         {
            YelpApiService yelpService = new YelpApiService();
@@ -83,7 +83,7 @@ namespace Capstone.Controllers
         {
             //Use partyDao.CreateParty(newParty) to create a new party, and return the ID of the party
             
-            // newPartyId is the Id of the newly created party
+            // newPartyId is the Id of the newly created part
             Party newParty = new Party();
             newParty.Name = updatedParty.Name;
             newParty.Date = updatedParty.Date;
