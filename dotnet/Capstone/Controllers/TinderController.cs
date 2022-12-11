@@ -60,14 +60,11 @@ namespace Capstone.Controllers
             throw new NotImplementedException();
         }
 
-        // DELETE /<TinderController>/5
+        // Deletes guest based on their guest Id
         [HttpDelete("guest/{guestId}")]
         public void Delete(int guestId)
         {
-            // TODO: Nick! You wanted to set up a delete party method/api endpoint, right?
-            // This takes in a guestId and should delete the guest from the party. 
-            // You'll need to use/edit the GuestSqlDao and IGuestDao add a delete guest method to the IGuestDao interface
-            throw new NotImplementedException();
+            GuestsDao.DeleteGuest(guestId);
         }
 
 
