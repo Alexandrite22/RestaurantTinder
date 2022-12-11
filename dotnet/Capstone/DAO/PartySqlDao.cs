@@ -79,6 +79,38 @@ namespace Capstone.DAO
             return parties;
         }
 
+        // Updates party based on party Id 
+        public void UpdateParty(int updatedPartyId, Party updatedParty)
+        {
+
+            using (SqlConnection conn = new SqlConnection(connectionString))
+            {
+                conn.Open();
+                SqlCommand cmd = new SqlCommand("UPDATE party SET location = @location, owner = @owner, name_of_party = @nameOfParty, date = @date, description = @description WHERE party_id = @updatedPartyId", conn);
+                cmd.Parameters.AddWithValue("@updatedPartyId", updatedPartyId);
+                cmd.Parameters.AddWithValue("@location", updatedParty.Location);
+                cmd.Parameters.AddWithValue("@owner", updatedParty.Owner);
+                cmd.Parameters.AddWithValue("@nameOfParty", updatedParty.Name);
+                cmd.Parameters.AddWithValue("@date", updatedParty.Date);
+                cmd.Parameters.AddWithValue("@description", updatedParty.Description);
+
+            }
+        }
+
+        public void DeleteParty(int partyId)
+        {
+            using (SqlConnection conn = new SqlConnection(connectionString))
+            {
+                conn.Open();
+                SqlCommand cmd = new SqlCommand("delete FROM party WHERE party_id = @partyId", conn);
+                cmd.Parameters.AddWithValue("@partyId", partyId);
+
+                cmd.ExecuteNonQuery();
+            }
+        }
+
+
+
         /// <summary>
         /// Create a party C# object from a sql reader
         /// </summary>
@@ -146,7 +178,9 @@ namespace Capstone.DAO
                //return party with updated new party_id
             }
         }
-        /// <summary>
+
+
+       /* /// <summary>
         /// TODO: ADD THIS METHOD
         /// Update a party in the database using a Party object
         /// Takes in a Party object and returns the updated party
@@ -174,7 +208,7 @@ namespace Capstone.DAO
         public bool DeleteParty(int partyId)
         {
             throw new NotImplementedException();
-        }
+        }*/
 
 
     }

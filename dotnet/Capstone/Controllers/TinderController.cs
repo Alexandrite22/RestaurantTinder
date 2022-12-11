@@ -28,21 +28,19 @@ namespace Capstone.Controllers
         [HttpGet]
         public List<RestaurantViewModel> Get()
         {
-            YelpApiService yelpService = new YelpApiService();            return yelpService.CreatePracticeRestaurants();
-            //return new string[] { "value1", "value2" };
+            YelpApiService yelpService = new YelpApiService();
+            return yelpService.CreatePracticeRestaurants();
         }
 
         // GET /<TinderController>/5
-        /// <summary>
         /// Get the restaurants for a particular party
-        /// takes in partyId in json
-        /// </summary>
-        /// <param name="id"></param>
-        /// <returns></returns>
+        /// takes in partyId as an int in endpoint path
         [HttpGet("{partyId}")]
         public List<RestaurantViewModel> GetRestaurants(int partyId)
         {
-          YelpApiService yelpService = new YelpApiService();            return yelpService.CreatePracticeRestaurants();
+            YelpApiService yelpService = new YelpApiService();
+            return yelpService.CreatePracticeRestaurants();
+
            
         }
 
@@ -50,7 +48,7 @@ namespace Capstone.Controllers
 
         // POST /<TinderController>/like
         [HttpPost]
-        public void Post([FromBody] LikeDislike swipe)
+        public void Post([FromBody] LikeDislike LikeDislike)
         {
             throw new NotImplementedException();
         }
@@ -62,11 +60,15 @@ namespace Capstone.Controllers
             throw new NotImplementedException();
         }
 
-        // DELETE /<TinderController>/5
-        [HttpDelete("{id}")]
-        public void Delete(int id)
+        // Deletes guest based on their guest Id
+        [HttpDelete("guest/{guestId}")]
+        public void Delete(int guestId)
         {
-            throw new NotImplementedException();
+            GuestsDao.DeleteGuest(guestId);
         }
+
+
+                 
+
     }
 }

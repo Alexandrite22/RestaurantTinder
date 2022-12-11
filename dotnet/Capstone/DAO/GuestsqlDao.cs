@@ -84,6 +84,20 @@ namespace Capstone.DAO
             return guests;
         }
 
+        // Deletes a guest based on guest ID
+        public void DeleteGuest(int guestId)
+        {
+            using (SqlConnection conn = new SqlConnection(connectionString))
+            {
+                conn.Open();
+                // Create new sql command to select guest where guestId and guest_id match
+                SqlCommand cmd = new SqlCommand("delete FROM guest WHERE guest_id = @guest_id", conn);
+                cmd.Parameters.AddWithValue("@guest_id", guestId);
+
+                cmd.ExecuteNonQuery();
+            }
+        }
+
         /// <summary>
         /// Create a guest from a row in the db
         /// </summary>

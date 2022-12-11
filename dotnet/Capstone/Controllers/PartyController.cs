@@ -54,13 +54,13 @@ namespace Capstone.Controllers
         //    //RestaurantsDao = new RestaurantSqlDao(dbConnectionString);
         //}
         // GET /<PartyController>/5
-        [HttpGet("{id}")]
-        public PartyViewModel Get(int id)
+        [HttpGet("{partyId}")]
+        public PartyViewModel Get(int partyId)
         {
             //Here we Call "GetParty" in partySqlDAO, "GetRestaurants" from restaurantDAO, "GetGuests" from guestsDAO
-            Party party = PartyDao.GetParty(id);
-            IList<Restaurant> restaurants = RestaurantsDao.GetRestaurants(id);
-            IList<Guest> guests = GuestsDao.GetGuests(id);
+            Party party = PartyDao.GetParty(partyId);
+            IList<Restaurant> restaurants = RestaurantsDao.GetRestaurants(partyId);
+            IList<Guest> guests = GuestsDao.GetGuests(partyId);
             //make partyviewmodel from values above. 
             // A viewModel is the model of data returned to the view
             PartyViewModel partyGuestsAndRestaurants = new PartyViewModel(party, guests, restaurants);
@@ -72,7 +72,8 @@ namespace Capstone.Controllers
         [HttpGet("{partyId}/restaurants")]
         public List<RestaurantViewModel> GetRestaurants(int partyId)
         {
-           YelpApiService yelpService = new YelpApiService();
+            //TODO CALL THIS FROM PARTSERVICE IN VUE
+            YelpApiService yelpService = new YelpApiService();
             return yelpService.CreatePracticeRestaurants();
         }
 
@@ -96,20 +97,19 @@ namespace Capstone.Controllers
             return newPartyId;
         }
 
-        // PUT /<PartyController>/5
-        [HttpPut("{id}")]
-        public void Put(int id, [FromBody] Party updatedParty)
+        // Updates Party based on party ID
+        [HttpPut("{updatedPartyId}")]
+        public void UpdateParty(int updatedPartyId, [FromBody] Party updatedParty)
         {
-            //TODO: Call "UpdateParty" in partySqlDAO
+            PartyDao.UpdateParty(updatedPartyId, updatedParty);
         }
 
-        // DELETE /<PartyController>/5
-        [HttpDelete("{id}")]
-        public void Delete(int id)
+        // Deletes Party based on party Id
+        [HttpDelete("{partyId}")]
+        public void Delete(int partyId)
         {
-            //TODO: Call "DeleteParty" in partySqlDAO
+            PartyDao.DeleteParty(partyId);
         }
-
 
         /// POST /<PartyController>/location
         /// 

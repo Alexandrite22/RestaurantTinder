@@ -91,6 +91,23 @@ const router = new Router({
         requiresAuth: false
       }
     },
+    // {  TODO: Add these routes back in when they are ready
+    //   path: '/tinder/:id/restaurant/:id',
+    //   name: 'restaurant',
+    //   component: () => import('../views/Restaurant.vue'),
+    //   meta: {
+    //     requiresAuth: false
+    //   }
+    // },
+    // {
+    //   path: '/tinder/:id/standings',
+    //   name: 'restaurant',
+    //   component: () => import('../views/Restaurant.vue'),
+    //   meta: {
+    //     requiresAuth: false
+    //   }
+    // },
+
     
 
   ]

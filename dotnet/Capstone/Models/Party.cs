@@ -30,6 +30,7 @@ namespace Capstone.Models
 
         public IList<Guest> GuestList { get; set; }
         public IList<Restaurant> RestaurantList { get; set; }
+        
         // Default Constructor to 
         public PartyViewModel()
         {
