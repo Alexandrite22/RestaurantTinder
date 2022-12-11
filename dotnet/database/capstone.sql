@@ -22,12 +22,12 @@ CREATE TABLE users (
 )
 CREATE TABLE party (
 	party_id int IDENTITY(1,1) NOT NULL,
-	location varchar(50) NOT NULL,
+	location varchar(512) NOT NULL,
 	--date timestamp NOT NULL,
 	date datetime,
 	owner int NOT NULL,
-	description varchar(50),
-	name_of_party varchar(50) NOT NULL,
+	description varchar(512),
+	name_of_party varchar(64) NOT NULL,
 	invite_link varchar(100),
 	PRIMARY KEY (party_id),
 	FOREIGN KEY (owner) REFERENCES users (user_id)
@@ -82,9 +82,9 @@ INSERT INTO party (location, date, owner, description, name_of_party, invite_lin
 INSERT INTO party (location, date, owner, description, name_of_party, invite_link) VALUES ('Cleveland Museum of Art, 11150 East Blvd, Cleveland, OH 44106', '2022-12-12 12:00:00', 1, 'Alex`s Art Adventure', 'Alex`s Art Adventure', 'https://localhost:44315/tinder/3');
 INSERT INTO party (location, date, owner, description, name_of_party, invite_link) VALUES ('Cleveland Museum of Natural History, 1 Wade Oval Dr, Cleveland, OH 44106', '2023-12-12 12:00:00', 1, 'Nick`s Natural History Trip', 'Nick`s Natural History Trip', 'https://localhost:44315/tinder/4');
 INSERT INTO party (location, date, owner, description, name_of_party, invite_link) VALUES ('Cleveland Metroparks Zoo, 3900 Wildlife Way, Cleveland, OH 44109', '2025-12-12 12:00:00', 1, 'Colin`s Zoo Bug out', 'Colin`s Zoo Bug out', 'https://localhost:44315/tinder/5');
-INSERT INTO party (location, date, owner, description, name_of_party, invite_link) VALUES ('Cleveland Botanical Garden, 11030 East Blvd, Cleveland, OH 44106', '2022-12-12 12:00:00', 1, 'Peri`s Botanical Garden date', 'Peri`s Botanical Garden date', 'https://localhost:44315/tinder/6');
-INSERT INTO party (location, date, owner, description, name_of_party, invite_link) VALUES ('Kalahari Resorts & Conventions, 7000 Kalahari Dr, Sandusky, OH 44870', '2023-13-01 12:00:00', 1, 'CodeMash 2023', 'Codemash 2023', 'https://localhost:44315/tinder/7');
-INSERT INTO party (location, date, owner, description, name_of_party, invite_link) VALUES ('Cleveland Browns Stadium, 100 Alfred Lerner Way, Cleveland, OH 44114', '2022-12-12 12:00:00', 1, 'Cleveland Browns Game', 'Cleveland Browns Game', 'https://localhost:44315/tinder/8');
+INSERT INTO party (location, date, owner, description, name_of_party, invite_link) VALUES ('Cleveland Botanical Garden, 11030 East Blvd, Cleveland, OH 44106', '2022-12-17 12:00:00', 1, 'Peri`s Botanical Garden date', 'Peri`s Botanical Garden date', 'https://localhost:44315/tinder/6');
+INSERT INTO party (location, date, owner, description, name_of_party, invite_link) VALUES ('Kalahari Resorts & Conventions, 7000 Kalahari Dr, Sandusky, OH 44870', '2023-01-13 12:00:00', 1, 'CodeMash 2023', 'Codemash 2023', 'https://localhost:44315/tinder/7');
+INSERT INTO party (location, date, owner, description, name_of_party, invite_link) VALUES ('Cleveland Browns Stadium, 100 Alfred Lerner Way, Cleveland, OH 44114', '2022-12-18 12:00:00', 1, 'Cleveland Browns Game', 'Cleveland Browns Game', 'https://localhost:44315/tinder/8');
 INSERT INTO party (location, date, owner, description, name_of_party, invite_link) VALUES ('Cleveland Indians Stadium, 2401 Ontario St, Cleveland, OH 44115', '2022-12-12 12:00:00', 1, 'Cleveland Indians Game', 'Cleveland Indians Game', 'https://localhost:44315/tinder/9');
 INSERT INTO party (location, date, owner, description, name_of_party, invite_link) VALUES ('Cleveland Cavaliers Stadium, 1 Center Ct, Cleveland, OH 44115', '2022-12-12 12:00:00', 1, 'Cleveland Cavaliers Game', 'Cleveland Cavaliers Game', 'https://localhost:44315/tinder/10');
 
