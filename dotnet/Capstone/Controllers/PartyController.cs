@@ -97,18 +97,18 @@ namespace Capstone.Controllers
             return newPartyId;
         }
 
-        // PUT /<PartyController>/5
+        // Updates Party based on party ID
         [HttpPut("{updatedPartyId}")]
-        public void Put(int updatedPartyId, [FromBody] Party updatedParty)
+        public void UpdateParty(int updatedPartyId, [FromBody] Party updatedParty)
         {
-            //TODO: Setup + Call "UpdateParty()" in partySqlDAO that takes in a updatedPartyId and updates the party where party_Id = updatedPartyId
+            PartyDao.UpdateParty(updatedPartyId, updatedParty);
         }
 
-        // DELETE /<PartyController>/5
+        // Deletes Party based on party Id
         [HttpDelete("{partyId}")]
         public void Delete(int partyId)
         {
-            //TODO: Setup + Call "DeleteParty()" in partySqlDAO that takes in a partyId and deletes the party where party_Id = partyId
+            PartyDao.DeleteParty(partyId);
         }
 
         /// POST /<PartyController>/location

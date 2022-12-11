@@ -7,5 +7,7 @@ namespace Capstone.DAO
     {
         Guest GetGuest(int partyId);
         IList<Guest> GetGuests(int partyID);
+
+        void DeleteGuest(int guestId);
     }
 }
