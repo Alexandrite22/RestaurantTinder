@@ -3,19 +3,25 @@ import axios from 'axios';
 export default {
 
   // create a new party using http://localhost:/party
-    create(party) {
-        console.log("createParty() in PartyService.js")
-        return axios.post('/Party', party)
+    async create(party) {
+        console.log("createParty() in PartyService.js with:")
+        console.log(party)
+        let response = axios.post('/Party', party)
+        console.log("create party response:" + await response);
+        return response;
     },
     getParties(userId) {
-        console.log("getParties() in PartyService.js")
-        userId; //just getting rid of the warning
-        return axios.get('/Party/')
+        console.log(`getParties(${{userId}}) in PartyService.js`)
+        let allParties = axios.get('/Party/');
+        console.log(allParties);
+        return allParties;
     },
     getParty(partyId) {
-        console.log("getParty() in PartyService.js")
-        partyId; //just getting rid of the warning
-        return axios.get(`/Party/${partyId}`)
+
+        console.log(`getParty(${partyId}) in PartyService.js`)
+        let party = axios.get(`/Party/${partyId}`);
+        console.log(party);
+        return party;
     }
 
 }

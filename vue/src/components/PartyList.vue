@@ -15,6 +15,8 @@
           <!--<th>RSVPs</th> should we have a count of guests as rsvp -->
         </tr>
         <tr v-for="party in parties" v-bind:key="party.Id">
+          <!-- {{console.log("This is the list of parties and all their properties")}}}
+          {{ console.log(party) }}} -->
           <td class="td">{{ party.Name }}</td>
           <td class="td-2">{{ party.Date }}</td>
           <td class="td">{{ party.Time }}</td>
@@ -60,6 +62,8 @@ export default {
         .catch((error) => {
           console.log(error);
         });
+        console.log("This is the list of parties and all their properties");
+        console.log(this.parties);
     },
   },
 };

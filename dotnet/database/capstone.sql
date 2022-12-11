@@ -23,7 +23,8 @@ CREATE TABLE users (
 CREATE TABLE party (
 	party_id int IDENTITY(1,1) NOT NULL,
 	location varchar(50) NOT NULL,
-	date timestamp NOT NULL,
+	--date timestamp NOT NULL,
+	date datetime,
 	owner int NOT NULL,
 	description varchar(50),
 	name_of_party varchar(50) NOT NULL,
@@ -76,5 +77,3 @@ INSERT INTO users (username, password_hash, salt, user_role) VALUES ('Nick','Jg4
 INSERT INTO users (username, password_hash, salt, user_role) VALUES ('Colin','Jg45HuwT7PZkfuKTz6IB90CtWY4=','LHxP4Xh7bN0=','user');
 
 --create 6 default parties for testing, invite link is https://localhost:44315/tin
-
-INSERT INTO party (name_of_party, owner, invite_link, description, date, location,   ) VALUES ('Peri''s Party', 1, 'https://localhost:44315/tinder/1', 'This is a party', '2020-12-12 12:00:00', '123 Main St');
