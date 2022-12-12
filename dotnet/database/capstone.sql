@@ -77,9 +77,6 @@ INSERT INTO users (username, password_hash, salt, user_role) VALUES ('Nick','Jg4
 INSERT INTO users (username, password_hash, salt, user_role) VALUES ('Colin','Jg45HuwT7PZkfuKTz6IB90CtWY4=','LHxP4Xh7bN0=','user');
 
 --Create 10 default parties for testing, invite link is https://localhost:44315/tinder/ + party_id and all parties are different dates, locations, and descriptions and names, but all have the owner 1.
-INSERT INTO party (location, date, owner, description, name_of_party, invite_link) VALUES ('Cleveland Cavaliers Stadium, 1 Center Ct, Cleveland, OH 44115', '2022-12-12 12:00:00', 1, 'Cleveland Cavaliers Game', 'Cleveland Cavaliers Game', '/tinder/1');
-INSERT INTO party (location, date, owner, description, name_of_party, invite_link) VALUES ('Cleveland Indians Stadium, 2401 Ontario St, Cleveland, OH 44115', '2022-12-12 12:00:00', 1, 'Cleveland Indians Game', 'Cleveland Indians Game', '/tinder/2');
-INSERT INTO party (location, date, owner, description, name_of_party, invite_link) VALUES ('Cleveland Browns Stadium, 100 Alfred Lerner Way, Cleveland, OH 44114', '2022-12-18 12:00:00', 1, 'Cleveland Browns Game', 'Cleveland Browns Game', '/tinder/3');
 INSERT INTO party (location, date, owner, description, name_of_party, invite_link) VALUES ('Kalahari Resorts & Conventions, 7000 Kalahari Dr, Sandusky, OH 44870', '2023-01-13 12:00:00', 1, 'CodeMash 2023', 'Codemash 2023', '/tinder/4');
 INSERT INTO party (location, date, owner, description, name_of_party, invite_link) VALUES ('Cleveland Botanical Garden, 11030 East Blvd, Cleveland, OH 44106', '2022-12-17 12:00:00', 1, 'Kevin`s Botanical Garden Bash', 'Kevin`s Botanical Garden date', '/tinder/5');
 INSERT INTO party (location, date, owner, description, name_of_party, invite_link) VALUES ('Cleveland Metroparks Zoo, 3900 Wildlife Way, Cleveland, OH 44109', '2025-12-12 12:00:00', 1, 'Colin`s Zoo Bug out', 'Colin`s Zoo Bug out', '/tinder/6');
