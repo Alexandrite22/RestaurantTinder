@@ -2,8 +2,8 @@
   <span id="app">
     <b-row id="nav-bar">
       <span id = "header">
-        <router-link class="solid-text" v-bind:to="'/'">Home</router-link>&nbsp;|&nbsp;
-        <router-link class="solid-text" v-bind:to="{ name: 'logout' }" v-if="$store.state.token != ''">Logout</router-link>
+        <router-link class="btn btn-primary solid-text" v-bind:to="'/'" style="margin-right: .7em;">Home</router-link>
+        <router-link class="btn btn-primary solid-text" v-bind:to="{ name: 'logout' }" v-if="$store.state.token != ''">Logout</router-link>
       </span>
     </b-row>    
     <div id = "main-container">

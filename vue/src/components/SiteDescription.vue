@@ -11,12 +11,12 @@
             </span>
         </b-row>
         <b-row>
-            <v-button>
+            <v-btn>
                 LOGIN
-            </v-button>
-            <v-button>
+            </v-btn>
+            <v-btn>
                 SIGN-UP
-            </v-button>
+            </v-btn>
         </b-row>
     </div>
 </template>

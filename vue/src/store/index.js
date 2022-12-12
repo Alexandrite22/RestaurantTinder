@@ -21,6 +21,7 @@ export default new Vuex.Store({
     token: currentToken || '',
     user: currentUser || {},
     currentUserId: {},
+    currentParties: [],
   },
   mutations: {
     SET_AUTH_TOKEN(state, token) {
@@ -39,6 +40,9 @@ export default new Vuex.Store({
       state.user = {};
       axios.defaults.headers.common = {};
     },
+    SET_CURRENT_PARTIES(state, parties) {
+      state.currentParties = parties;
+    }
     
   }
 })

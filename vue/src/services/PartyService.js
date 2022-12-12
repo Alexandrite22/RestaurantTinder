@@ -47,7 +47,15 @@ export default {
         console.log(restaurants);
         return restaurants;
     },
-    
+
+    //get all restaurants for a party
+    getRestaurant(restaurantId) {
+        console.log(`getRestaurant(${restaurantId}) in PartyService.js`)
+        let restaurants = axios.get(`/${restaurantId}/`);
+        console.log(restaurants);
+        return restaurants;
+    },
+
 
 
 }

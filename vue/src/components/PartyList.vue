@@ -74,6 +74,9 @@ export default {
         });
         console.log("This is the list of parties and all their properties");
         console.log(this.parties);
+        this.$store.commit("SET_CURRENT_PARTIES", this.parties);
+        console.log("This is the list of parties in the store");
+        console.log(this.$store.state.currentParties);
     },
   },
 };
