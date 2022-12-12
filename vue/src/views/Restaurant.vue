@@ -1,7 +1,7 @@
 <template>
   <div>
     <div class="border">
-      <h6>this will be the restaurant viewing component</h6>
+      <h6>this will be the restaurant viewing component FOR THE PARTY PLANNER</h6>
       <current-restaurant />
     </div>
     <div class="border">

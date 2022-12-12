@@ -61,11 +61,12 @@ export default {
     },
     methods: {
         addNewParty() {
-            console.log("Calling partyservice create method");
+            console.log("Calling partyservice create method on this object");
             console.log(this.party);
             this.party.owner = this.$store.state.user.id;
             NewPartyService.create(this.party)
                 .then(response => {
+                    console.log("Party created, response below");
                     console.log(response);
                     this.$emit('party-created', response.data);
                 })

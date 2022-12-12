@@ -44,6 +44,8 @@ namespace Capstone.Controllers
                 PartyViewModel partyGuestsAndRestaurants = new PartyViewModel(party, new List<Guest>(), new List<Restaurant>());
                 partyViewModels.Add(partyGuestsAndRestaurants);
             }
+            // Reverse partyViewModels so that the most recent party is at the top of the list
+            partyViewModels = partyViewModels.Reverse().ToList();
             return partyViewModels;
         }
 
@@ -72,30 +74,36 @@ namespace Capstone.Controllers
         [HttpGet("{partyId}/restaurants")]
         public List<RestaurantViewModel> GetRestaurants(int partyId)
         {
-            //TODO CALL THIS FROM PARTSERVICE IN VUE
+            //TODO CALL THIS FROM PARTYSERVICE IN VUE
             YelpApiService yelpService = new YelpApiService();
             return yelpService.CreatePracticeRestaurants();
         }
 
         /// POST /<PartyController>
-        /// 
+        //create a jason object for a Party class
+        // {
+
         [HttpPost]
         public int Post([FromBody] Party updatedParty)
         {
             //Use partyDao.CreateParty(newParty) to create a new party, and return the ID of the party
             
             // newPartyId is the Id of the newly created part
-            Party newParty = new Party();
-            newParty.Name = updatedParty.Name;
-            newParty.Date = updatedParty.Date;
-            newParty.Owner = updatedParty.Owner;
-            newParty.Location = updatedParty.Location;
-            newParty.Description = updatedParty.Description;
-            newParty.InviteLink = "https://localhost:44315/tinder/{partyId}";
+            Party newParty = new Party(){
+                PartyId = 0,
+                Name = updatedParty.Name,
+                Date = updatedParty.Date,
+                // Owner = updatedParty.Owner,
+                Owner = "1",
+                Location = updatedParty.Location,
+                Description = updatedParty.Description,
+                InviteLink = "https://localhost:44315/tinder/{partyId}"
+            };
 
             int newPartyId = PartyDao.CreateParty(newParty).PartyId;
             return newPartyId;
         }
+
 
         // Updates Party based on party ID
         [HttpPut("{updatedPartyId}")]

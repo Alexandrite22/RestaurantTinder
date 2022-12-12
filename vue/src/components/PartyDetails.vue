@@ -38,17 +38,27 @@
 </template>
 
 <script>
+import partyService from '../services/PartyService.js';
+
+
 export default {
-    name: 'party-detail',    
+    name: 'party-details',
     data() {
         return {
-            props: {
-                party: {}
-            }
-
+            party: {}
         };
     },
-    
+    created() {
+        this.getParty();
+    },
+    methods: {
+        getParty() {
+            partyService.getParty(this.$route.params.id)
+                .then(party => {
+                    this.party = party;
+                });
+        }
+    }
 }
 </script>
 

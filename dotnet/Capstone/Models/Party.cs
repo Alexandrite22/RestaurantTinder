@@ -9,7 +9,7 @@ namespace Capstone.Models
     {
         public int PartyId { get; set; }
         public string Location { get; set; }
-        public string Date { get; set; }
+        public DateTime? Date { get; set; }
         public string Owner { get; set; }
         public string Description { get; set; }
         public string Name { get; set; }
@@ -21,7 +21,7 @@ namespace Capstone.Models
     {
         public int PartyId { get; set; }
         public string Location { get; set; }
-        public string Date { get; set; }
+        public DateTime? Date { get; set; } // Updated to DateTime type
         public string Owner { get; set; }
         public string Description { get; set; }
         public string Name { get; set; }
@@ -41,7 +41,7 @@ namespace Capstone.Models
         {
             PartyId = party.PartyId;
             Location = party.Location;
-            Date = party.Date;
+            Date = DateTime.Now;
             Owner = party.Owner;
             Description = party.Description;
             Name = party.Name;

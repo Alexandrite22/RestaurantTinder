@@ -76,7 +76,7 @@ const router = new Router({
       }
     },
     {
-      path: '/party/:id',
+      path: '/party/details/:partyId',
       name: 'party',
       component: () => import('../views/Party.vue'),
       meta: {
@@ -84,21 +84,21 @@ const router = new Router({
       }
     },
     {
-      path: '/tinder/:id',
-      name: 'tinder',
-      component: () => import('../views/Tinder.vue'),
+      path: '/tinder/:partyId',
+      name: 'tinderMain',
+      component: () => import('../views/TinderMain.vue'),
       meta: {
         requiresAuth: false
       }
     },
-    // {  TODO: Add these routes back in when they are ready
-    //   path: '/tinder/:id/restaurant/:id',
-    //   name: 'restaurant',
-    //   component: () => import('../views/Restaurant.vue'),
-    //   meta: {
-    //     requiresAuth: false
-    //   }
-    // },
+    {  //TODO: Add these routes back in when they are ready
+      path: '/tinder/:partyId/restaurant/:restaurantId',
+      name: 'tinderRestaurant',
+      component: () => import('../views/TinderRestaurant.vue'),
+      meta: {
+        requiresAuth: false
+      }
+    },
     // {
     //   path: '/tinder/:id/standings',
     //   name: 'restaurant',

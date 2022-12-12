@@ -11,17 +11,23 @@
           <th class="th-lg" style="width: 15%">Date</th>
           <th class="th-lg" style="width: 10%">Time</th>
           <th class="th-lg" style="width: 15%">Location</th>
-          <th class="th-lg" style="width: 30%">Link</th>
+          <th class="th-lg" style="width: 30%">Invite Link</th>
+          <th class="th-lg" style="width: 10%">Details</th>
           <!--<th>RSVPs</th> should we have a count of guests as rsvp -->
         </tr>
         <tr v-for="party in parties" v-bind:key="party.Id">
           <td class="td">{{ party.Name }}</td>
           <td class="td-2">{{ party.Date }}</td>
-          <td class="td">{{ party.Time }}</td>
+          <td class="td">{{ party.Date }}</td>
           <td class="td-2">{{ party.Location }}</td>
-          <td class="td">{{ party.InviteLink }}</td>
-
-          <!--<td>{{party.partyRsvp}}</td> should we have a count of guests as rsvp -->
+          <td class="td">
+            <router-link class="btn btn-success" :to="party.InviteLink">
+              Invite Link
+            </router-link>
+            </td>
+          <!-- TODO: FIX THE LINK ON THIS BUTTON TO GO TO THE PARTY DETAILS PAGE FOR THAT PARTY-->
+          <td class="td-2"><router-link class="btn btn-success" :party="party" to="#"  ><strike>Details</strike></router-link></td>
+          <!--<td>{{party.partyRsvp}}</td> should we have a count of guests as rsvp? -->
         </tr>
       </table>
     </div>
@@ -50,16 +56,24 @@ export default {
               Id: thing.partyId,
               Name: thing.name,
               Date: thing.date,
-              Time: thing.Date,
+              Time: thing.date,
+              Description: thing.description,
+              InviteLink: thing.inviteLink,
               Location: thing.location,
+              PartyRsvp: thing.guestList,
+              Restaurants: thing.restaurantList,
             };
             this.parties.push(temp);
-            console.log(temp);
+          
+            // console.log("This is the list of properties for a party");
+            // console.log(temp);
           });
         })
         .catch((error) => {
           console.log(error);
         });
+        console.log("This is the list of parties and all their properties");
+        console.log(this.parties);
     },
   },
 };
