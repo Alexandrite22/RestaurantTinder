@@ -38,7 +38,9 @@ namespace Capstone.DAO
                 cmd.Parameters.AddWithValue("@description", party.Description);
                 cmd.Parameters.AddWithValue("@invite_link", link);
                 // add date param of one week in the future
-                cmd.Parameters.AddWithValue("@date", DateTime.Now.AddDays(7));
+                // cmd.Parameters.AddWithValue("@date", DateTime.Now.AddDays(7));
+                cmd.Parameters.AddWithValue("@date", party.Date);
+
 
                 //, ((SELECT MAX(party_id) FROM party) +1)
 

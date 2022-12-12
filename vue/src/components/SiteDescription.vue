@@ -1,10 +1,10 @@
 <template>
   <div>
-    <div>
-      <b-col class="col-12"> ME-n-U </b-col>
-    </div>
+    <!-- <div>
+      <b-col class="col-12" id="main-title"> ME-n-U </b-col>
+    </div> -->
     <div class="col-12">
-      <span>
+      <span id="about-us">
         Here at Me-n-U we aim to revolutionize how groups select restaurants for
         anything from dates to large parties to corporate events! Use our
         service to let everyone decide which restaurant will let your event be a
@@ -24,4 +24,12 @@ export default {};
 </script>
 
 <style>
+#main-title {
+  font-size: 42px;
+  font-weight: bolder;
+}
+
+#about-us {
+  font-size: 25px;
+}
 </style>
