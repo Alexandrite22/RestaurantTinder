@@ -41,7 +41,7 @@ namespace Capstone.Models
         {
             PartyId = party.PartyId;
             Location = party.Location;
-            Date = DateTime.Now;
+            Date = party.Date;
             Owner = party.Owner;
             Description = party.Description;
             Name = party.Name;

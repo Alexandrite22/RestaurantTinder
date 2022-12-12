@@ -1,10 +1,11 @@
 <template>
   <div class="home">
-    <h1>Home</h1>
-    <p>
-      Welcome to the home page. This is where you can create a new party, view your current parties, and view your party details.
-    </p>
+    <h1><center>Home</center></h1>
     <description />
+    <p>
+      Create a new party, view your current parties, and view your party details
+      in the left menu.
+    </p>
   </div>
 </template>
 
@@ -13,8 +14,8 @@ import Description from "../components/SiteDescription.vue";
 export default {
   name: "home",
   components: {
-    Description
-    }
+    Description,
+  },
 };
 </script>
 <style >
