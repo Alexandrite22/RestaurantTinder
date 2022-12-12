@@ -1,23 +1,24 @@
 <template>
     <div>
-        <b-row>
+        <div>
             <b-col class="col-12">
                 ME-n-U
             </b-col>
-        </b-row>
-        <b-row class="col-12">
+        </div>
+        <div class="col-12">
             <span>
                 Here at Me-n-U we aim to revolutionize how groups select restaurants for anything for dates, to large parties, to corporate events! Use our service to let everyone decide which restaurant will let your event be a smash hit!
             </span>
-        </b-row>
-        <b-row>
-            <v-btn>
+        </div>
+        <div class="row">
+            <v-btn class="btn btn-primary col-3" >
                 LOGIN
             </v-btn>
-            <v-btn>
+            <div class=" col-2"></div>
+            <v-btn class="btn btn-secondary col-3" >
                 SIGN-UP
             </v-btn>
-        </b-row>
+        </div>
     </div>
 </template>
 

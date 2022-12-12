@@ -12,10 +12,10 @@
                 <input id="description" type="text" v-model="party.description" placeholder="Party Description" />
             </div>
 
-            <div class="form-element">
-                 <label for="date">Date:</label> <!--// TODO Make this a date picker -->
-                <input id="date" type="text" v-model="party.date" placeholder="Party Date" />
-            </div>
+           <!-- <div class="form-element">
+                 <label for="">Date:</label> --><!--// TODO Make this a date picker and bind for="date" again-->
+               <!--  <input id="date" type="text" v-model="party.date" placeholder="Party Date" />
+            </div>-->
 
             <div class="form-element">
                 <label for="time">Party Time:</label>
