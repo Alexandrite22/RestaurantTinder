@@ -100,6 +100,8 @@ namespace Capstone.Controllers
                 InviteLink = "https://localhost:44315/tinder/{partyId}"
             };
 
+            //Make new restaurants
+
             int newPartyId = PartyDao.CreateParty(newParty).PartyId;
             return newPartyId;
         }

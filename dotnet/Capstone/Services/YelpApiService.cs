@@ -62,5 +62,10 @@ namespace Capstone.Services
               "https://www.yelp.com/biz/marmar-s-pizza-cleveland-heights?adjust_creative=lRzblQl-ehLXFsgKraH69g&utm_campaign=yelp_api_v3&utm_medium=api_v3_business_search&utm_source=lRzblQl-ehLXFsgKraH69g",
               "https://i.pinimg.com/474x/a6/22/ba/a622ba97812a85d42d7a37000dc89062--funny-things-funny-stuff.jpg");
         }
+
+        public RestaurantViewModel GetThisRestaurantFromYelp()
+        {
+            throw new NotImplementedException();
+        }
     }
 }
