@@ -68,12 +68,15 @@ body {
   align-content: center;
   background: rgba(255,255,255,0.5); 
   margin: 1vw;
-  width: 100vw;
+  width: 91vw;
   margin-bottom: 0vw;
-  border:solid;
-  border-color: black;
-  border-radius: 15px;
-  border-width: 3px;
+  box-shadow: 5px 5px 5px rgba(0,0,0,0.25);
+}
+.btn-primary
+{
+  border:hidden;
+  box-shadow: 5px 5px 5px rgba(0,0,0,0.75);
+  margin: 5px;
 }
 #app
 {
