@@ -26,8 +26,23 @@
 </template>
 
 <script>
-export default {
+import partyService from '../services/PartyService.js';
 
+export default {
+  name: 'current-restaurant',
+  data() {
+    return {
+      restaurant: {}
+    };
+  },
+  created() {
+    this.getParty();
+  },
+  methods: {
+    getRestarant() {
+      partyService.getRestaurant
+  }
+  }
 }
 </script>
 
