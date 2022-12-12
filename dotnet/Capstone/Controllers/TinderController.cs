@@ -41,14 +41,23 @@ namespace Capstone.Controllers
             YelpApiService yelpService = new YelpApiService();
             return yelpService.CreatePracticeRestaurants();
 
-           
+
+        }
+        // GET: api/<TinderController>
+        [HttpGet("restaurants/{restaurantApiAddress}")]
+        public RestaurantViewModel GetYelpApiResults(string restaurantApiAddress)
+        {
+            YelpApiService yelpService = new YelpApiService();
+            //yelpService.GetRestaurant(restaurantApiAddress); //SETup this method 
+            yelpService.GetThisRestaurantFromYelp();
+            throw new NotImplementedException();
         }
 
 
 
         // POST /<TinderController>/like
         [HttpPost]
-        public void Post([FromBody] LikeDislike LikeDislike)
+        public void PostLikeDislike([FromBody] List<LikeDislike> LikeDislike)
         {
             throw new NotImplementedException();
         }
