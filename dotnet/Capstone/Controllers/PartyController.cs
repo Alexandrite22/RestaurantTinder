@@ -74,7 +74,7 @@ namespace Capstone.Controllers
         [HttpGet("{partyId}/restaurants")]
         public List<RestaurantViewModel> GetRestaurants(int partyId)
         {
-            //TODO CALL THIS FROM PARTSERVICE IN VUE
+            //TODO CALL THIS FROM PARTYSERVICE IN VUE
             YelpApiService yelpService = new YelpApiService();
             return yelpService.CreatePracticeRestaurants();
         }

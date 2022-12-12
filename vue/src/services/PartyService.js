@@ -22,6 +22,32 @@ export default {
         let party = axios.get(`/Party/${partyId}`);
         console.log(party);
         return party;
-    }
+    },
+    //update a party
+    updateParty(party) {
+        console.log(`updateParty(${party}) in PartyService.js`)
+        let updatedParty = axios.put(`/Party/${party.id}`, party);
+        console.log(updatedParty);
+        return updatedParty;
+    },
+    //delete a party
+    deleteParty(partyId) {
+        console.log(`deleteParty(${partyId}) in PartyService.js`)
+        let deletedParty = axios.delete(`/Party/${partyId}`);
+        console.log(deletedParty);
+        return deletedParty;
+    },
+
+
+
+    //get all restaurants for a party
+    getRestaurants(partyId) {
+        console.log(`getRestaurants(${partyId}) in PartyService.js`)
+        let restaurants = axios.get(`/Party/${partyId}/Restaurant`);
+        console.log(restaurants);
+        return restaurants;
+    },
+    
+
 
 }

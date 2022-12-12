@@ -76,7 +76,7 @@ const router = new Router({
       }
     },
     {
-      path: '/party/:id',
+      path: '/party/details/:partyId',
       name: 'party',
       component: () => import('../views/Party.vue'),
       meta: {
