@@ -39,6 +39,7 @@ CREATE TABLE restaurant (
 	Api_address varchar(200) NOT NULL,
 	PRIMARY KEY (restaurant_id),
 	FOREIGN KEY (party_id) REFERENCES party (party_id)
+	
 )
 CREATE TABLE guest (
 	guest_id int IDENTITY (1,1) NOT NULL,

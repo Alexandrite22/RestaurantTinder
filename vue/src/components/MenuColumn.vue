@@ -9,9 +9,10 @@
     <br />
     <h6><a href="http://localhost:8080/dashboard">My current plans</a></h6>
 
-    <div v-if="this.$store.parties">
+    <div>
       <ul>
-        <li v-for="party in this.$store.parties" v-bind:key="party.Id">
+        <li v-for="party in this.$store.state.parties" v-bind:key="party.Id">
+          test
           <router-link :to="party.InviteLink">{{ party.Name }}</router-link>
         </li>
       </ul>
