@@ -71,6 +71,7 @@ namespace Capstone.DAO
                 //Execute SQL command, store results in reader
                 SqlDataReader reader = cmd.ExecuteReader();
 
+
                 while (reader.Read()) // While there are more results
                 {
                     // Create a new guest object from the reader
@@ -107,7 +108,7 @@ namespace Capstone.DAO
         {
             Guest guest = new Guest();
             guest.GuestId = Convert.ToInt32(reader["guest_id"]);
-            guest.Name = Convert.ToInt32(reader["name"]);
+            guest.Name = Convert.ToString(reader["name"]);
             guest.PartyId = Convert.ToInt32(reader["party_id"]);
             return guest;
         }

@@ -9,7 +9,7 @@ namespace Capstone.Models
     {
         public int GuestId { get; set; }
         public int PartyId { get; set; }
-        public int Name { get; set; }
+        public string Name { get; set; }
 
     }
 }

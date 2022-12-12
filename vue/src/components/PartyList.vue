@@ -21,12 +21,12 @@
           <td class="td">{{ party.Date }}</td>
           <td class="td-2">{{ party.Location }}</td>
           <td class="td">
-            <router-link class="btn btn-success" :party="party" :to="party.InviteLink">
+            <router-link class="btn btn-success" :to="party.InviteLink">
               Invite Link
             </router-link>
             </td>
           <!-- TODO: FIX THE LINK ON THIS BUTTON TO GO TO THE PARTY DETAILS PAGE FOR THAT PARTY-->
-          <td class="td-2"><router-link class="btn btn-success" :party="party"  :to="{ name: 'party', params: {partyId:  party.Id}}">Details</router-link></td>
+          <td class="td-2"><router-link class="btn btn-success" :party="party" to="#"  ><strike>Details</strike></router-link></td>
           <!--<td>{{party.partyRsvp}}</td> should we have a count of guests as rsvp? -->
         </tr>
       </table>
@@ -65,8 +65,8 @@ export default {
             };
             this.parties.push(temp);
           
-            console.log("This is the list of properties for a party");
-            console.log(temp);
+            // console.log("This is the list of properties for a party");
+            // console.log(temp);
           });
         })
         .catch((error) => {
