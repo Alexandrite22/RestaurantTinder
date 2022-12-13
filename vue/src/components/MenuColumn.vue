@@ -42,6 +42,16 @@
       </b-col>
     </b-row>
 
+
+  
+    <b-row class="text-center" align-v="center">
+      <b-col>
+        <b-button variant="outline-primary" href="http://localhost:8080/dashboard">
+          <h6>My current plans</h6>
+        </b-button>
+      </b-col>
+    </b-row>
+
     <div>
       <ul>
         <li v-for="party in this.$store.state.parties" v-bind:key="party.Id">
