@@ -1,5 +1,8 @@
 <template>
   <span id="app">
+    <div id="logo">
+      <img src="./imgs/Me_n_U_final.png" />
+    </div>
     <b-row id="nav-bar">
       <span id="header" v-if="$store.state.token != ''">
         <router-link
@@ -91,12 +94,11 @@ body {
   margin: 1vw;
   width: 92vw;
   margin-bottom: 0vw;
-  box-shadow: 5px 5px 5px rgba(0,0,0,0.5);
-
+  box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.5);
 }
 .btn {
-    box-shadow: 5px 5px 5px rgba(0,0,0,0.5);
-    margin: 0.3rem;
+  box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.5);
+  margin: 0.3rem;
 }
 #app {
   height: 100%;
@@ -104,6 +106,11 @@ body {
 }
 .panel {
   height: 80vh;
+}
+
+#logo {
+  text-align: center;
+  height: 320px;
 }
 
 .content {
