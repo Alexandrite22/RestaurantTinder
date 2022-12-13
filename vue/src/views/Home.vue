@@ -6,6 +6,8 @@
       Create a new party, view your current parties, and view your party details
       in the left menu.
     </p>
+    <b-icon-arrow-up></b-icon-arrow-up>
+    <b-icon-exclamation-triangle-fill />
   </div>
 </template>
 

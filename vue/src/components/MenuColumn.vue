@@ -42,9 +42,20 @@
       </b-col>
     </b-row>
 
-    <div v-if="this.$store.parties">
+
+  
+    <b-row class="text-center" align-v="center">
+      <b-col>
+        <b-button variant="outline-primary" href="http://localhost:8080/dashboard">
+          <h6>My current plans</h6>
+        </b-button>
+      </b-col>
+    </b-row>
+
+    <div>
       <ul>
-        <li v-for="party in this.$store.parties" v-bind:key="party.Id">
+        <li v-for="party in this.$store.state.parties" v-bind:key="party.Id">
+          test
           <router-link :to="party.InviteLink">{{ party.Name }}</router-link>
         </li>
       </ul>
