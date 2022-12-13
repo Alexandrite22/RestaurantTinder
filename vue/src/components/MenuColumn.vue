@@ -1,5 +1,5 @@
 <template>
-  <div class="border">
+  <div>
     <h1>Menu</h1>
     <h6><router-link to="/">Home</router-link></h6>
     <h6><a href="http://localhost:8080/newParty">Create party</a></h6>
@@ -50,7 +50,7 @@ export default {
 
 <style>
 .border {
-  color: black;
-  opacity: 100%;
+  box-shadow: 5px 5px 5px rgba(0,0,0,0.25);
+  border-style: hidden !important;
 }
 </style>
