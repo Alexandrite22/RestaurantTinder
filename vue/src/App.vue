@@ -24,10 +24,7 @@
               class="content"
               id="menu"
               style="
-                border: solid !important;
-                border-color: black !important;
-                border-radius: 15px !important;
-                border-width: 3px !important;
+                box-shadow: 5px 5px 5px rgba(0,0,0,0.25);
                 background: rgba(255, 255, 255, 0.5);
                 height: 80vh;
               "
@@ -45,10 +42,7 @@
               class="content"
               id="details"
               style="
-                border: solid !important;
-                border-color: black !important;
-                border-radius: 15px !important;
-                border-width: 3px !important;
+                box-shadow: 5px 5px 5px rgba(0,0,0,0.25);
                 background: rgba(255, 255, 255, 0.5);
                 height: 80vh;
               "
@@ -76,6 +70,7 @@ body {
 	background-size: 400% 400%;
 	animation: gradient 15s ease infinite;
 	height: 100vh; */
+  font-family: "Poppins", Helvetica, sans-serif;
   background-image: url("./imgs/MainBack.jpg");
   background-repeat: no-repeat;
   background-size: 100vw;
@@ -107,10 +102,7 @@ body {
 }
 
 .content {
-  border: solid !important;
-  border-color: black !important;
-  border-radius: 15px !important;
-  border-width: 3px !important;
+  box-shadow: 5px 5px 5px rgba(0,0,0,0.25);
   background: rgba(255, 255, 255, 0.5);
   min-height: 70vh;
   height: 80vh;
@@ -155,21 +147,23 @@ body {
 }
 ::-webkit-scrollbar-track {
   background: rgb(179, 177, 177);
-  border-radius: 10px;
+  box-shadow: 5px 5px 5px rgba(0,0,0,0.25);
 }
 
 ::-webkit-scrollbar-thumb {
   background: rgb(136, 136, 136);
-  border-radius: 10px;
+  box-shadow: 5px 5px 5px rgba(0,0,0,0.25);
+  
 }
 
 ::-webkit-scrollbar-thumb:hover {
   background: rgb(100, 100, 100);
-  border-radius: 10px;
+  box-shadow: 5px 5px 5px rgba(0,0,0,0.25);
 }
 
 ::-webkit-scrollbar-thumb:active {
   background: rgb(68, 68, 68);
-  border-radius: 10px;
+  box-shadow: 5px 5px 5px rgba(0,0,0,0.25);
+  
 }
 </style>

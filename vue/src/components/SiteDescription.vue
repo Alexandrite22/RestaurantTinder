@@ -4,12 +4,14 @@
       <b-col class="col-12" id="main-title"> ME-n-U </b-col>
     </div> -->
     <div class="col-12">
-      <span id="about-us">
+      <div id="box">
+        <span id="about-us">
         Here at Me-n-U we aim to revolutionize how groups select restaurants for
         anything from dates to large parties to corporate events! Use our
         service to let everyone decide which restaurant will let your event be a
         smash hit!
-      </span>
+        </span>
+      </div>
     </div>
     <!-- <div class="row">
       <v-btn class="btn btn-primary col-3"> LOGIN </v-btn>
@@ -29,7 +31,12 @@ export default {};
   font-weight: bolder;
 }
 
-#about-us {
+#box {
   font-size: 25px;
+  width: 98%;
+  margin: 1%;
+  padding: 1%;
+  background: rgba(0,0,0,0.25);
+  box-shadow: 5px 5px 5px rgba(0,0,0,0.5);;
 }
 </style>
