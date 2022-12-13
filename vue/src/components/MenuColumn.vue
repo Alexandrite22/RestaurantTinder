@@ -1,13 +1,46 @@
 <template>
-  <div class="border">
-    <h1>Menu</h1>
-    <h6><router-link to="/">Home</router-link></h6>
-    <h6><a href="http://localhost:8080/newParty">Create party</a></h6>
+  <b-container class="border">
+      <b-row>
+        <h1>Menu</h1>
+      </b-row>
+        <b-row class="text-center" align-v="center">
+          <b-col>
+            <router-link to="/">
+            <b-button variant="outline-primary">
+              <h6><b-icon-house-door-fill variant="light"/> &nbsp; Home</h6>
+            </b-button>
+            </router-link>
+          </b-col>
+        </b-row>
+    
+      <b-row class="text-center" align-v="center">
+        <b-col>
+          <b-button variant="outline-primary" href="http://localhost:8080/newParty" >
+            <h6>Create party</h6>
+          </b-button>
+        </b-col>
+      </b-row>
+    
 
-    <h6><router-link to="/dashboard">View parties</router-link></h6>
-    <br />
-    <br />
-    <h6><a href="http://localhost:8080/dashboard">My current plans</a></h6>
+    <b-row class="text-center" align-v="center">
+      <b-col>
+        <router-link to="/dashboard">
+        <b-button variant="outline-primary">
+          <h6>View parties</h6>
+        </b-button>
+        </router-link>
+      </b-col>
+    </b-row>
+
+
+  
+    <b-row class="text-center" align-v="center">
+      <b-col>
+        <b-button variant="outline-primary" href="http://localhost:8080/dashboard">
+          <h6>My current plans</h6>
+        </b-button>
+      </b-col>
+    </b-row>
 
     <div>
       <ul>
@@ -34,7 +67,7 @@
             
             </li>
         </ul>     -->
-  </div>
+  </b-container>
 </template>
 
 <script>

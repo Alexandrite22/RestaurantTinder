@@ -1,12 +1,13 @@
 <template>
   <div class="home">
-    <h1>Home</h1>
+    <h1><center>Home</center></h1>
+    <description />
     <p>
-      Welcome to the home page. This is where you can create a new party, view your current parties, and view your party details.
+      Create a new party, view your current parties, and view your party details
+      in the left menu.
     </p>
     <b-icon-arrow-up></b-icon-arrow-up>
     <b-icon-exclamation-triangle-fill />
-    <description />
   </div>
 </template>
 
