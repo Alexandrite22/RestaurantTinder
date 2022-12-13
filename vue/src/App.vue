@@ -1,7 +1,7 @@
 <template>
   <span id="app">
     <b-row id="nav-bar">
-      <span id="header">
+      <span id="header" v-if="$store.state.token != ''">
         <router-link
           class="btn btn-primary solid-text"
           v-bind:to="'/'"
@@ -83,15 +83,15 @@ body {
   justify-content: center;
   align-content: center;
   background: rgba(255, 255, 255, 0.5);
-  margin-left: 1vw;
-  margin-right:1vw;
+  margin: 1vw;
+  width: 92vw;
   margin-bottom: 0vw;
-  box-shadow: 5px 5px 5px rgba(0,0,0,0.25);
+  box-shadow: 5px 5px 5px rgba(0,0,0,0.5);
+
 }
-.btn-primary
-{
-  box-shadow: 5px 5px 5px rgba(0,0,0,0.75);
-  margin: 5px;
+.btn {
+    box-shadow: 5px 5px 5px rgba(0,0,0,0.5);
+    margin: 0.3rem;
 }
 #app {
   height: 100%;

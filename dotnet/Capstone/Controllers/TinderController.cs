@@ -21,38 +21,49 @@ namespace Capstone.Controllers
         private IGuestDao GuestsDao = new GuestSqlDao("Server=.\\SQLEXPRESS;Database=final_capstone;Trusted_Connection=True;");
         private IRestaurantDao RestaurantsDao = new RestaurantSqlDao("Server=.\\SQLEXPRESS;Database=final_capstone;Trusted_Connection=True;");
         private List<Restaurant> tempList = new List<Restaurant>();
+        private YelpApiService yelpService = new YelpApiService();
 
 
+        //// GET: api/<TinderController>
+        //[HttpGet]
+        //public List<RestaurantViewModel> Get()
+        //{
+        //    YelpApiService yelpService = new YelpApiService();
+        //    return yelpService.CreatePracticeRestaurants();
+        //}
 
+        //// GET /<TinderController>/5
+        ///// Get the restaurants for a particular party
+        ///// takes in partyId as an int in endpoint path
+        //[HttpGet("{partyId}")]
+        //public List<RestaurantViewModel> GetRestaurants(int partyId)
+        //{
+        //    YelpApiService yelpService = new YelpApiService();
+        //    return yelpService.CreatePracticeRestaurants();
+
+
+        //}
         // GET: api/<TinderController>
-        [HttpGet]
-        public List<RestaurantViewModel> Get()
+        [HttpGet("restaurant/{id}")]
+        public async Task<RestaurantViewModel> GetYelpApiResults(string id)
         {
-            YelpApiService yelpService = new YelpApiService();
-            return yelpService.CreatePracticeRestaurants();
+            // takes in a restaurant api address as a string, for example
+            // "https://www.yelp.com/biz/marmar-s-pizza-cleveland-heights
+            // ?adjust_creative=lRzblQl-ehLXFsgKraH69g&utm_campaign=yelp_api_v3&utm_medium=api_v3_business_search&utm_source=lRzblQl-ehLXFsgKraH69g"
+
+
+            //curl --request GET \
+            //--url 'https://api.yelp.com/v3/businesses/search?sort_by=best_match&limit=20' \
+            //--header 'Authorization: lRzblQl-ehLXFsgKraH69g' \
+            //--header 'accept: application/json'
+
+            RestaurantYelpModel YelpRestaurantData = await yelpService.GetThisRestaurantFromYelp(id);
+
+
+            throw new Exception();
+
+
         }
-
-        // GET /<TinderController>/5
-        /// Get the restaurants for a particular party
-        /// takes in partyId as an int in endpoint path
-        [HttpGet("{partyId}")]
-        public List<RestaurantViewModel> GetRestaurants(int partyId)
-        {
-            YelpApiService yelpService = new YelpApiService();
-            return yelpService.CreatePracticeRestaurants();
-
-
-        }
-        // GET: api/<TinderController>
-        [HttpGet("restaurants/{restaurantApiAddress}")]
-        public RestaurantViewModel GetYelpApiResults(string restaurantApiAddress)
-        {
-            YelpApiService yelpService = new YelpApiService();
-            //yelpService.GetRestaurant(restaurantApiAddress); //SETup this method 
-            yelpService.GetThisRestaurantFromYelp();
-            throw new NotImplementedException();
-        }
-
 
 
         // POST /<TinderController>/like

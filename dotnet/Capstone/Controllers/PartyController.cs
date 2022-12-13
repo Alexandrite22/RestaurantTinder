@@ -71,13 +71,13 @@ namespace Capstone.Controllers
 
 
 
-        [HttpGet("{partyId}/restaurants")]
-        public List<RestaurantViewModel> GetRestaurants(int partyId)
-        {
-            //TODO CALL THIS FROM PARTYSERVICE IN VUE
-            YelpApiService yelpService = new YelpApiService();
-            return yelpService.CreatePracticeRestaurants();
-        }
+        //[HttpGet("{partyId}/restaurants")]
+        //public List<RestaurantViewModel> GetRestaurants(int partyId)
+        //{
+        //    //TODO CALL THIS FROM PARTYSERVICE IN VUE
+        //    YelpApiService yelpService = new YelpApiService();
+        //    return yelpService.CreatePracticeRestaurants();
+        //}
 
         /// POST /<PartyController>
         //create a jason object for a Party class

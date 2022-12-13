@@ -19,7 +19,7 @@
             </b-col>
             <b-col class = "col-6">
                 <b-row>
-
+                    
                 </b-row>
             </b-col>
         </b-row>
