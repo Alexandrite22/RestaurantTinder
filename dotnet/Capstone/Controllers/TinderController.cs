@@ -44,19 +44,26 @@ namespace Capstone.Controllers
 
         //}
         // GET: api/<TinderController>
-        [HttpGet("restaurants/")]
-        public async Task<RestaurantViewModel> GetYelpApiResults([FromBody] Restaurant restaurant)
+        [HttpGet("restaurant/{id}")]
+        public async Task<RestaurantViewModel> GetYelpApiResults(string id)
         {
-            // takes in a restaurant api address as a string, for example "https://www.yelp.com/biz/marmar-s-pizza-cleveland-heights?adjust_creative=lRzblQl-ehLXFsgKraH69g&utm_campaign=yelp_api_v3&utm_medium=api_v3_business_search&utm_source=lRzblQl-ehLXFsgKraH69g"
+            // takes in a restaurant api address as a string, for example
+            // "https://www.yelp.com/biz/marmar-s-pizza-cleveland-heights
+            // ?adjust_creative=lRzblQl-ehLXFsgKraH69g&utm_campaign=yelp_api_v3&utm_medium=api_v3_business_search&utm_source=lRzblQl-ehLXFsgKraH69g"
 
-            RestaurantYelpModel YelpRestaurantData = await yelpService.GetThisRestaurantFromYelp(restaurant);
+
+            //curl --request GET \
+            //--url 'https://api.yelp.com/v3/businesses/search?sort_by=best_match&limit=20' \
+            //--header 'Authorization: lRzblQl-ehLXFsgKraH69g' \
+            //--header 'accept: application/json'
+
+            RestaurantYelpModel YelpRestaurantData = await yelpService.GetThisRestaurantFromYelp(id);
 
 
             throw new Exception();
 
-            
-        }
 
+        }
 
 
         // POST /<TinderController>/like

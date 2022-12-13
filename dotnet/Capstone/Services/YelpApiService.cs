@@ -19,12 +19,13 @@ namespace Capstone.Services
 
         }
 
-        public async Task<RestaurantYelpModel> GetThisRestaurantFromYelp(Restaurant restaurantInfo) //Task<RestaurantViewModel> is a promise that you will return a restaurantViewModel. 
+        public async Task<RestaurantYelpModel> GetThisRestaurantFromYelp(string apiId) //Task<RestaurantViewModel> is a promise that you will return a restaurantViewModel. 
         {
             RestaurantYelpModel restaurant = new RestaurantYelpModel();
+            string baseUrl = "https://api.yelp.com/v3/businesses/";
             using (var httpClient = new HttpClient())
             {
-                using (var response = await httpClient.GetAsync(restaurantInfo.ApiAddress))
+                using (var response = await httpClient.GetAsync(baseUrl + apiId))
                 {
                     string apiResponse = await response.Content.ReadAsStringAsync();
                     restaurant = JsonConvert.DeserializeObject<RestaurantYelpModel>(apiResponse); //Will have errors we will need to handle intake of yelp data and format it to our c# model

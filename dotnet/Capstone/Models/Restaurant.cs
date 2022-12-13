@@ -9,7 +9,9 @@ namespace Capstone.Models
     {
         public int RestaurantId { get; set; }
         public int PartyId { get; set; }
-        public string ApiAddress { get; set; }
+        public string Name { get; set; }
+        public string ApiId { get; set; }
+        public string YelpLink { get; set;}
     }
     public class RestaurantViewModel
     {
@@ -21,9 +23,10 @@ namespace Capstone.Models
         public string PhoneNumber { get; set; }
         public string ImageUrl { get; set; }
 
-        public string ApiAddress { get; set; }
+        public string ApiId { get; set; }
         public bool IsClosed { get; set; }
         public double Rating { get; set; }
+        public string YelpLink { get; set; }
         public RestaurantViewModel(Restaurant restaurant)
         {
             RestaurantId = restaurant.RestaurantId;
@@ -32,7 +35,7 @@ namespace Capstone.Models
             TypeOfRestaurant = new List<string>() { "TEST", "Restaurant" }; ;
             Address = "Address";
             PhoneNumber = "phoneNumber";
-            ApiAddress = restaurant.ApiAddress;
+            ApiId = restaurant.ApiId;
             ImageUrl = "imageUrl";
             IsClosed = false;
 
@@ -46,7 +49,8 @@ namespace Capstone.Models
                 TypeOfRestaurant = restaurantYelpModel.categories;
                 Address = restaurantYelpModel.location.display_address[1] + restaurantYelpModel.location.display_address[2];
                 PhoneNumber = restaurantYelpModel.display_phone;
-                ApiAddress = dbRestaurant.ApiAddress;
+                ApiId = dbRestaurant.ApiId;
+                YelpLink = dbRestaurant.YelpLink;
                 ImageUrl = restaurantYelpModel.image_url;
                 IsClosed = restaurantYelpModel.is_closed;
                 Rating = restaurantYelpModel.rating;

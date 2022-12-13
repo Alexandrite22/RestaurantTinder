@@ -36,7 +36,8 @@ CREATE TABLE restaurant (
 	restaurant_id int IDENTITY (1,1) NOT NULL,
 	party_id int NOT NULL,
 	name varchar(50) NOT NULL,
-	Api_address varchar(200) NOT NULL,
+	api_id varchar(200) NOT NULL,
+	yelp_link varchar(200) NOT NULL,
 	PRIMARY KEY (restaurant_id),
 	FOREIGN KEY (party_id) REFERENCES party (party_id)
 	
@@ -89,48 +90,48 @@ INSERT INTO party (location, date, owner, description, name_of_party, invite_lin
 
 
 --create 10 default restaurants for party 2, all restaurants have different names
-INSERT INTO restaurant (party_id, name, Api_address) VALUES (2, 'Cleveland Metroparks Zoo', 'yelp.com/biz/cleveland-metroparks-zoo-cleveland');
-INSERT INTO restaurant (party_id, name, Api_address) VALUES (2, 'Cleveland Botanical Garden', 'yelp.com/biz/cleveland-botanical-garden-cleveland');
-INSERT INTO restaurant (party_id, name, Api_address) VALUES (2, 'Kalahari Resorts & Conventions', 'yelp.com/biz/kalahari-resorts-and-conventions-sandusky');
-INSERT INTO restaurant (party_id, name, Api_address) VALUES (2, 'Cedar Point', 'yelp.com/biz/cedar-point-sandusky');
-INSERT INTO restaurant (party_id, name, Api_address) VALUES (2, 'Cleveland Browns Stadium', 'yelp.com/biz/cleveland-browns-stadium-cleveland');
-INSERT INTO restaurant (party_id, name, Api_address) VALUES (2, 'Cleveland Indians Stadium', 'yelp.com/biz/cleveland-indians-stadium-cleveland');
-INSERT INTO restaurant (party_id, name, Api_address) VALUES (2, 'Cleveland Cavaliers Stadium', 'yelp.com/biz/cleveland-cavaliers-stadium-cleveland');
-INSERT INTO restaurant (party_id, name, Api_address) VALUES (2, 'Rock and Roll Hall of Fame', 'yelp.com/biz/rock-and-roll-hall-of-fame-cleveland');
-INSERT INTO restaurant (party_id, name, Api_address) VALUES (2, 'Great Lakes Science Center', 'yelp.com/biz/great-lakes-science-center-cleveland');
-INSERT INTO restaurant (party_id, name, Api_address) VALUES (2, 'Cleveland Museum of Art', 'yelp.com/biz/cleveland-museum-of-art-cleveland');
-INSERT INTO restaurant (party_id, name, Api_address) VALUES (2, 'Cleveland Museum of Natural History', 'yelp.com/biz/cleveland-museum-of-natural-history-cleveland');
-INSERT INTO restaurant (party_id, name, Api_address) VALUES (2, 'Cleveland Museum of Contemporary Art', 'yelp.com/biz/cleveland-museum-of-contemporary-art-cleveland');
-INSERT INTO restaurant (party_id, name, Api_address) VALUES (2, 'Tech Elevator', 'yelp.com/biz/tech-elevator-cleveland')
-INSERT INTO restaurant (party_id, name, Api_address) VALUES (2, 'Cleveland Public Library', 'yelp.com/biz/cleveland-public-library-cleveland');
-INSERT INTO restaurant (party_id, name, Api_address) VALUES (2, 'Gallouchis', 'yelp.com/biz/gallouchis-cleveland');
-INSERT INTO restaurant (party_id, name, Api_address) VALUES (2, 'Melt Bar and Grilled', 'yelp.com/biz/melt-bar-and-grilled-cleveland');
-INSERT INTO restaurant (party_id, name, Api_address) VALUES (2, 'The Greenhouse Tavern', 'yelp.com/biz/the-greenhouse-tavern-cleveland');
-INSERT INTO restaurant (party_id, name, Api_address) VALUES (2, 'The Plum Bistro', 'yelp.com/biz/the-plum-bistro-cleveland');
-INSERT INTO restaurant (party_id, name, Api_address) VALUES (2, 'The Velvet Tango Room', 'yelp.com/biz/the-velvet-tango-room-cleveland');
-INSERT INTO restaurant (party_id, name, Api_address) VALUES (2, 'The West Side Market', 'yelp.com/biz/the-west-side-market-cleveland');
-INSERT INTO restaurant (party_id, name, Api_address) VALUES (2, 'The Wine Spot', 'yelp.com/biz/the-wine-spot-cleveland');
+--INSERT INTO restaurant (party_id, name, Api_address) VALUES (2, 'Cleveland Metroparks Zoo', 'yelp.com/biz/cleveland-metroparks-zoo-cleveland');
+--INSERT INTO restaurant (party_id, name, Api_address) VALUES (2, 'Cleveland Botanical Garden', 'yelp.com/biz/cleveland-botanical-garden-cleveland');
+--INSERT INTO restaurant (party_id, name, Api_address) VALUES (2, 'Kalahari Resorts & Conventions', 'yelp.com/biz/kalahari-resorts-and-conventions-sandusky');
+--INSERT INTO restaurant (party_id, name, Api_address) VALUES (2, 'Cedar Point', 'yelp.com/biz/cedar-point-sandusky');
+--INSERT INTO restaurant (party_id, name, Api_address) VALUES (2, 'Cleveland Browns Stadium', 'yelp.com/biz/cleveland-browns-stadium-cleveland');
+--INSERT INTO restaurant (party_id, name, Api_address) VALUES (2, 'Cleveland Indians Stadium', 'yelp.com/biz/cleveland-indians-stadium-cleveland');
+--INSERT INTO restaurant (party_id, name, Api_address) VALUES (2, 'Cleveland Cavaliers Stadium', 'yelp.com/biz/cleveland-cavaliers-stadium-cleveland');
+--INSERT INTO restaurant (party_id, name, Api_address) VALUES (2, 'Rock and Roll Hall of Fame', 'yelp.com/biz/rock-and-roll-hall-of-fame-cleveland');
+--INSERT INTO restaurant (party_id, name, Api_address) VALUES (2, 'Great Lakes Science Center', 'yelp.com/biz/great-lakes-science-center-cleveland');
+--INSERT INTO restaurant (party_id, name, Api_address) VALUES (2, 'Cleveland Museum of Art', 'yelp.com/biz/cleveland-museum-of-art-cleveland');
+--INSERT INTO restaurant (party_id, name, Api_address) VALUES (2, 'Cleveland Museum of Natural History', 'yelp.com/biz/cleveland-museum-of-natural-history-cleveland');
+--INSERT INTO restaurant (party_id, name, Api_address) VALUES (2, 'Cleveland Museum of Contemporary Art', 'yelp.com/biz/cleveland-museum-of-contemporary-art-cleveland');
+--INSERT INTO restaurant (party_id, name, Api_address) VALUES (2, 'Tech Elevator', 'yelp.com/biz/tech-elevator-cleveland')
+--INSERT INTO restaurant (party_id, name, Api_address) VALUES (2, 'Cleveland Public Library', 'yelp.com/biz/cleveland-public-library-cleveland');
+--INSERT INTO restaurant (party_id, name, Api_address) VALUES (2, 'Gallouchis', 'yelp.com/biz/gallouchis-cleveland');
+--INSERT INTO restaurant (party_id, name, Api_address) VALUES (2, 'Melt Bar and Grilled', 'yelp.com/biz/melt-bar-and-grilled-cleveland');
+--INSERT INTO restaurant (party_id, name, Api_address) VALUES (2, 'The Greenhouse Tavern', 'yelp.com/biz/the-greenhouse-tavern-cleveland');
+--INSERT INTO restaurant (party_id, name, Api_address) VALUES (2, 'The Plum Bistro', 'yelp.com/biz/the-plum-bistro-cleveland');
+--INSERT INTO restaurant (party_id, name, Api_address) VALUES (2, 'The Velvet Tango Room', 'yelp.com/biz/the-velvet-tango-room-cleveland');
+--INSERT INTO restaurant (party_id, name, Api_address) VALUES (2, 'The West Side Market', 'yelp.com/biz/the-west-side-market-cleveland');
+--INSERT INTO restaurant (party_id, name, Api_address) VALUES (2, 'The Wine Spot', 'yelp.com/biz/the-wine-spot-cleveland');
 
-INSERT INTO restaurant (party_id, name, Api_address) VALUES (1, 'Cleveland Metroparks Zoo', 'yelp.com/biz/cleveland-metroparks-zoo-cleveland');
-INSERT INTO restaurant (party_id, name, Api_address) VALUES (1, 'Cleveland Botanical Garden', 'yelp.com/biz/cleveland-botanical-garden-cleveland');
-INSERT INTO restaurant (party_id, name, Api_address) VALUES (1, 'Kalahari Resorts & Conventions', 'yelp.com/biz/kalahari-resorts-and-conventions-sandusky');
-INSERT INTO restaurant (party_id, name, Api_address) VALUES (1, 'Cedar Point', 'yelp.com/biz/cedar-point-sandusky');
-INSERT INTO restaurant (party_id, name, Api_address) VALUES (1, 'Cleveland Browns Stadium', 'yelp.com/biz/cleveland-browns-stadium-cleveland');
-INSERT INTO restaurant (party_id, name, Api_address) VALUES (1, 'Cleveland Indians Stadium', 'yelp.com/biz/cleveland-indians-stadium-cleveland');
-INSERT INTO restaurant (party_id, name, Api_address) VALUES (1, 'Cleveland Cavaliers Stadium', 'yelp.com/biz/cleveland-cavaliers-stadium-cleveland');
-INSERT INTO restaurant (party_id, name, Api_address) VALUES (1, 'Rock and Roll Hall of Fame', 'yelp.com/biz/rock-and-roll-hall-of-fame-cleveland');
-INSERT INTO restaurant (party_id, name, Api_address) VALUES (1, 'Great Lakes Science Center', 'yelp.com/biz/great-lakes-science-center-cleveland');
-INSERT INTO restaurant (party_id, name, Api_address) VALUES (1, 'Cleveland Museum of Art', 'yelp.com/biz/cleveland-museum-of-art-cleveland');
-INSERT INTO restaurant (party_id, name, Api_address) VALUES (1, 'Cleveland Museum of Natural History', 'yelp.com/biz/cleveland-museum-of-natural-history-cleveland');
-INSERT INTO restaurant (party_id, name, Api_address) VALUES (1, 'Cleveland Museum of Contemporary Art', 'yelp.com/biz/cleveland-museum-of-contemporary-art-cleveland');
-INSERT INTO restaurant (party_id, name, Api_address) VALUES (1, 'Tech Elevator', 'yelp.com/biz/tech-elevator-cleveland')
-INSERT INTO restaurant (party_id, name, Api_address) VALUES (1, 'Cleveland Public Library', 'yelp.com/biz/cleveland-public-library-cleveland');
-INSERT INTO restaurant (party_id, name, Api_address) VALUES (1, 'Gallouchis', 'yelp.com/biz/gallouchis-cleveland');
-INSERT INTO restaurant (party_id, name, Api_address) VALUES (1, 'Melt Bar and Grilled', 'yelp.com/biz/melt-bar-and-grilled-cleveland');
-INSERT INTO restaurant (party_id, name, Api_address) VALUES (1, 'The Greenhouse Tavern', 'yelp.com/biz/the-greenhouse-tavern-cleveland');
-INSERT INTO restaurant (party_id, name, Api_address) VALUES (1, 'The Plum Bistro', 'yelp.com/biz/the-plum-bistro-cleveland');
-INSERT INTO restaurant (party_id, name, Api_address) VALUES (1, 'The Velvet Tango Room', 'yelp.com/biz/the-velvet-tango-room-cleveland');
-INSERT INTO restaurant (party_id, name, Api_address) VALUES (1, 'The West Side Market', 'yelp.com/biz/the-west-side-market-cleveland');
-INSERT INTO restaurant (party_id, name, Api_address) VALUES (1, 'The Wine Spot', 'yelp.com/biz/the-wine-spot-cleveland');
+--INSERT INTO restaurant (party_id, name, Api_address) VALUES (1, 'Cleveland Metroparks Zoo', 'yelp.com/biz/cleveland-metroparks-zoo-cleveland');
+--INSERT INTO restaurant (party_id, name, Api_address) VALUES (1, 'Cleveland Botanical Garden', 'yelp.com/biz/cleveland-botanical-garden-cleveland');
+--INSERT INTO restaurant (party_id, name, Api_address) VALUES (1, 'Kalahari Resorts & Conventions', 'yelp.com/biz/kalahari-resorts-and-conventions-sandusky');
+--INSERT INTO restaurant (party_id, name, Api_address) VALUES (1, 'Cedar Point', 'yelp.com/biz/cedar-point-sandusky');
+--INSERT INTO restaurant (party_id, name, Api_address) VALUES (1, 'Cleveland Browns Stadium', 'yelp.com/biz/cleveland-browns-stadium-cleveland');
+--INSERT INTO restaurant (party_id, name, Api_address) VALUES (1, 'Cleveland Indians Stadium', 'yelp.com/biz/cleveland-indians-stadium-cleveland');
+--INSERT INTO restaurant (party_id, name, Api_address) VALUES (1, 'Cleveland Cavaliers Stadium', 'yelp.com/biz/cleveland-cavaliers-stadium-cleveland');
+--INSERT INTO restaurant (party_id, name, Api_address) VALUES (1, 'Rock and Roll Hall of Fame', 'yelp.com/biz/rock-and-roll-hall-of-fame-cleveland');
+--INSERT INTO restaurant (party_id, name, Api_address) VALUES (1, 'Great Lakes Science Center', 'yelp.com/biz/great-lakes-science-center-cleveland');
+--INSERT INTO restaurant (party_id, name, Api_address) VALUES (1, 'Cleveland Museum of Art', 'yelp.com/biz/cleveland-museum-of-art-cleveland');
+--INSERT INTO restaurant (party_id, name, Api_address) VALUES (1, 'Cleveland Museum of Natural History', 'yelp.com/biz/cleveland-museum-of-natural-history-cleveland');
+--INSERT INTO restaurant (party_id, name, Api_address) VALUES (1, 'Cleveland Museum of Contemporary Art', 'yelp.com/biz/cleveland-museum-of-contemporary-art-cleveland');
+--INSERT INTO restaurant (party_id, name, Api_address) VALUES (1, 'Tech Elevator', 'yelp.com/biz/tech-elevator-cleveland')
+--INSERT INTO restaurant (party_id, name, Api_address) VALUES (1, 'Cleveland Public Library', 'yelp.com/biz/cleveland-public-library-cleveland');
+--INSERT INTO restaurant (party_id, name, Api_address) VALUES (1, 'Gallouchis', 'yelp.com/biz/gallouchis-cleveland');
+--INSERT INTO restaurant (party_id, name, Api_address) VALUES (1, 'Melt Bar and Grilled', 'yelp.com/biz/melt-bar-and-grilled-cleveland');
+--INSERT INTO restaurant (party_id, name, Api_address) VALUES (1, 'The Greenhouse Tavern', 'yelp.com/biz/the-greenhouse-tavern-cleveland');
+--INSERT INTO restaurant (party_id, name, Api_address) VALUES (1, 'The Plum Bistro', 'yelp.com/biz/the-plum-bistro-cleveland');
+--INSERT INTO restaurant (party_id, name, Api_address) VALUES (1, 'The Velvet Tango Room', 'yelp.com/biz/the-velvet-tango-room-cleveland');
+--INSERT INTO restaurant (party_id, name, Api_address) VALUES (1, 'The West Side Market', 'yelp.com/biz/the-west-side-market-cleveland');
+--INSERT INTO restaurant (party_id, name, Api_address) VALUES (1, 'The Wine Spot', 'yelp.com/biz/the-wine-spot-cleveland');
 
 
