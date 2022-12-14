@@ -1,66 +1,153 @@
 <template>
   <b-container class="border">
-    <b-row>
-      <h1>Menu</h1>
-    </b-row>
-    <b-row class="text-center" align-v="center">
-      <b-col>
-        <router-link to="/">
-          <b-button variant="outline-primary">
-            <h6><b-icon-house-door-fill variant="light" /> &nbsp; Home</h6>
+    <b-card class="text-center h-100" style="background-color: transparent">
+      <b-card-title
+        class="d-flex align-items-center justify-content-center"
+        style="height: 5rem"
+        ><h2>Menu</h2></b-card-title
+      >
+
+      <b-list-group>
+        <router-link to="/" style="text-decoration: none">
+          <b-button
+            class="
+              list-group-item list-group-item-action
+              p-0
+              m-0
+              d-flex
+              align-items-center
+              justify-content-center
+            "
+            variant="outline-primary"
+            style="
+              background-color: transparent;
+              height: 4rem;
+              box-shadow: none;
+            "
+          >
+            <h5><b-icon-house-door-fill variant="light" /> &nbsp; Home</h5>
           </b-button>
         </router-link>
-      </b-col>
-    </b-row>
 
-    <b-row class="text-center" align-v="center">
-      <b-col>
+        <router-link
+          v-if="$store.state.token != ''"
+          v-bind:to="{ name: 'logout' }"
+          style="text-decoration: none"
+        >
+          <b-button
+            class="
+              list-group-item list-group-item-action
+              p-0
+              m-0
+              d-flex
+              align-items-center
+              justify-content-center
+            "
+            variant="outline-primary"
+            style="
+              background-color: transparent;
+              height: 4rem;
+              box-shadow: none;
+            "
+          >
+            <h5><b-icon-key-fill variant="light" /> &nbsp; Logout</h5>
+          </b-button>
+        </router-link>
+
+        <router-link to="/about" style="text-decoration: none">
+          <b-button
+            class="
+              list-group-item list-group-item-action
+              p-0
+              m-0
+              d-flex
+              align-items-center
+              justify-content-center
+            "
+            variant="outline-primary"
+            style="
+              background-color: transparent;
+              height: 4rem;
+              box-shadow: none;
+            "
+          >
+            <h5><b-icon-info-circle-fill variant="light" /> &nbsp; About Us</h5>
+          </b-button>
+        </router-link>
+
         <b-button
+          class="
+            list-group-item list-group-item-action
+            p-0
+            m-0
+            d-flex
+            align-items-center
+            justify-content-center
+          "
           variant="outline-primary"
+          style="background-color: transparent; height: 4rem; box-shadow: none"
           href="http://localhost:8080/newParty"
         >
-          <h6>Create party</h6>
+          <h5><b-icon-people-fill variant="light" /> &nbsp; Create party</h5>
         </b-button>
-      </b-col>
-    </b-row>
 
-    <b-row class="text-center" align-v="center">
-      <b-col>
-        <router-link to="/dashboard">
-          <b-button variant="outline-primary">
-            <h6>View parties</h6>
+        <router-link to="/dashboard" style="text-decoration: none">
+          <b-button
+            class="
+              list-group-item list-group-item-action
+              p-0
+              m-0
+              d-flex
+              align-items-center
+              justify-content-center
+            "
+            variant="outline-primary"
+            style="
+              background-color: transparent;
+              height: 4rem;
+              box-shadow: none;
+            "
+          >
+            <h5><b-icon-eye-fill variant="light" /> &nbsp; View parties</h5>
           </b-button>
         </router-link>
-      </b-col>
-    </b-row>
 
-    <b-row class="text-center" align-v="center">
-      <b-col>
         <b-button
+          class="
+            list-group-item list-group-item-action
+            p-0
+            m-0
+            d-flex
+            align-items-center
+            justify-content-center
+          "
           variant="outline-primary"
+          style="background-color: transparent; height: 4rem; box-shadow: none"
           href="http://localhost:8080/dashboard"
         >
-          <h6>My current plans</h6>
+          <h5>
+            <b-icon-calendar-check-fill variant="light" /> &nbsp; My current
+            plans
+          </h5>
         </b-button>
-      </b-col>
-    </b-row>
 
-    <!-- <b-row class="text-center" align-v="center">
-      <b-col>
-        <b-button variant="outline-primary" href="http://localhost:8080/dashboard">
-          <h6>My current plans</h6>
-        </b-button>
-      </b-col>
-    </b-row> -->
-
-    <div>
-      <ul>
-        <li v-for="party in this.$store.state.parties" v-bind:key="party.Id">
-          test
-          <router-link :to="party.InviteLink">{{ party.Name }}</router-link>
-        </li>
-      </ul>
-    </div>
+        <b-list-group>
+          <router-link
+            :to="party.InviteLink"
+            v-for="party in this.$store.state.currentParties"
+            v-bind:key="party.Id"
+            style="text-decoration: none"
+          >
+            <b-list-group-item
+              variant="outline-primary"
+              style="background-color: transparent"
+            >
+              {{ party.Name }}
+            </b-list-group-item>
+          </router-link>
+        </b-list-group>
+      </b-list-group>
+    </b-card>
   </b-container>
 </template>
 
@@ -78,7 +165,11 @@ export default {
 
 <style>
 .border {
-  box-shadow: 5px 5px 5px rgba(0,0,0,0.25);
+  box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.25);
   border-style: hidden !important;
+}
+
+.card-body {
+  padding: 0 !important;
 }
 </style>

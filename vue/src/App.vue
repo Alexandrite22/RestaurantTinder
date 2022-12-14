@@ -1,9 +1,6 @@
 <template>
   <span id="app">
-    <div id="logo">
-      <img src="./imgs/Me_n_U_final.png" />
-    </div>
-    <b-row id="nav-bar">
+    <!-- <b-row id="nav-bar">
       <span id="header" v-if="$store.state.token != ''">
         <router-link
           class="btn btn-primary solid-text"
@@ -18,7 +15,7 @@
           >Logout</router-link
         >
       </span>
-    </b-row>
+    </b-row> -->
     <div id="main-container">
       <b-row id="sub-container">
         <b-col id="menuColumn" class="col-2 panel">
@@ -27,9 +24,8 @@
               class="content"
               id="menu"
               style="
-                box-shadow: 5px 5px 5px rgba(0,0,0,0.25);
+                box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.25);
                 background: rgba(255, 255, 255, 0.5);
-                height: 80vh;
               "
             />
           </div>
@@ -45,9 +41,8 @@
               class="content"
               id="details"
               style="
-                box-shadow: 5px 5px 5px rgba(0,0,0,0.25);
+                box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.25);
                 background: rgba(255, 255, 255, 0.5);
-                height: 80vh;
               "
             />
           </div>
@@ -109,10 +104,10 @@ body {
 }
 
 .content {
-  box-shadow: 5px 5px 5px rgba(0,0,0,0.25);
+  box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.25);
   background: rgba(255, 255, 255, 0.5);
   min-height: 70vh;
-  height: 80vh;
+  height: 95vh;
   overflow: auto;
   padding: 0.5em;
 }
@@ -154,23 +149,21 @@ body {
 }
 ::-webkit-scrollbar-track {
   background: rgb(179, 177, 177);
-  box-shadow: 5px 5px 5px rgba(0,0,0,0.25);
+  box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.25);
 }
 
 ::-webkit-scrollbar-thumb {
   background: rgb(136, 136, 136);
-  box-shadow: 5px 5px 5px rgba(0,0,0,0.25);
-  
+  box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.25);
 }
 
 ::-webkit-scrollbar-thumb:hover {
   background: rgb(100, 100, 100);
-  box-shadow: 5px 5px 5px rgba(0,0,0,0.25);
+  box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.25);
 }
 
 ::-webkit-scrollbar-thumb:active {
   background: rgb(68, 68, 68);
-  box-shadow: 5px 5px 5px rgba(0,0,0,0.25);
-  
+  box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.25);
 }
 </style>
