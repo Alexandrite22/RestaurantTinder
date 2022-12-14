@@ -13,7 +13,9 @@ namespace Capstone.Services
 {
     public class YelpApiService
     {
-        private string BearerToken = "lHUWILnhPqMKo98Qwx5o8DYbTZld_XTZnUXrwUVleQF3sYTI94PffLlxqbVkA--UcUcVP5aI1UN8kwKA4mdXF626Grde4LiYZXbdsLthNeaM60wsv1nIcBZCLrCQY3Yx";
+        private string BearerToken =
+            //"lHUWILnhPqMKo98Qwx5o8DYbTZld_XTZnUXrwUVleQF3sYTI94PffLlxqbVkA--UcUcVP5aI1UN8kwKA4mdXF626Grde4LiYZXbdsLthNeaM60wsv1nIcBZCLrCQY3Yx";
+            "AD-ZZsrDzfM08bxsnNrt_Rv8ah_MKR6MxDtZ9uG23axMJ2p4-UAFa8MNLCmtDWpNzj-QvT_NwsC8rUDso2PzTDRykXhbVcmCpYBgD30fDVX8XItccxOAGnrbkRGaY3Yx";
         //private yelpApiBaseUrl = _Configure.GetValue<string>("WebAPIBaseUrl");
         public string yelpApiBaseUrl { get; set; }
         public YelpApiService()

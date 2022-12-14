@@ -21,24 +21,23 @@ namespace Capstone.DAO
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
                 connection.Open();
-                SqlCommand command = new SqlCommand("INSERT INTO restaurant (party_id, api_id, yelp_link, image_link) VALUES (@party_id, @api_id, @yelp_link, @image_link); SELECT @@IDENTITY", connection);
+                SqlCommand command = new SqlCommand("INSERT INTO restaurant (party_id, api_id, yelp_link, image_link, review_count, rating, longitude, latitude, address1, address2, city, zip_code, country, state, display_address1, display_address2) VALUES (@party_id, @api_id, @yelp_link, @image_link, @review_count, @rating, @longitude, @latitude, @address1, @address2, @city, @zip_code, @country, @state, @display_address1, @display_address2); SELECT @@IDENTITY", connection);
                 command.Parameters.AddWithValue("@party_id", restaurant.PartyId);
                 command.Parameters.AddWithValue("@api_id", restaurant.ApiId);
                 command.Parameters.AddWithValue("@yelp_link", restaurant.YelpLink);
                 command.Parameters.AddWithValue("@image_link", restaurant.ImageLink);
-                command.Parameters.AddWithValue("@review_count", restaurant.ImageLink);
-                command.Parameters.AddWithValue("@rating", restaurant.ImageLink);
-                command.Parameters.AddWithValue("@longitude", restaurant.ImageLink);
-                command.Parameters.AddWithValue("@latitude", restaurant.ImageLink);
-                command.Parameters.AddWithValue("@address1", restaurant.ImageLink);
-                command.Parameters.AddWithValue("@address2", restaurant.ImageLink);
-                command.Parameters.AddWithValue("@address3", restaurant.ImageLink);
-                command.Parameters.AddWithValue("@city", restaurant.ImageLink);
-                command.Parameters.AddWithValue("@zip_code", restaurant.ImageLink);
-                command.Parameters.AddWithValue("@country", restaurant.ImageLink);
-                command.Parameters.AddWithValue("@state", restaurant.ImageLink);
-                command.Parameters.AddWithValue("@display_address1", restaurant.ImageLink);
-                command.Parameters.AddWithValue("@displat_address2", restaurant.ImageLink);
+                command.Parameters.AddWithValue("@review_count", restaurant.review_count);
+                command.Parameters.AddWithValue("@rating", restaurant.rating);
+                command.Parameters.AddWithValue("@longitude", restaurant.longitude);
+                command.Parameters.AddWithValue("@latitude", restaurant.latitude);
+                command.Parameters.AddWithValue("@address1", restaurant.address1 + " ");
+                command.Parameters.AddWithValue("@address2", restaurant.address2 + " ");
+                command.Parameters.AddWithValue("@city", restaurant.city);
+                command.Parameters.AddWithValue("@zip_code", restaurant.zip);
+                command.Parameters.AddWithValue("@country", restaurant.country);
+                command.Parameters.AddWithValue("@state", restaurant.state);
+                command.Parameters.AddWithValue("@display_address1", restaurant.display_address1);
+                command.Parameters.AddWithValue("@display_address2", restaurant.display_address2);
                 int myId = command.ExecuteNonQuery();
                 connection.Close();
                 return myId;
@@ -136,7 +135,7 @@ namespace Capstone.DAO
             restaurant.ApiId = Convert.ToString(reader["api_id"]);
             restaurant.address1 = Convert.ToString(reader["address1"]);
             restaurant.address2 = Convert.ToString(reader["address2"]);
-            restaurant.address3 = Convert.ToString(reader["address3"]);
+            //restaurant.address3 = Convert.ToString(reader["address3"]);
             restaurant.city = Convert.ToString(reader["city"]);
             restaurant.zip = Convert.ToString(reader["zip_code"]);            restaurant.country = Convert.ToString(reader["country"]);
             restaurant.state = Convert.ToString(reader["state"]);

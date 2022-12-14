@@ -46,13 +46,12 @@ CREATE TABLE restaurant (
 	latitude float,
 	address1 varchar(1000),
 	address2 varchar(1000),
-	address3 varchar(1000),
 	city varchar(1000),
 	zip_code varchar(10),
 	country varchar(100),
 	state varchar(2),
 	display_address1 varchar(2000),
-	displat_address2 varchar(2000)
+	display_address2 varchar(2000)
 	PRIMARY KEY (restaurant_id),
 	FOREIGN KEY (party_id) REFERENCES party (party_id)
 )
@@ -149,3 +148,4 @@ INSERT INTO users (username, password_hash, salt, user_role) VALUES ('Colin','Jg
 --INSERT INTO restaurant (party_id, name, Api_address) VALUES (1, 'The Wine Spot', 'yelp.com/biz/the-wine-spot-cleveland');
 
 
+SELECT * FROM restaurant WHERE party_id = 1
