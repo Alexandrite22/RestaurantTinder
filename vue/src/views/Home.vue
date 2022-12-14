@@ -1,23 +1,17 @@
 <template>
   <div class="home">
     <h1><center>Home</center></h1>
-    <description />
     <p>
       Create a new party, view your current parties, and view your party details
       in the left menu.
     </p>
-    <b-icon-arrow-up></b-icon-arrow-up>
-    <b-icon-exclamation-triangle-fill />
+    
   </div>
 </template>
 
 <script>
-import Description from "../components/SiteDescription.vue";
 export default {
-  name: "home",
-  components: {
-    Description,
-  },
+  
 };
 </script>
 <style >
