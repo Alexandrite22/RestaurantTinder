@@ -10,6 +10,7 @@
               style="
                 box-shadow: 5px 5px 5px rgba(0,0,0,0.25);
                 background: rgba(255, 255, 255, 0.5);
+                border: transparent !important;
               "
             />
           </div>
@@ -96,16 +97,12 @@ export default {
 </script>
 <style >
 body {
-  /* background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
-	background-size: 400% 400%;
-	animation: gradient 15s ease infinite;
-	height: 100vh; */
-  font-family: "Poppins", Helvetica, sans-serif;
-  background-image: url("./imgs/MainBack.jpg");
-  background-repeat: no-repeat;
-  background-size: 100vw;
-  margin: 1vw;
-  min-height: 95vh;
+  background: url("./imgs/Bg_11.jpg") no-repeat center center fixed; 
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+
 }
 #header {
   display: flex;
@@ -123,6 +120,12 @@ body {
     box-shadow: 5px 5px 5px rgba(0,0,0,0.5);
     margin: 0.3rem;
 }
+.btn:hover {
+    box-shadow: 5px 5px 5px rgba(0,0,0,0.5);
+    margin: 0.3rem;
+    background: white;
+
+}
 #app {
   height: 100%;
   min-height: 100%;
@@ -137,7 +140,9 @@ body {
   min-height: 70vh;
   height: 95vh;
   overflow: auto;
-  padding: 0.5em;
+  padding: 10px 10px 10px 10px !important;
+  border: transparent !important;
+  border-radius: 5px;
 }
 #main-container {
   padding: 4vw;
@@ -174,10 +179,13 @@ body {
 
 ::-webkit-scrollbar {
   width: 10px;
+  border-radius: 5px;
 }
 ::-webkit-scrollbar-track {
   background: rgb(179, 177, 177);
   box-shadow: 5px 5px 5px rgba(0,0,0,0.25);
+  border-radius: 5px;
+
 }
 
 ::-webkit-scrollbar-thumb {
