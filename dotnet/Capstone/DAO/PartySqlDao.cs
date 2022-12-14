@@ -21,7 +21,7 @@ namespace Capstone.DAO
         /// Create a new party in the database from a Party object
         /// Takes in a Party object and returns the new party ID
         /// </summary>
-        public Party CreateParty(Party party)
+        public int CreateParty(Party party)
         {
             string link = GetNextPartyLink();
             using (SqlConnection conn = new SqlConnection(connectionString))
@@ -47,7 +47,7 @@ namespace Capstone.DAO
                 // Execute the SQL command and get the new party_id.
                 int newId = Convert.ToInt32(cmd.ExecuteScalar());
                 //Convert the new party_id to an int32 and set it to the partyId property of the party object
-                return party; //return party with updated new party_id
+                return newId; //return party with updated new party_id
             }
         }
 

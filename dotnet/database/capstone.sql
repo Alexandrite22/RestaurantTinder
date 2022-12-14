@@ -37,8 +37,8 @@ CREATE TABLE restaurant (
 	party_id int NOT NULL,
 	api_id varchar(200),
 	name varchar(200),
-	yelp_link varchar(200),
-	image_link varchar(200)
+	yelp_link varchar(1000),
+	image_link varchar(1000)
 	PRIMARY KEY (restaurant_id),
 	FOREIGN KEY (party_id) REFERENCES party (party_id)
 )
@@ -79,13 +79,13 @@ INSERT INTO users (username, password_hash, salt, user_role) VALUES ('Nick','Jg4
 INSERT INTO users (username, password_hash, salt, user_role) VALUES ('Colin','Jg45HuwT7PZkfuKTz6IB90CtWY4=','LHxP4Xh7bN0=','user');
 
 --Create 10 default parties for testing, invite link is https://localhost:44315/tinder/ + party_id and all parties are different dates, locations, and descriptions and names, but all have the owner 1.
-INSERT INTO party (location, date, owner, description, name_of_party, invite_link) VALUES ('Kalahari Resorts & Conventions, 7000 Kalahari Dr, Sandusky, OH 44870', '2023-01-13 12:00:00', 1, 'CodeMash 2023', 'Codemash 2023', '/tinder/4');
-INSERT INTO party (location, date, owner, description, name_of_party, invite_link) VALUES ('Cleveland Botanical Garden, 11030 East Blvd, Cleveland, OH 44106', '2022-12-17 12:00:00', 1, 'Kevin`s Botanical Garden Bash', 'Kevin`s Botanical Garden date', '/tinder/5');
-INSERT INTO party (location, date, owner, description, name_of_party, invite_link) VALUES ('Cleveland Metroparks Zoo, 3900 Wildlife Way, Cleveland, OH 44109', '2025-12-12 12:00:00', 1, 'Colin`s Zoo Bug out', 'Colin`s Zoo Bug out', '/tinder/6');
-INSERT INTO party (location, date, owner, description, name_of_party, invite_link) VALUES ('Cleveland Museum of Natural History, 1 Wade Oval Dr, Cleveland, OH 44106', '2023-12-12 12:00:00', 1, 'Nick`s Natural History Trip', 'Nick`s Natural History Trip', '/tinder/7');
-INSERT INTO party (location, date, owner, description, name_of_party, invite_link) VALUES ('Cleveland Museum of Art, 11150 East Blvd, Cleveland, OH 44106', '2022-12-12 12:00:00', 1, 'Alex`s Art Adventure', 'Alex`s Art Adventure', '/tinder/8');
-INSERT INTO party (location, date, owner, description, name_of_party, invite_link) VALUES ('Chuck E Cheese, 10000 Brookpark Rd, Parma, OH 44130', '2022-12-12 12:00:00', 1, 'Chuck E Cheese', 'Chuck E Cheese', '/tinder/9');
-INSERT INTO party (location, date, owner, description, name_of_party, invite_link) VALUES ('Tech Elevator, 1000 Carnegie Ave, Cleveland, OH 44115', '2022-12-12 12:00:00', 1, 'Tech Elevator', 'Tech Elevator', '/tinder/10');
+--INSERT INTO party (location, date, owner, description, name_of_party, invite_link) VALUES ('Kalahari Resorts & Conventions, 7000 Kalahari Dr, Sandusky, OH 44870', '2023-01-13 12:00:00', 1, 'CodeMash 2023', 'Codemash 2023', '/tinder/4');
+--INSERT INTO party (location, date, owner, description, name_of_party, invite_link) VALUES ('Cleveland Botanical Garden, 11030 East Blvd, Cleveland, OH 44106', '2022-12-17 12:00:00', 1, 'Kevin`s Botanical Garden Bash', 'Kevin`s Botanical Garden date', '/tinder/5');
+--INSERT INTO party (location, date, owner, description, name_of_party, invite_link) VALUES ('Cleveland Metroparks Zoo, 3900 Wildlife Way, Cleveland, OH 44109', '2025-12-12 12:00:00', 1, 'Colin`s Zoo Bug out', 'Colin`s Zoo Bug out', '/tinder/6');
+--INSERT INTO party (location, date, owner, description, name_of_party, invite_link) VALUES ('Cleveland Museum of Natural History, 1 Wade Oval Dr, Cleveland, OH 44106', '2023-12-12 12:00:00', 1, 'Nick`s Natural History Trip', 'Nick`s Natural History Trip', '/tinder/7');
+--INSERT INTO party (location, date, owner, description, name_of_party, invite_link) VALUES ('Cleveland Museum of Art, 11150 East Blvd, Cleveland, OH 44106', '2022-12-12 12:00:00', 1, 'Alex`s Art Adventure', 'Alex`s Art Adventure', '/tinder/8');
+--INSERT INTO party (location, date, owner, description, name_of_party, invite_link) VALUES ('Chuck E Cheese, 10000 Brookpark Rd, Parma, OH 44130', '2022-12-12 12:00:00', 1, 'Chuck E Cheese', 'Chuck E Cheese', '/tinder/9');
+--INSERT INTO party (location, date, owner, description, name_of_party, invite_link) VALUES ('Tech Elevator, 1000 Carnegie Ave, Cleveland, OH 44115', '2022-12-12 12:00:00', 1, 'Tech Elevator', 'Tech Elevator', '/tinder/10');
 
 
 

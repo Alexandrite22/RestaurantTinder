@@ -34,15 +34,25 @@ namespace Capstone.Controllers
         [HttpGet]
         public IList<PartyViewModel> Get()
         {
+            //GET ALL partiesVIEWMODELS
+                //PartyVIEWMODELS HAVE PARTY PROPERTIES AND A BUSINESSES LIST
+                    //GET BUSINESSES WITH 
             //Here we Call "GetParty" in partySqlDAO, "GetRestaurants" from restaurantDAO, "GetGuests" from guestsDAO
             IList<Party> parties = PartyDao.GetParties(1);
+            //DEAR LORD IS THIS INNEFICIENT WTF
             //make partyviewmodel from values above. 
             // A viewModel is the model of data returned to the view
             IList<PartyViewModel> partyViewModels = new List<PartyViewModel>();
             foreach (var party in parties)
-            { //TODO FIX THIS SHIT
-                //PartyViewModel partyGuestsAndRestaurants = new PartyViewModel(party, GuestsDao.GetGuests(party.PartyId));
-                //partyViewModels.Add(partyGuestsAndRestaurants);
+            {
+                IList<Restaurant> restaurants = RestaurantsDao.GetRestaurants(party.PartyId);
+                Task<Businesses> businesses = yelpApiService.GetTheseRestaurantsFromYelp(restaurants);
+                IList<Guest> guests = GuestsDao.GetGuests(party.PartyId);
+                //make partyviewmodel from values above. 
+                // A viewModel is the model of data returned to the view
+                PartyViewModel partyGuestsAndRestaurants = new PartyViewModel(party, guests, businesses.Result);//
+                partyViewModels.Add(partyGuestsAndRestaurants);
+
             }
             // Reverse partyViewModels so that the most recent party is at the top of the list
             partyViewModels = partyViewModels.Reverse().ToList();
@@ -72,16 +82,6 @@ namespace Capstone.Controllers
             return partyGuestsAndRestaurants;
         }
 
-
-
-        //[HttpGet("{partyId}/restaurants")]
-        //public List<RestaurantViewModel> GetRestaurants(int partyId)
-        //{
-        //    //TODO CALL THIS FROM PARTYSERVICE IN VUE
-        //    YelpApiService yelpService = new YelpApiService();
-        //    return yelpService.CreatePracticeRestaurants();
-        //}
-
         /// POST /<PartyController>
         //create a jason object for a Party class
         // {
@@ -97,18 +97,18 @@ namespace Capstone.Controllers
                 Location = createdParty.Location,
                 Name = createdParty.Name,
                 Date = createdParty.Date,
-                // Owner = createdParty.Owner,
                 Owner = "1",
                 Description = createdParty.Description,
                 InviteLink = "https://localhost:44315/tinder/{partyId}"
             };
-            int newPartyId = PartyDao.CreateParty(newParty).PartyId;
+            int newPartyId = PartyDao.CreateParty(newParty);
 
             //Make new restaurants
             Businesses yelpBusinessList = yelpApiService.GetRestaurantsFromYelpByLocation(newParty.Location).Result;
             List<Restaurant> restaurants = TypeConverterHelper.CreateRestaurant(yelpBusinessList, newPartyId);
-            foreach(Restaurant restaurant in restaurants) 
+            foreach (Restaurant restaurant in restaurants)
             {
+                restaurant.PartyId = newPartyId;
                 RestaurantsDao.Create(restaurant);
             }
             return newPartyId;

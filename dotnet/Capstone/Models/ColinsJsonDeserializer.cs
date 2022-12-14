@@ -49,7 +49,7 @@ namespace Capstone.Models
         public List<Category> Categories { get; set; }
 
         [JsonProperty("rating")]
-        public int Rating { get; set; }
+        public double Rating { get; set; }
 
         [JsonProperty("coordinates")]
         public Center Coordinates { get; set; }
