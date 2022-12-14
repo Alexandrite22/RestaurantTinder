@@ -36,7 +36,14 @@
 </template>
 
 <script>
-export default {};
+export default {
+  name: 'home-description',
+  data() {
+    return {
+      msg: 'Welcome to Your Vue.js App'
+    }
+  }
+}
 </script>
 
 <style>

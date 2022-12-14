@@ -2,8 +2,11 @@
   <div class="home">
     <h1><center>Home</center></h1>
     <p>
-      Create a new party, view your current parties, and view your party details
-      in the left menu.
+        Here at Me-n-U we aim to revolutionize how groups select restaurants for
+        anything from dates to large parties to corporate events! Use our
+        service to let everyone decide which restaurant will let your event be a
+        smash hit!
+
     </p>
     
   </div>
