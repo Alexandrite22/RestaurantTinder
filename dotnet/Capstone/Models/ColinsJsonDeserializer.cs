@@ -13,13 +13,17 @@ namespace Capstone.Models
     public partial class Businesses
     {
         [JsonProperty("businesses")]
-        public List<Business> BusinessesBusinesses { get; set; }
+        public List<Business> BusinessesBusinesses { get; set; } = new List<Business>();
 
         [JsonProperty("total")]
         public long Total { get; set; }
 
         [JsonProperty("region")]
         public Region Region { get; set; }
+        //public void UpdateBusinesses(Business business)
+        //{
+        //    BusinessesBusinesses.Add(business);
+        //}
     }
 
     public partial class Business

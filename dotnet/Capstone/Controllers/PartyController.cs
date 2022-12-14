@@ -52,7 +52,6 @@ namespace Capstone.Controllers
                 // A viewModel is the model of data returned to the view
                 PartyViewModel partyGuestsAndRestaurants = new PartyViewModel(party, guests, businesses.Result);//
                 partyViewModels.Add(partyGuestsAndRestaurants);
-
             }
             // Reverse partyViewModels so that the most recent party is at the top of the list
             partyViewModels = partyViewModels.Reverse().ToList();

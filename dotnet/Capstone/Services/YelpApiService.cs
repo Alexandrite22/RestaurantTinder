@@ -28,6 +28,7 @@ namespace Capstone.Services
             string baseUrl = "https://api.yelp.com/v3/businesses/";
             using (var httpClient = new HttpClient())
             {
+                httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", BearerToken);
                 using (var response = await httpClient.GetAsync(baseUrl + apiId))
                 {
                     string apiResponse = await response.Content.ReadAsStringAsync();
