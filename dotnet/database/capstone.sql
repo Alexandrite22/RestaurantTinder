@@ -35,12 +35,11 @@ CREATE TABLE party (
 CREATE TABLE restaurant (
 	restaurant_id int IDENTITY (1,1) NOT NULL,
 	party_id int NOT NULL,
-	name varchar(50) NOT NULL,
-	api_id varchar(200) NOT NULL,
-	yelp_link varchar(200) NOT NULL,
+	api_id varchar(200),
+	yelp_link varchar(200),
+	image_link varchar(200)
 	PRIMARY KEY (restaurant_id),
 	FOREIGN KEY (party_id) REFERENCES party (party_id)
-	
 )
 CREATE TABLE guest (
 	guest_id int IDENTITY (1,1) NOT NULL,

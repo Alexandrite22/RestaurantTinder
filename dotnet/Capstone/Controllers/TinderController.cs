@@ -20,7 +20,7 @@ namespace Capstone.Controllers
         private IPartyDao PartyDao = new PartySqlDao("Server=.\\SQLEXPRESS;Database=final_capstone;Trusted_Connection=True;");
         private IGuestDao GuestsDao = new GuestSqlDao("Server=.\\SQLEXPRESS;Database=final_capstone;Trusted_Connection=True;");
         private IRestaurantDao RestaurantsDao = new RestaurantSqlDao("Server=.\\SQLEXPRESS;Database=final_capstone;Trusted_Connection=True;");
-        private List<Restaurant> tempList = new List<Restaurant>();
+        private Businesses tempList = new Businesses();
         private YelpApiService yelpService = new YelpApiService();
 
 
@@ -45,7 +45,7 @@ namespace Capstone.Controllers
         //}
         // GET: api/<TinderController>
         [HttpGet("restaurant/{id}")]
-        public async Task<RestaurantViewModel> GetYelpApiResults(string id)
+        public async Task<Business> GetYelpApiResults(string id)
         {
             // takes in a restaurant api address as a string, for example
             // "https://www.yelp.com/biz/marmar-s-pizza-cleveland-heights
@@ -57,7 +57,7 @@ namespace Capstone.Controllers
             //--header 'Authorization: lRzblQl-ehLXFsgKraH69g' \
             //--header 'accept: application/json'
 
-            RestaurantYelpModel YelpRestaurantData = await yelpService.GetThisRestaurantFromYelp(id);
+            Business YelpRestaurantData = await yelpService.GetThisRestaurantFromYelp(id);
 
 
             throw new Exception();

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Capstone.Services;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -29,15 +30,13 @@ namespace Capstone.Models
         public string InviteLink { get; set; }
 
         public IList<Guest> GuestList { get; set; }
-        public IList<Restaurant> RestaurantList { get; set; }
+        public Businesses YelpBusinesses { get; set; }
         
         // Default Constructor to 
         public PartyViewModel()
         {
-            GuestList = new List<Guest>();
-            RestaurantList = new List<Restaurant>();
         }
-        public PartyViewModel(Party party, IList<Guest> guests, IList<Restaurant> restaurants)
+        public PartyViewModel(Party party, IList<Guest> guests, Businesses businesses)
         {
             PartyId = party.PartyId;
             Location = party.Location;
@@ -47,7 +46,7 @@ namespace Capstone.Models
             Name = party.Name;
             InviteLink = party.InviteLink;
             GuestList = guests;
-            RestaurantList = restaurants;
+            YelpBusinesses = businesses;
         }
     }
 }

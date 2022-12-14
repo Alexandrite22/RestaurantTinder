@@ -20,7 +20,7 @@ namespace Capstone.Controllers
         private IPartyDao PartyDao = new PartySqlDao("Server=.\\SQLEXPRESS;Database=final_capstone;Trusted_Connection=True;");
         private IGuestDao GuestsDao = new GuestSqlDao("Server=.\\SQLEXPRESS;Database=final_capstone;Trusted_Connection=True;");
         private IRestaurantDao RestaurantsDao = new RestaurantSqlDao("Server=.\\SQLEXPRESS;Database=final_capstone;Trusted_Connection=True;");
-
+        private YelpApiService yelpApiService = new YelpApiService();
 
 
 
@@ -41,7 +41,7 @@ namespace Capstone.Controllers
             IList<PartyViewModel> partyViewModels = new List<PartyViewModel>();
             foreach (var party in parties)
             {
-                PartyViewModel partyGuestsAndRestaurants = new PartyViewModel(party, new List<Guest>(), new List<Restaurant>());
+                PartyViewModel partyGuestsAndRestaurants = new PartyViewModel(party, GuestsDao.GetGuests(party.PartyId), new List<Restaurant>());
                 partyViewModels.Add(partyGuestsAndRestaurants);
             }
             // Reverse partyViewModels so that the most recent party is at the top of the list
@@ -84,24 +84,27 @@ namespace Capstone.Controllers
         // {
 
         [HttpPost]
-        public int Post([FromBody] Party updatedParty)
+        public int Post([FromBody] Party createdParty)
         {
             //Use partyDao.CreateParty(newParty) to create a new party, and return the ID of the party
             
             // newPartyId is the Id of the newly created part
             Party newParty = new Party(){
                 PartyId = 0,
-                Name = updatedParty.Name,
-                Date = updatedParty.Date,
-                // Owner = updatedParty.Owner,
+                Name = createdParty.Name,
+                Date = createdParty.Date,
+                // Owner = createdParty.Owner,
                 Owner = "1",
-                Location = updatedParty.Location,
-                Description = updatedParty.Description,
+                Location = createdParty.Location,
+                Description = createdParty.Description,
                 InviteLink = "https://localhost:44315/tinder/{partyId}"
             };
-
             //Make new restaurants
-
+            Businesses yelpBusinessList = yelpApiService.GetRestaurantsFromYelpByLocation(newParty.Location).Result;
+            foreach(Business restaurant in yelpBusinessList.BusinessesBusinesses) //This Naming is so stupid I hate it but it works so YOLO
+            {
+                RestaurantsDao.CreateRestaurant(newParty.Id, restaurant);
+            }
             int newPartyId = PartyDao.CreateParty(newParty).PartyId;
             return newPartyId;
         }
