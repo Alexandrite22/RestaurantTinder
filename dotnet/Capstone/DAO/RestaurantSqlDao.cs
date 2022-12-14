@@ -16,19 +16,33 @@ namespace Capstone.DAO
             connectionString = dbConnectionString;
         }
         //Create a method that takes in a Restaurant object and adds it to the database
-        public void Create(Restaurant restaurant)
+        public int Create(Restaurant restaurant)
         {
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
                 connection.Open();
-                SqlCommand command = new SqlCommand("INSERT INTO restaurant (party_id, api_id, yelp_link, image_link) VALUES (@party_id, @api_id, @yelp_link, @image_link)", connection);
+                SqlCommand command = new SqlCommand("INSERT INTO restaurant (party_id, api_id, yelp_link, image_link) VALUES (@party_id, @api_id, @yelp_link, @image_link); SELECT @@IDENTITY", connection);
                 command.Parameters.AddWithValue("@party_id", restaurant.PartyId);
                 command.Parameters.AddWithValue("@api_id", restaurant.ApiId);
                 command.Parameters.AddWithValue("@yelp_link", restaurant.YelpLink);
                 command.Parameters.AddWithValue("@image_link", restaurant.ImageLink);
-                command.ExecuteNonQuery();
+                command.Parameters.AddWithValue("@review_count", restaurant.ImageLink);
+                command.Parameters.AddWithValue("@rating", restaurant.ImageLink);
+                command.Parameters.AddWithValue("@longitude", restaurant.ImageLink);
+                command.Parameters.AddWithValue("@latitude", restaurant.ImageLink);
+                command.Parameters.AddWithValue("@address1", restaurant.ImageLink);
+                command.Parameters.AddWithValue("@address2", restaurant.ImageLink);
+                command.Parameters.AddWithValue("@address3", restaurant.ImageLink);
+                command.Parameters.AddWithValue("@city", restaurant.ImageLink);
+                command.Parameters.AddWithValue("@zip_code", restaurant.ImageLink);
+                command.Parameters.AddWithValue("@country", restaurant.ImageLink);
+                command.Parameters.AddWithValue("@state", restaurant.ImageLink);
+                command.Parameters.AddWithValue("@display_address1", restaurant.ImageLink);
+                command.Parameters.AddWithValue("@displat_address2", restaurant.ImageLink);
+                int myId = command.ExecuteNonQuery();
                 connection.Close();
-            }
+                return myId;
+            }   
         }
 
         /// <summary>
@@ -116,10 +130,17 @@ namespace Capstone.DAO
             Restaurant restaurant = new Restaurant();
             restaurant.RestaurantId = Convert.ToInt32(reader["restaurant_id"]);
             restaurant.PartyId = Convert.ToInt32(reader["party_id"]);
-            restaurant.Name = Convert.ToString(reader["Name"]);
+            restaurant.Name = Convert.ToString(reader["name"]);
             restaurant.YelpLink = Convert.ToString(reader["yelp_link"]);
             restaurant.ImageLink = Convert.ToString(reader["image_link"]);
             restaurant.ApiId = Convert.ToString(reader["api_id"]);
+            restaurant.address1 = Convert.ToString(reader["address1"]);
+            restaurant.address2 = Convert.ToString(reader["address2"]);
+            restaurant.address3 = Convert.ToString(reader["address3"]);
+            restaurant.city = Convert.ToString(reader["city"]);
+            restaurant.zip = Convert.ToString(reader["zip_code"]);            restaurant.country = Convert.ToString(reader["country"]);
+            restaurant.state = Convert.ToString(reader["state"]);
+            restaurant.longitude = Convert.ToDouble(reader["longitude"]);            restaurant.latitude = Convert.ToDouble(reader["latitude"]);
             return restaurant;
         }
 

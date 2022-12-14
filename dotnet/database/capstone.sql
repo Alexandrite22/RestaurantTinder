@@ -36,9 +36,23 @@ CREATE TABLE restaurant (
 	restaurant_id int IDENTITY (1,1) NOT NULL,
 	party_id int NOT NULL,
 	api_id varchar(200),
+	alias varchar(200),
 	name varchar(200),
 	yelp_link varchar(1000),
-	image_link varchar(1000)
+	image_link varchar(1000),
+	review_count int,
+	rating float,
+	longitude float,
+	latitude float,
+	address1 varchar(1000),
+	address2 varchar(1000),
+	address3 varchar(1000),
+	city varchar(1000),
+	zip_code varchar(10),
+	country varchar(100),
+	state varchar(2),
+	display_address1 varchar(2000),
+	displat_address2 varchar(2000)
 	PRIMARY KEY (restaurant_id),
 	FOREIGN KEY (party_id) REFERENCES party (party_id)
 )

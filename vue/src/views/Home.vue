@@ -7,12 +7,20 @@
         service to let everyone decide which restaurant will let your event be a
         smash hit!
     </p>
+    <button @click="TestMethod()">
+
+    </button>
   </div>
 </template>
 
 <script>
+import YelpService from "../services/YelpService.js";
 export default {
-  
+  methods: {
+    TestMethod() {
+      YelpService.getRestaurants();
+    },
+  },
 };
 </script>
 <style >

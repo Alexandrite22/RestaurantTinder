@@ -7,7 +7,7 @@
 
             <b-list-group>
 
-                <router-link to="/" style="text-decoration: none;">
+                <router-link to="home" style="text-decoration: none;">
                 <b-button class="list-group-item list-group-item-action p-0 m-0 d-flex align-items-center justify-content-center" variant="outline-primary" style="background-color: transparent; height: 4rem; box-shadow:none;">
                   <h5><b-icon-house-door-fill variant="light"/> &nbsp; Home</h5>
                 </b-button>
@@ -44,24 +44,35 @@
                     <router-link :to="party.InviteLink" v-for="party in this.$store.state.currentParties" v-bind:key="party.Id" style="text-decoration: none;">
                       <b-list-group-item  variant="outline-primary" style="background-color: transparent;" >
                       {{ party.Name }}
-                    </b-list-group-item>
+                      </b-list-group-item>
                     </router-link>
                     
                   </b-list-group>
                 
             </b-list-group>
-      
+          <button @click="TestMethod()">
+
+          </button>
+
     </b-card>
 </b-container>
 
 </template>
 
 <script>
+import YelpService from "../services/YelpService.js";
+
 export default {
   name: "MenuColumn",
   data() {
     return {};
   },
+  methods: {
+    TestMethod() {
+      console.log(YelpService.getRestaurants());
+    },
+  },
+
   created() {
     console.log("MenuColumn created");
   },

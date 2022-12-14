@@ -5,7 +5,7 @@ namespace Capstone.DAO
 {
     public interface IRestaurantDao
     {
-        void Create(Restaurant restaurant);
+        int Create(Restaurant restaurant);
         Restaurant GetRestaurant(int restaurantId);
         IList<Restaurant> GetRestaurants(int partyId);
         void CreateRestaurantFromBusinessAndParty(Business business, int partyId);

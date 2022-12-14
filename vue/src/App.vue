@@ -75,6 +75,7 @@ export default {
             };
           tempParties.push(temp);
           this.parties = tempParties;
+          this.$store.commit("SET_CURRENT_PARTIES", this.parties);
         });
       })
       .catch((error) => {

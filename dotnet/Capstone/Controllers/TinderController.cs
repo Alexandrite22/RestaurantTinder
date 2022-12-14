@@ -44,7 +44,7 @@ namespace Capstone.Controllers
         public IActionResult PostRsvp(string name, int party)
         {//return party with updated new party_id as an IActionResult
             return Created("", GuestDao.CreateGuest(name, party));
-}
+        }
         // POST /<TinderController>/like
         [HttpPost("rsvp/{name}/")]
         public void PostRsvpWithVotes([FromBody] Dictionary<Restaurant, bool> likes, string name)
