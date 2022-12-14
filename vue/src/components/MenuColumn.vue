@@ -4,8 +4,10 @@
       <b-card-title
         class="d-flex align-items-center justify-content-center"
         style="height: 5rem"
-        ><h2>Menu</h2></b-card-title
       >
+        <!-- <h2>Menu</h2> -->
+        <img id="logo" src="../imgs/Me(4).png" />
+      </b-card-title>
 
       <b-list-group>
         <router-link to="/" style="text-decoration: none">
@@ -171,5 +173,9 @@ export default {
 
 .card-body {
   padding: 0 !important;
+}
+
+#logo {
+  max-height: 125px;
 }
 </style>
