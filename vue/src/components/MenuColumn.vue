@@ -44,24 +44,35 @@
                     <router-link :to="party.InviteLink" v-for="party in this.$store.state.currentParties" v-bind:key="party.Id" style="text-decoration: none;">
                       <b-list-group-item  variant="outline-primary" style="background-color: transparent;" >
                       {{ party.Name }}
-                    </b-list-group-item>
+                      </b-list-group-item>
                     </router-link>
                     
                   </b-list-group>
                 
             </b-list-group>
-      
+          <button @click="TestMethod()">
+
+          </button>
+
     </b-card>
 </b-container>
 
 </template>
 
 <script>
+import YelpService from "../services/YelpService.js";
+
 export default {
   name: "MenuColumn",
   data() {
     return {};
   },
+  methods: {
+    TestMethod() {
+      console.log(YelpService.getRestaurants());
+    },
+  },
+
   created() {
     console.log("MenuColumn created");
   },

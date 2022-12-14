@@ -12,5 +12,6 @@ namespace Capstone.DAO
         void UpdateParty(int updatedPartyId, Party updatedParty);
 
         void DeleteParty(int partyId);
+        string GetNextPartyLink();
     }
 }
