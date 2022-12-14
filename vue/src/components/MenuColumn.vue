@@ -42,6 +42,16 @@
       </b-col>
     </b-row>
 
+
+  
+    <b-row class="text-center" align-v="center">
+      <b-col>
+        <b-button variant="outline-primary" href="http://localhost:8080/dashboard">
+          <h6>My current plans</h6>
+        </b-button>
+      </b-col>
+    </b-row>
+
     <div>
       <ul>
         <li v-for="party in this.$store.state.parties" v-bind:key="party.Id">
@@ -50,23 +60,6 @@
         </li>
       </ul>
     </div>
-    <!-- <ul>
-            <li>
-                Userette Nameabelle
-            </li>
-            <li>
-                <router-link to = "/home">Home</router-link>
-            </li>
-            <li>
-                <router-link to = "/newParty">Create Party</router-link>
-            </li>
-            <li>
-                <router-link to = "/dashboard">View Parties</router-link>
-            </li>
-            <li>
-            
-            </li>
-        </ul>     -->
   </b-container>
 </template>
 
@@ -84,7 +77,7 @@ export default {
 
 <style>
 .border {
-  color: black;
-  opacity: 100%;
+  box-shadow: 5px 5px 5px rgba(0,0,0,0.25);
+  border-style: hidden !important;
 }
 </style>

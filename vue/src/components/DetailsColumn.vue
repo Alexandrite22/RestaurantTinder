@@ -1,5 +1,5 @@
 <template>
-  <div class="details-column border">
+  <div class="details-column">
     Still determining how to display the proper information in this column
   </div>
 </template>
