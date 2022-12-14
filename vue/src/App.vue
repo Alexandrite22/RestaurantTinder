@@ -26,6 +26,7 @@
               style="
                 box-shadow: 5px 5px 5px rgba(0,0,0,0.25);
                 background: rgba(255, 255, 255, 0.5);
+                border: transparent !important;
               "
             />
           </div>
@@ -91,6 +92,12 @@ body {
     box-shadow: 5px 5px 5px rgba(0,0,0,0.5);
     margin: 0.3rem;
 }
+.btn:hover {
+    box-shadow: 5px 5px 5px rgba(0,0,0,0.5);
+    margin: 0.3rem;
+    background: white;
+
+}
 #app {
   height: 100%;
   min-height: 100%;
@@ -105,7 +112,9 @@ body {
   min-height: 70vh;
   height: 95vh;
   overflow: auto;
-  padding: 0.5em;
+  padding: 10px 10px 10px 10px !important;
+  border: transparent !important;
+  border-radius: 5px;
 }
 #main-container {
   padding: 4vw;
@@ -142,10 +151,13 @@ body {
 
 ::-webkit-scrollbar {
   width: 10px;
+  border-radius: 5px;
 }
 ::-webkit-scrollbar-track {
   background: rgb(179, 177, 177);
   box-shadow: 5px 5px 5px rgba(0,0,0,0.25);
+  border-radius: 5px;
+
 }
 
 ::-webkit-scrollbar-thumb {
