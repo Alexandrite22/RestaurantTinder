@@ -64,16 +64,12 @@ export default {
 </script>
 <style >
 body {
-  /* background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
-	background-size: 400% 400%;
-	animation: gradient 15s ease infinite;
-	height: 100vh; */
-  font-family: "Poppins", Helvetica, sans-serif;
-  background-image: url("./imgs/MainBack.jpg");
-  background-repeat: no-repeat;
-  background-size: 100vw;
-  margin: 1vw;
-  min-height: 95vh;
+  background: url("./imgs/Bg_11.jpg") no-repeat center center fixed; 
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+
 }
 #header {
   display: flex;
