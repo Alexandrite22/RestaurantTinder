@@ -97,7 +97,20 @@ namespace Capstone.DAO
             }
             return restaurants;
         }
-
+        public void CreateRestaurantFromBusinessAndParty(Business business, int partyId)
+        {
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                connection.Open();
+                SqlCommand command = new SqlCommand("INSERT INTO restaurant (party_id, api_id, yelp_link, image_link) VALUES (@party_id, @api_id, @yelp_link, @image_link)", connection);
+                command.Parameters.AddWithValue("@party_id", partyId);
+                command.Parameters.AddWithValue("@api_id", business.Id);
+                command.Parameters.AddWithValue("@yelp_link", business.Url);
+                command.Parameters.AddWithValue("@image_link", business.ImageUrl);
+                command.ExecuteNonQuery();
+                connection.Close();
+            }
+        }
         private Restaurant CreateRestaurantFromReader(SqlDataReader reader)
         {
             Restaurant restaurant = new Restaurant();

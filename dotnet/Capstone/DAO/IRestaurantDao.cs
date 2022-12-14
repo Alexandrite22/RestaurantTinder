@@ -8,5 +8,6 @@ namespace Capstone.DAO
         void Create(Restaurant restaurant);
         Restaurant GetRestaurant(int restaurantId);
         IList<Restaurant> GetRestaurants(int partyId);
+        void CreateRestaurantFromBusinessAndParty(Business business, int partyId);
     }
 }

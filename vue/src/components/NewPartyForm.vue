@@ -93,17 +93,24 @@ export default {
       console.log("Calling partyservice create method on this object");
       console.log(this.party);
       this.party.owner = this.$store.state.user.id;
+      let myVar;
       NewPartyService.create(this.party)
         .then((response) => {
-          console.log("Party created, response below");
           console.log(response);
           this.$emit("party-created", response.data);
+          myVar = response.data;
         })
         .catch((error) => {
           console.log(error);
         });
       this.party = { owner: 1 }; //empty out the review
       console.log("Party created, closing form");
+      console.log(myVar);
+      console.log(myVar);
+      console.log("Adding newParty to parties in dataStore");
+      this.$store.commit("ADD_NEW_PARTY", myVar);
+      console.log(this.$store.state.parties);
+
       this.showForm = false; //hide the form
     },
   },

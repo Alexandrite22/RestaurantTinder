@@ -58,4 +58,14 @@ export default {
 
 
 
+    //create a new restaurant
+    createRestaurants(restaurants, partyId) {
+        console.log(`createRestaurants(${restaurants}) in PartyService.js`)
+        let newRestaurant = axios.post('/Party/restaurants/' + partyId, restaurants);
+        console.log(newRestaurant);
+        return newRestaurant;
+    },
+
+
+
 }

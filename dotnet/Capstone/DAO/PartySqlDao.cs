@@ -21,33 +21,25 @@ namespace Capstone.DAO
         /// Create a new party in the database from a Party object
         /// Takes in a Party object and returns the new party ID
         /// </summary>
-        public int CreateParty(Party party)
+        public Party CreateParty(Party party)
         {
-            string link = GetNextPartyLink();
+            party.InviteLink = GetNextPartyLink();
             using (SqlConnection conn = new SqlConnection(connectionString))
             {
 
                 conn.Open(); //Open the connection to the DB    
 
                 // Create a new SQL command that inserts a new party into the database and returns the new party_id
-                SqlCommand cmd = new SqlCommand("INSERT INTO party (location, owner, name_of_party, description, invite_link, date) VALUES (@location, @owner, @name_of_party, @description, @invite_link, @date); SELECT @@IDENTITY", conn);
+                SqlCommand cmd = new SqlCommand("INSERT INTO party (location, owner, name_of_party, description, invite_link, date) VALUES (@location, @owner, @name_of_party, @description, @invite_link, @date); SELECT @@IDENTITY;", conn);
                 // Add the parameters to the SQL command
                 cmd.Parameters.AddWithValue("@location", party.Location);
                 cmd.Parameters.AddWithValue("@owner", 1);
                 cmd.Parameters.AddWithValue("@name_of_party", party.Name);
                 cmd.Parameters.AddWithValue("@description", party.Description);
-                cmd.Parameters.AddWithValue("@invite_link", link);
-                // add date param of one week in the future
-                // cmd.Parameters.AddWithValue("@date", DateTime.Now.AddDays(7));
-                cmd.Parameters.AddWithValue("@date", party.Date);
+                cmd.Parameters.AddWithValue("@invite_link", party.InviteLink);                cmd.Parameters.AddWithValue("@date", party.Date);
 
-
-                //, ((SELECT MAX(party_id) FROM party) +1)
-
-                // Execute the SQL command and get the new party_id.
-                int newId = Convert.ToInt32(cmd.ExecuteScalar());
-                //Convert the new party_id to an int32 and set it to the partyId property of the party object
-                return newId; //return party with updated new party_id
+                party.PartyId = Convert.ToInt32(cmd.ExecuteScalar());
+                return party;
             }
         }
 
@@ -157,7 +149,7 @@ namespace Capstone.DAO
 
 
 
-        private string GetNextPartyLink()
+        public string GetNextPartyLink()
         {
             using (SqlConnection conn = new SqlConnection(connectionString))
             {

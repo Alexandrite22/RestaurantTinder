@@ -18,7 +18,17 @@ namespace Capstone.Models
     {
         public int RestaurantId { get; set; }
         public int PartyId { get; set; }
-        public Business YelpData { get; set;}
+        public Business YelpData { get; set; }
+    }
+    public class RestaurantMinModel
+    {
+        public string ApiId { get; set; }
+        public int PartyId { get; set; }
+        public RestaurantMinModel(Restaurant restaurant)
+        {
+            ApiId = restaurant.ApiId;
+            PartyId = restaurant.PartyId;
+        }
     }
     //public class RestaurantViewModel
     //{

@@ -35,8 +35,8 @@ namespace Capstone.Controllers
         public IList<PartyViewModel> Get()
         {
             //GET ALL partiesVIEWMODELS
-                //PartyVIEWMODELS HAVE PARTY PROPERTIES AND A BUSINESSES LIST
-                    //GET BUSINESSES WITH 
+            //PartyVIEWMODELS HAVE PARTY PROPERTIES AND A BUSINESSES LIST
+            //GET BUSINESSES WITH 
             //Here we Call "GetParty" in partySqlDAO, "GetRestaurants" from restaurantDAO, "GetGuests" from guestsDAO
             IList<Party> parties = PartyDao.GetParties(1);
             //DEAR LORD IS THIS INNEFICIENT WTF
@@ -86,31 +86,29 @@ namespace Capstone.Controllers
         // {
 
         [HttpPost]
-        public int Post([FromBody] Party createdParty)
+        public PartyViewModel Post([FromBody] Party createdParty)
         {
             //Use partyDao.CreateParty(newParty) to create a new party, and return the ID of the party
-            
-            // newPartyId is the Id of the newly created part
-            Party newParty = new Party(){
-                PartyId = 0,
-                Location = createdParty.Location,
-                Name = createdParty.Name,
-                Date = createdParty.Date,
-                Owner = "1",
-                Description = createdParty.Description,
-                InviteLink = "https://localhost:44315/tinder/{partyId}"
-            };
-            int newPartyId = PartyDao.CreateParty(newParty);
 
+            // newPartyId is the Id of the newly created part
+            createdParty = PartyDao.CreateParty(createdParty);
             //Make new restaurants
-            Businesses yelpBusinessList = yelpApiService.GetRestaurantsFromYelpByLocation(newParty.Location).Result;
-            List<Restaurant> restaurants = TypeConverterHelper.CreateRestaurant(yelpBusinessList, newPartyId);
+            Task<Businesses> yelpBusinessList = yelpApiService.GetRestaurantsFromYelpByLocation(createdParty.Location);
+            List<Restaurant> restaurants = TypeConverterHelper.CreateRestaurant(yelpBusinessList.Result, createdParty.PartyId);
             foreach (Restaurant restaurant in restaurants)
             {
-                restaurant.PartyId = newPartyId;
+                restaurant.PartyId = createdParty.PartyId;
                 RestaurantsDao.Create(restaurant);
             }
-            return newPartyId;
+            return new PartyViewModel(createdParty, new List<Guest>(), yelpBusinessList.Result);
+        }
+        [HttpPost("restaurants/{partyId}")]
+        public void PostRestaurantFromVueYelpFOrmat([FromBody] Businesses businesses, int partyId)
+        {
+            foreach (Business business in businesses.BusinessesBusinesses)
+            {
+                RestaurantsDao.CreateRestaurantFromBusinessAndParty(business, partyId);
+            }
         }
 
 
@@ -128,20 +126,22 @@ namespace Capstone.Controllers
             PartyDao.DeleteParty(partyId);
         }
 
-        /// POST /<PartyController>/location
-        /// 
-        //public IList<Restaurant> Post([FromBody] string zipcode)
-        //{
-        //    //TODO: CALL YELP API AND GET 25 Restaurants AND DETAILS FROM ZIP CODE
-        //    //
-        //    var client = new RestClient("https://api.yelp.com/v3/businesses/search?sort_by=best_match&limit=20");
-        //    var request = new RestRequest(Method.GET);
-        //    request.AddHeader("accept", "application/json");
-        //    IRestResponse response = client.Execute(request);
-
-        //    throw new NotImplementedException();
-        //}
-
-       
+        [HttpGet("minTest/")]
+        public IList<PartyMinModel> GetMinData()
+        {
+            IList<Party> parties = PartyDao.GetParties(1);
+            IList<PartyMinModel> partyMinModels = new List<PartyMinModel>();
+            foreach (var party in parties)
+            {
+                partyMinModels.Add(new PartyMinModel(party.PartyId));
+            }
+            partyMinModels = partyMinModels.Reverse().ToList();
+            return partyMinModels;
+        }
+        [HttpGet("minTest/{partyId}")]
+        public PartyMinModel GetMinDataFOrParty(int partyId)
+        {
+            return new PartyMinModel(partyId);
+        }
     }
 }
