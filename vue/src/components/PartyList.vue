@@ -21,7 +21,7 @@
           <td class="td">{{ party.Date }}</td>
           <td class="td-2">{{ party.Location }}</td>
           <td class="td">
-            <router-link class="btn btn-success" :to="party.InviteLink">
+            <router-link class="btn btn-success" :to="party.PartyInviteLink">
               Invite Link
             </router-link>
             </td>

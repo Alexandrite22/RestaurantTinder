@@ -52,14 +52,60 @@
   </span>
 </template>
 <script>
+import PartyService from "./services/PartyService.js";
 import MenuColumn from "./components/MenuColumn.vue";
 import DetailsColumn from "./components/DetailsColumn.vue";
 export default {
+  data() {
+    return {
+      parties: [], 
+    };
+  },
   name: "app",
   components: {
     MenuColumn,
     DetailsColumn,
   },
+  methods: {
+    getParties() {
+      PartyService.getParties(1)
+        .then((response) => {
+          response.data.forEach((thing) => {
+            console.log("LOGGING MY THING BROOOSKI");
+            console.log(thing);
+            let tempBusinessList= thing.yelpBusinesses.businessesBusinesses;
+            let temp = {
+              PartyId: thing.partyId,
+              PartyLocation: thing.location,
+              PartyDate: thing.date,
+              PartyOwner: thing.owner,
+              PartyDescription: thing.description,
+              PartyName: thing.name,
+              PartyTime: thing.date,
+              PartyInviteLink: thing.inviteLink,
+              PartyRsvp: thing.guestList,
+              PartyRestaurants: tempBusinessList,
+            };
+          console.log(tempBusinessList);
+          this.parties.push(temp);
+        
+          // console.log("This is the list of properties for a party");
+          // console.log(temp);
+        });
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+      console.log("This is the list of parties and all their properties");
+      console.log(this.parties);
+      this.$store.commit("SET_CURRENT_PARTIES", this.parties);
+      console.log("This is the list of parties in the store");
+      console.log(this.$store.state.currentParties);
+    }
+  },
+  created() {
+    this.getParties();
+  }
 };
 </script>
 <style >

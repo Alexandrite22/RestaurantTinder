@@ -6,9 +6,7 @@
         anything from dates to large parties to corporate events! Use our
         service to let everyone decide which restaurant will let your event be a
         smash hit!
-
     </p>
-    
   </div>
 </template>
 
