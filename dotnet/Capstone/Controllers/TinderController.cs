@@ -24,45 +24,14 @@ namespace Capstone.Controllers
         private YelpApiService yelpService = new YelpApiService();
 
 
-        //// GET: api/<TinderController>
-        //[HttpGet]
-        //public List<RestaurantViewModel> Get()
-        //{
-        //    YelpApiService yelpService = new YelpApiService();
-        //    return yelpService.CreatePracticeRestaurants();
-        //}
-
-        //// GET /<TinderController>/5
-        ///// Get the restaurants for a particular party
-        ///// takes in partyId as an int in endpoint path
-        //[HttpGet("{partyId}")]
-        //public List<RestaurantViewModel> GetRestaurants(int partyId)
-        //{
-        //    YelpApiService yelpService = new YelpApiService();
-        //    return yelpService.CreatePracticeRestaurants();
-
-
-        //}
         // GET: api/<TinderController>
         [HttpGet("restaurant/{id}")]
-        public async Task<Business> GetYelpApiResults(string id)
+        public Business GetYelpApiResults(string id)
         {
-            // takes in a restaurant api address as a string, for example
-            // "https://www.yelp.com/biz/marmar-s-pizza-cleveland-heights
-            // ?adjust_creative=lRzblQl-ehLXFsgKraH69g&utm_campaign=yelp_api_v3&utm_medium=api_v3_business_search&utm_source=lRzblQl-ehLXFsgKraH69g"
 
+            Business YelpRestaurantData = yelpService.GetThisBusinessFromYelp(id).Result;
 
-            //curl --request GET \
-            //--url 'https://api.yelp.com/v3/businesses/search?sort_by=best_match&limit=20' \
-            //--header 'Authorization: lRzblQl-ehLXFsgKraH69g' \
-            //--header 'accept: application/json'
-
-            Business YelpRestaurantData = await yelpService.GetThisRestaurantFromYelp(id);
-
-
-            throw new Exception();
-
-
+            return YelpRestaurantData;
         }
 
 
@@ -86,9 +55,5 @@ namespace Capstone.Controllers
         {
             GuestsDao.DeleteGuest(guestId);
         }
-
-
-                 
-
     }
 }

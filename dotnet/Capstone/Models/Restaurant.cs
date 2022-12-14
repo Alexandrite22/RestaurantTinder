@@ -8,9 +8,11 @@ namespace Capstone.Models
     public class Restaurant{
         public int RestaurantId { get; set; }
         public int PartyId { get; set; }
+        public string Name { get; set; }
         public string ApiId { get; set; }
         public string YelpLink { get; set; }
-        public string ImageUrl { get; set; }
+        public string ImageLink { get; set; }
+
     }
     public class RestaurantViewModel
     {
@@ -61,10 +63,12 @@ namespace Capstone.Models
     //}
     //public class categories
     //{
-    //    public string alias { get; set; }    //    public string name { get; set; }
+    //    public string alias { get; set; }
+    //    public string name { get; set; }
     //}
     //public class coordinates
     //{
-    //    public string alias { get; set; }    //    public string name { get; set; }
+    //    public string alias { get; set; }
+    //    public string name { get; set; }
     //}
 }

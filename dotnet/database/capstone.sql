@@ -36,6 +36,7 @@ CREATE TABLE restaurant (
 	restaurant_id int IDENTITY (1,1) NOT NULL,
 	party_id int NOT NULL,
 	api_id varchar(200),
+	name varchar(200),
 	yelp_link varchar(200),
 	image_link varchar(200)
 	PRIMARY KEY (restaurant_id),

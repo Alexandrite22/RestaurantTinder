@@ -20,7 +20,7 @@ namespace Capstone.Services
 
         }
 
-        public async Task<Business> GetThisRestaurantFromYelp(string apiId) //Task<RestaurantViewModel> is a promise that you will return a restaurantViewModel. 
+        public async Task<Business> GetThisBusinessFromYelp(string apiId) //Task<RestaurantViewModel> is a promise that you will return a restaurantViewModel. 
         {
             Business restaurant = new Business();
             string baseUrl = "https://api.yelp.com/v3/businesses/";
@@ -47,6 +47,18 @@ namespace Capstone.Services
             }
 
             return restaurants;
+        }
+        public async Task<Businesses> GetTheseRestaurantsFromYelp(IList<Restaurant> restaurants)
+        {
+            Businesses businesses = new Businesses();
+            foreach (Restaurant restaurant in restaurants)
+            {
+                Business business = await GetThisBusinessFromYelp(restaurant.ApiId);
+                businesses.BusinessesBusinesses.Add(business);
+            }
+
+            return businesses;
+
         }
     }
 }

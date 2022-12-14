@@ -15,6 +15,21 @@ namespace Capstone.DAO
         {
             connectionString = dbConnectionString;
         }
+        //Create a method that takes in a Restaurant object and adds it to the database
+        public void Create(Restaurant restaurant)
+        {
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                connection.Open();
+                SqlCommand command = new SqlCommand("INSERT INTO restaurant (party_id, api_id, yelp_link, image_link) VALUES (@party_id, @api_id, @yelp_link, @image_link)", connection);
+                command.Parameters.AddWithValue("@party_id", restaurant.PartyId);
+                command.Parameters.AddWithValue("@api_id", restaurant.ApiId);
+                command.Parameters.AddWithValue("@yelp_link", restaurant.YelpLink);
+                command.Parameters.AddWithValue("@image_link", restaurant.ImageLink);
+                command.ExecuteNonQuery();
+                connection.Close();
+            }
+        }
 
         /// <summary>
         /// Get a restaurant based on a restaurantId
@@ -88,10 +103,13 @@ namespace Capstone.DAO
             Restaurant restaurant = new Restaurant();
             restaurant.RestaurantId = Convert.ToInt32(reader["restaurant_id"]);
             restaurant.PartyId = Convert.ToInt32(reader["party_id"]);
+            restaurant.Name = Convert.ToString(reader["Name"]);
             restaurant.YelpLink = Convert.ToString(reader["yelp_link"]);
+            restaurant.ImageLink = Convert.ToString(reader["image_link"]);
             restaurant.ApiId = Convert.ToString(reader["api_id"]);
             return restaurant;
         }
+
 
     }
 }

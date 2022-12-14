@@ -40,9 +40,9 @@ namespace Capstone.Controllers
             // A viewModel is the model of data returned to the view
             IList<PartyViewModel> partyViewModels = new List<PartyViewModel>();
             foreach (var party in parties)
-            {
-                PartyViewModel partyGuestsAndRestaurants = new PartyViewModel(party, GuestsDao.GetGuests(party.PartyId), new List<Restaurant>());
-                partyViewModels.Add(partyGuestsAndRestaurants);
+            { //TODO FIX THIS SHIT
+                //PartyViewModel partyGuestsAndRestaurants = new PartyViewModel(party, GuestsDao.GetGuests(party.PartyId));
+                //partyViewModels.Add(partyGuestsAndRestaurants);
             }
             // Reverse partyViewModels so that the most recent party is at the top of the list
             partyViewModels = partyViewModels.Reverse().ToList();
@@ -59,13 +59,16 @@ namespace Capstone.Controllers
         [HttpGet("{partyId}")]
         public PartyViewModel Get(int partyId)
         {
+            IList<Restaurant> restaurants = RestaurantsDao.GetRestaurants(partyId);
+            Task<Businesses> businesses = yelpApiService.GetTheseRestaurantsFromYelp(restaurants);
+
             //Here we Call "GetParty" in partySqlDAO, "GetRestaurants" from restaurantDAO, "GetGuests" from guestsDAO
             Party party = PartyDao.GetParty(partyId);
-            IList<Restaurant> restaurants = RestaurantsDao.GetRestaurants(partyId);
+
             IList<Guest> guests = GuestsDao.GetGuests(partyId);
             //make partyviewmodel from values above. 
             // A viewModel is the model of data returned to the view
-            PartyViewModel partyGuestsAndRestaurants = new PartyViewModel(party, guests, restaurants);
+            PartyViewModel partyGuestsAndRestaurants = new PartyViewModel(party, guests, businesses.Result);//
             return partyGuestsAndRestaurants;
         }
 
@@ -91,21 +94,23 @@ namespace Capstone.Controllers
             // newPartyId is the Id of the newly created part
             Party newParty = new Party(){
                 PartyId = 0,
+                Location = createdParty.Location,
                 Name = createdParty.Name,
                 Date = createdParty.Date,
                 // Owner = createdParty.Owner,
                 Owner = "1",
-                Location = createdParty.Location,
                 Description = createdParty.Description,
                 InviteLink = "https://localhost:44315/tinder/{partyId}"
             };
+            int newPartyId = PartyDao.CreateParty(newParty).PartyId;
+
             //Make new restaurants
             Businesses yelpBusinessList = yelpApiService.GetRestaurantsFromYelpByLocation(newParty.Location).Result;
-            foreach(Business restaurant in yelpBusinessList.BusinessesBusinesses) //This Naming is so stupid I hate it but it works so YOLO
+            List<Restaurant> restaurants = TypeConverterHelper.CreateRestaurant(yelpBusinessList, newPartyId);
+            foreach(Restaurant restaurant in restaurants) 
             {
-                RestaurantsDao.CreateRestaurant(newParty.Id, restaurant);
+                RestaurantsDao.Create(restaurant);
             }
-            int newPartyId = PartyDao.CreateParty(newParty).PartyId;
             return newPartyId;
         }
 
