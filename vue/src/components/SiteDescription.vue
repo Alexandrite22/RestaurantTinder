@@ -1,4 +1,17 @@
 <template>
+
+
+<b-container>
+  <b-card>
+    <b-card-title>Our mission</b-card-title>
+      <b-list-group>
+        <b-list-group-item>
+        </b-list-group-item>
+      </b-list-group>
+  </b-card>
+
+
+
   <div>
     <!-- <div>
       <b-col class="col-12" id="main-title"> ME-n-U </b-col>
@@ -6,8 +19,8 @@
     <div class="col-12">
       <div id="box">
         <span id="about-us">
-        Here at Me-n-U we aim to revolutionize how groups select restaurants for
-        anything from dates to large parties to corporate events! Use our
+        Our Mission: Whether a simple date, a group outing, or a corporate event, we aim to revolutionize how groups select restaurants 
+         <br/> Use our
         service to let everyone decide which restaurant will let your event be a
         smash hit!
         </span>
@@ -19,6 +32,7 @@
       <v-btn class="btn btn-secondary col-3"> SIGN-UP </v-btn>
     </div> -->
   </div>
+</b-container>
 </template>
 
 <script>
@@ -36,7 +50,7 @@ export default {};
   width: 98%;
   margin: 1%;
   padding: 1%;
-  background: rgba(0,0,0,0.25);
+  background: rgba(122, 122, 122, 0.25);
   box-shadow: 5px 5px 5px rgba(0,0,0,0.5);;
 }
 </style>

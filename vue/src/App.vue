@@ -1,6 +1,6 @@
 <template>
   <span id="app">
-    <b-row id="nav-bar">
+    <!-- <b-row id="nav-bar">
       <span id="header" v-if="$store.state.token != ''">
         <router-link
           class="btn btn-primary solid-text"
@@ -15,7 +15,7 @@
           >Logout</router-link
         >
       </span>
-    </b-row>
+    </b-row> -->
     <div id="main-container">
       <b-row id="sub-container">
         <b-col id="menuColumn" class="col-2 panel">
@@ -26,7 +26,6 @@
               style="
                 box-shadow: 5px 5px 5px rgba(0,0,0,0.25);
                 background: rgba(255, 255, 255, 0.5);
-                height: 80vh;
               "
             />
           </div>
@@ -44,7 +43,6 @@
               style="
                 box-shadow: 5px 5px 5px rgba(0,0,0,0.25);
                 background: rgba(255, 255, 255, 0.5);
-                height: 80vh;
               "
             />
           </div>
@@ -105,7 +103,7 @@ body {
   box-shadow: 5px 5px 5px rgba(0,0,0,0.25);
   background: rgba(255, 255, 255, 0.5);
   min-height: 70vh;
-  height: 80vh;
+  height: 95vh;
   overflow: auto;
   padding: 0.5em;
 }
