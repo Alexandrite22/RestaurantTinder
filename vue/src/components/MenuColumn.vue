@@ -13,7 +13,7 @@
                 </b-button>
                 </router-link>
 
-                <router-link v-bind:to="{ name: 'logout' }" style="text-decoration: none;">
+                <router-link v-if="$store.state.token != ''" v-bind:to="{ name: 'logout' }" style="text-decoration: none;">
                 <b-button class="list-group-item list-group-item-action p-0 m-0 d-flex align-items-center justify-content-center" variant="outline-primary" style="background-color: transparent; height: 4rem; box-shadow:none;">
                   <h5> <b-icon-key-fill variant="light"/> &nbsp; Logout</h5>
                 </b-button>
