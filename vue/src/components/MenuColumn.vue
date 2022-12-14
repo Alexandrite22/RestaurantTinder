@@ -61,23 +61,6 @@
         </li>
       </ul>
     </div>
-    <!-- <ul>
-            <li>
-                Userette Nameabelle
-            </li>
-            <li>
-                <router-link to = "/home">Home</router-link>
-            </li>
-            <li>
-                <router-link to = "/newParty">Create Party</router-link>
-            </li>
-            <li>
-                <router-link to = "/dashboard">View Parties</router-link>
-            </li>
-            <li>
-            
-            </li>
-        </ul>     -->
   </b-container>
 </template>
 
@@ -95,7 +78,7 @@ export default {
 
 <style>
 .border {
-  color: black;
-  opacity: 100%;
+  box-shadow: 5px 5px 5px rgba(0,0,0,0.25);
+  border-style: hidden !important;
 }
 </style>
