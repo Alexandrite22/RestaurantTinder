@@ -5,8 +5,9 @@ using System.Linq;
 using System.Threading.Tasks;
 using Capstone.DAO;
 using Capstone.Models;
+using RestSharp;
 using Capstone.Services;
-
+using System.Text.RegularExpressions;
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
 namespace Capstone.Controllers
@@ -18,8 +19,8 @@ namespace Capstone.Controllers
         private readonly string connectionString = "Server=.\\SQLEXPRESS;Database=final_capstone;Trusted_Connection=True;";
         // TODO: add partyDao, guestsDAO, restaurantDAO
         private IPartyDao PartyDao = new PartySqlDao("Server=.\\SQLEXPRESS;Database=final_capstone;Trusted_Connection=True;");
-        private IGuestDao GuestsDao = new GuestSqlDao("Server=.\\SQLEXPRESS;Database=final_capstone;Trusted_Connection=True;");
-        private IRestaurantDao RestaurantsDao = new RestaurantSqlDao("Server=.\\SQLEXPRESS;Database=final_capstone;Trusted_Connection=True;");
+        private IGuestDao GuestDao = new GuestSqlDao("Server=.\\SQLEXPRESS;Database=final_capstone;Trusted_Connection=True;");
+        private IRestaurantDao RestaurantDao = new RestaurantSqlDao("Server=.\\SQLEXPRESS;Database=final_capstone;Trusted_Connection=True;");
         private Businesses tempList = new Businesses();
         private YelpApiService yelpService = new YelpApiService();
 
@@ -28,16 +29,25 @@ namespace Capstone.Controllers
         [HttpGet("restaurant/{id}")]
         public Business GetYelpApiResults(string id)
         {
-
-            Business YelpRestaurantData = yelpService.GetThisBusinessFromYelp(id).Result;
-
-            return YelpRestaurantData;
+            if (Regex.IsMatch(id, @"^\d+$"))//if string is numbers
+            {//Get the yelp api_id for the restaurant and get that specific yelp api result and return it
+                Restaurant dbRestaurant = RestaurantDao.GetRestaurant(int.Parse(id));
+                return yelpService.GetThisBusinessFromYelp(dbRestaurant.ApiId).Result;
+            }//else use the ID as if its a normal ID
+            var output = yelpService.GetThisBusinessFromYelp(id).Result;
+            return output;
         }
 
 
         // POST /<TinderController>/like
-        [HttpPost]
-        public void PostLikeDislike([FromBody] List<LikeDislike> LikeDislike)
+        [HttpPost("party/{party}/rsvp/{name}")]
+        public IActionResult PostRsvp(string name, int party)
+        {//return party with updated new party_id as an IActionResult
+            return Created("", GuestDao.CreateGuest(name, party));
+}
+        // POST /<TinderController>/like
+        [HttpPost("rsvp/{name}/")]
+        public void PostRsvpWithVotes([FromBody] Dictionary<Restaurant, bool> likes, string name)
         {
             throw new NotImplementedException();
         }
@@ -53,7 +63,7 @@ namespace Capstone.Controllers
         [HttpDelete("guest/{guestId}")]
         public void Delete(int guestId)
         {
-            GuestsDao.DeleteGuest(guestId);
+            GuestDao.DeleteGuest(guestId);
         }
     }
 }
