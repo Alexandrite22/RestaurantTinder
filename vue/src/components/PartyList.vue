@@ -29,7 +29,8 @@
             </router-link>
           </td>
           <!-- TODO: FIX THE LINK ON THIS BUTTON TO GO TO THE PARTY DETAILS PAGE FOR THAT PARTY-->
-          <td class="td-2"><router-link class="btn btn-success" v-bind:to="{name: 'party-vote', params:{id: party.partyId}}">Vote</router-link></td>
+          <td class="td-2"><router-link class="btn btn-success" v-bind:to="{name: 'rsvp', params:{partyId: party.partyId}}">Vote</router-link></td>
+       
           <!--<td>{{party.partyRsvp}}</td> should we have a count of guests as rsvp? -->
         </tr>
       </table>

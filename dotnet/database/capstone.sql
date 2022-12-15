@@ -29,6 +29,7 @@ CREATE TABLE party (
 	description varchar(512),
 	name_of_party varchar(64) NOT NULL,
 	invite_link varchar(100),
+	party_invite_code varchar(25),
 	PRIMARY KEY (party_id),
 	FOREIGN KEY (owner) REFERENCES users (user_id)
 )
