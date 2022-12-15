@@ -40,6 +40,7 @@
 import PartyService from "./services/PartyService.js";
 import MenuColumn from "./components/MenuColumn.vue";
 import DetailsColumn from "./components/DetailsColumn.vue";
+
 export default {
   data() {
     return {
