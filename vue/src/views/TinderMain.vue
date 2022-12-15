@@ -10,18 +10,15 @@
             <h6>Description: {{party.description}}</h6>   
             <h6>Host: {{party.owner}}</h6>
             <h6>Attendees: {{party.guestList.length}} </h6>
-            <ol>
-                <li v-for="guest in party.PartyRsvp" :key="guest.guest_Id">
-                    {{guest.name}}
-                </li>
-            </ol>
+            <attendee-form  v-bind:guests="party.guestList"/>
+
             <h6>Restaurants: </h6>
             <ol>
                 <li v-for="restaurant in party.restaurants" :key="restaurant.restaurantId">
                     {{restaurant.yelpLink}}
                 </li>
             </ol>
-            <router-link to="#">Tind-RSVP (Haha get it like tinder but the r is rsvp)</router-link><!-- This is the link to voting and picking a name -->
+            <router-link class="btn btn-success" v-bind:to="{name: 'rsvp', params:{partyId: party.partyId}}">Tind-RSVP (Haha get it like tinder but the r is rsvp)</router-link><!-- This is the link to voting and picking a name -->
         </col-3>
             <col-9>
                 <restaurant-card-v-2/>
@@ -34,8 +31,9 @@
 <script>
 import partyService from '../services/PartyService.js';
 import RestaurantCardV2 from '../components/RestaurantCardV2.vue';
+import attendeeForm from '../components/AttendeeForm.vue';
 export default {
-  components: { RestaurantCardV2 },
+  components: { RestaurantCardV2, attendeeForm },
     name: 'tinder-main',
     data() {
         return {
