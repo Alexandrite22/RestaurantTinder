@@ -10,7 +10,7 @@
             <h6>Description: {{party.description}}</h6>   
             <h6>Host: {{party.owner}}</h6>
             <h6>Attendees: {{party.guestList.length}} </h6>
-            <attendee-form  v-bind:guests="party.guestList"/>
+            <attendee-form  v-bind:guests="party.guestList" v-bind:partyId="party.partyId"/>
 
             <h6>Restaurants: </h6>
             <ol>

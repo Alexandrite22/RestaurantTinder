@@ -14,9 +14,10 @@
 </template>
 
 <script>
+import partyService from '../services/PartyService.js';
 export default {
     name: 'attendee-form',
-    props: ['guests'],
+    props: ['guests', 'partyId'],
     data() {
         return {
             guest: {},
@@ -25,7 +26,9 @@ export default {
     },
     methods: {
         addGuest() {
-            this.newGuests.push(this.guest);
+            partyService.inviteGuestToParty(this.guest.name, this.partyId)
+                .then((response) => {this.newGuests.push(response.data)});
+           // this.newGuests.push(this.guest);
             this.guest = {};
             //TODO: actually send to API here but for now we'll fake it 
         }

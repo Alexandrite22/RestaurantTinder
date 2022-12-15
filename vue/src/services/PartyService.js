@@ -66,6 +66,9 @@ export default {
         return newRestaurant;
     },
 
-
-
+    //create a guest 
+    inviteGuestToParty(guest, partyId) {
+        let response = axios.post(`/Tinder/party/${partyId}/rsvp/${guest}`); 
+        return response;
+        }
 }
