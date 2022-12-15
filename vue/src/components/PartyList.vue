@@ -18,18 +18,25 @@
         <tr v-for="party in parties" v-bind:key="party.Id">
           <td class="td">{{ party.name }}</td>
           <td class="td-2">{{ party.date }}</td>
-          <td class="td">{{ party.date }}</td>
+          <td class="td">{{ party.time }}</td>
           <td class="td-2">{{ party.location }}</td>
           <td class="td">
             <router-link
               class="btn btn-success"
-              v-bind:to="party.PartyInviteLink"
+              v-bind:to="party.inviteLink"
             >
               Invite Link
             </router-link>
           </td>
           <!-- TODO: FIX THE LINK ON THIS BUTTON TO GO TO THE PARTY DETAILS PAGE FOR THAT PARTY-->
-          <td class="td-2"><router-link class="btn btn-success" v-bind:to="{name: 'party-vote', params:{id: party.partyId}}">Vote</router-link></td>
+          <td class="td-2">
+            <router-link
+              class="btn btn-success"
+              :party="party"
+              v-bind:to="party.inviteLink"
+              ><strike>Details</strike></router-link
+            >
+          </td>
           <!--<td>{{party.partyRsvp}}</td> should we have a count of guests as rsvp? -->
         </tr>
       </table>
@@ -51,6 +58,15 @@ export default {
   methods: {
     getParties() {
       this.parties = this.$store.state.currentParties;
+      // foreach party in this.parties set party.time to a string with the format "hour:minute" ie "8:45"
+      this.parties.forEach(party => {
+        party.time = party.date.substring(11, 16);
+      });
+      // foreach party in this.parties set party.date to a string with the format "month day" ie "Jan 1"
+      this.parties.forEach(party => {
+        party.date = party.date.substring(5, 7) + " " + party.date.substring(8, 10);
+      });
+    console.log(this.parties);
     },
   },
 };
