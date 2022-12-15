@@ -54,6 +54,7 @@
 <script>
 import MenuColumn from "./components/MenuColumn.vue";
 import DetailsColumn from "./components/DetailsColumn.vue";
+
 export default {
   name: "app",
   components: {
