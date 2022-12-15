@@ -3,7 +3,7 @@
         <div id = "rest-card">
             <div id = "border">
             <b-row id = "name">
-                {{party.res}} 
+                {{currentParty.name}} 
             </b-row>
             <b-row>
                 <a h-ref="#">
@@ -40,7 +40,7 @@
 
 <script>
 export default {
-    name: "RestaurantCardV2",
+    name: "restaurant-card-v2",
     data()
     {
         return{
@@ -55,7 +55,7 @@ export default {
             {
                 let partyId = this.$route.params.partyId;
                 this.parties=this.$store.state.currentParties;
-                this.currentParty=this.parties.find(party => {return party.partyId===partyId});
+                this.currentParty=this.parties.find(party => {return party.partyId==partyId});
             }
     }
 };
