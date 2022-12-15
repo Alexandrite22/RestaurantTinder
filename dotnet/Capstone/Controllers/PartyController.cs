@@ -33,7 +33,7 @@ namespace Capstone.Controllers
         // GET /<PartyController>/5
         [HttpGet]
         public IList<PartyViewModel> Get()
-        {
+        {   
             //GET ALL partiesVIEWMODELS
             //PartyVIEWMODELS HAVE PARTY PROPERTIES AND A BUSINESSES LIST
             //GET BUSINESSES WITH 
