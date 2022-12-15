@@ -1,13 +1,13 @@
 <template>
     <div>
-        <div id = "rest-card">
+        <div id = "rest-card" v-bind:key="restaurant.restaurantId" v-for="restaurant in currentParty.restaurants">
             <div id = "border">
             <b-row id = "name">
-                {{currentParty.name}} 
+                {{restaurant.name}} 
             </b-row>
             <b-row>
                 <a h-ref="#">
-                    <img id = "rest-image" src="{{}}" alt="Restaurant">
+                    <img id = "rest-image" src="" alt="Restaurant">
                 </a>
             </b-row>
             <b-row id="status" class="closed">
@@ -143,13 +143,5 @@ export default {
 {
     height: 5vh;
     width: 5vh;
-}
-#up-parent
-{
-    align-items: right;
-}
-#down-parent
-{
-    
 }
 </style>
