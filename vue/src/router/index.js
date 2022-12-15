@@ -112,6 +112,14 @@ const router = new Router({
         requiresAuth: false
       }
     },
+    {
+      path: '/tinder/:partyId/rsvp',
+      name: 'rsvp',
+      component: () => import('../views/Tindersvp.vue'),
+      meta: {
+        requiresAuth: false
+      } 
+    }
     // {
     //   path: '/tinder/:id/standings',
     //   name: 'restaurant',
