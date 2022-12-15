@@ -1,7 +1,7 @@
 <template>
     <div>
-        <row>
-        <col-3>
+        <row class = "row">
+        <col-3 class="col-3">
             <h1>Name: {{party.name}}</h1>
             <h2>ID: {{party.partyId}}</h2>
             <h3>Date: {{party.date}}</h3>
@@ -17,15 +17,15 @@
             </ol>
             <h6>Restaurants: </h6>
             <ol>
-                <li v-for="restaurant in party.restaurants" :key="restaurant.restaurantId">
+                <li v-for="restaurant in party.restaurants" :key="restaurant.restaurantId" class = "li">
                     {{restaurant.yelpLink}}
                 </li>
             </ol>
             <router-link to="#">Tind-RSVP (Haha get it like tinder but the r is rsvp)</router-link><!-- This is the link to voting and picking a name -->
         </col-3>
-            <col-9>
-                <restaurant-card-v-2/>
-            </col-9>
+        <col-9 class = "col-9">
+            <restaurant-card-v2/>
+        </col-9>
         </row>
         <!-- this is where we view our restaurants and sort through their data -->
     </div>
