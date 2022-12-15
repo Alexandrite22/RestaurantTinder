@@ -21,6 +21,7 @@ export default new Vuex.Store({
     token: currentToken || '',
     user: currentUser || {},
     currentUserId: {},
+    currentParty: {},
     currentParties: [],
     restaurant: [
 
@@ -54,7 +55,9 @@ export default new Vuex.Store({
     ADD_NEW_PARTY(state, party) {
       console.log("ADDING " + party + " to the currentParties in the state");
       state.currentParties.shift(party);
-    }
-
+    },
+    SET_CURRENT_PARTY(state, party) {
+      state.currentParty = party;
+    },
   }
 })
