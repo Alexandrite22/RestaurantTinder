@@ -3,7 +3,7 @@
         <div id = "rest-card">
             <div id = "border">
             <b-row id = "name">
-                {{party.res}} 
+                {{currentParty.name}} 
             </b-row>
             <b-row>
                 <a h-ref="#">
@@ -33,6 +33,10 @@
                     </div>
                 </b-col>
             </b-row>
+            <b-row>
+                <b-col id="up-parent" class = "col-6"><div id = "thumb-down"><b-icon-hand-thumbs-down-fill id="thumb-down-icon"/></div></b-col>
+                <b-col id="down-parent" class = "col-6"><div id = "thumb-up"><b-icon-hand-thumbs-up-fill id="thumb-up-icon"/></div></b-col>
+            </b-row>
         </div>
     </div>
 </div>
@@ -40,7 +44,7 @@
 
 <script>
 export default {
-    name: "RestaurantCardV2",
+    name: "restaurant-card-v2",
     data()
     {
         return{
@@ -55,7 +59,7 @@ export default {
             {
                 let partyId = this.$route.params.partyId;
                 this.parties=this.$store.state.currentParties;
-                this.currentParty=this.parties.find(party => {return party.partyId===partyId});
+                this.currentParty=this.parties.find(party => {return party.partyId==partyId});
             }
     }
 };
@@ -100,16 +104,52 @@ export default {
 {
     background: rgba(255,255,255,0.5);
     border-radius: 5px;
-    height: 91vh;
+    height: 65vh;
     box-shadow: 5px 5px 5px rgba(0,0,0,0.5);
 }
 .display-col
 {
     background: rgba(255,255,255,0.5);
     border-radius: 5px;
-    height: 75vh;
+    height: 40vh;
     width:95%;
     margin: 2.5%;
     box-shadow: 5px 5px 5px rgba(0,0,0,0.5);
+}
+#thumb-down
+{
+    background: crimson;
+    border-radius: 50%;
+    padding: 10px;
+    height: 7vh;
+    width: 7vh;
+    margin: 5%;
+}
+#thumb-down-icon
+{
+    height: 5vh;
+    width: 5vh;
+}
+#thumb-up
+{
+    background: rgb(105,145,255);
+    border-radius: 50%;
+    padding: 10px;
+    height: 7vh;
+    width: 7vh;
+    margin: 5%;
+}
+#thumb-up-icon
+{
+    height: 5vh;
+    width: 5vh;
+}
+#up-parent
+{
+    align-items: right;
+}
+#down-parent
+{
+    
 }
 </style>
