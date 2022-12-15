@@ -1,6 +1,9 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 import store from '../store/index'
+import Home from '../views/Home.vue'
+import AboutUs from '../views/AboutUs.vue'
+
 
 Vue.use(Router)
 
@@ -20,14 +23,14 @@ const router = new Router({
     {//homepage
       path: '/',
       name: 'home',
-      component: () => ('../views/Home.vue'),
+      component: Home,
       meta: {
       }
     },
     {//aboutPage
       path: "/about",
       name: "aboutUs",
-      component: () => ('../views/AboutUs.vue'),
+      component: AboutUs,
       meta: {
         requiresAuth: false
       }
@@ -82,7 +85,7 @@ const router = new Router({
       name: 'party',
       component: () => import('../views/Party.vue'),
       meta: {
-        requiresAuth:false
+        requiresAuth: false
       }
     },
     {
@@ -90,7 +93,7 @@ const router = new Router({
       name: 'party-vote',
       component: () => import('../components/RestaurantCardV2.vue'),
       meta: {
-        requiresAuth:false
+        requiresAuth: false
       }
     },
     {
@@ -126,7 +129,7 @@ const router = new Router({
     //   }
     // },
 
-    
+
 
   ]
 })

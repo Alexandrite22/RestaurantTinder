@@ -1,37 +1,30 @@
 <template>
     <div>
-        <div id = "rest-card">
+        <div id = "rest-card" v-bind:key="restaurant.restaurantId" v-for="restaurant in currentParty.restaurants">
             <div id = "border">
             <b-row id = "name">
-                {{party.res}} 
+                {{restaurant.name}} 
             </b-row>
             <b-row>
-                <a h-ref="#">
-                    <img id = "rest-image" src="{{}}" alt="Restaurant">
+                <a v-bind:href = "restaurant.yelpLink">
+                    <img v-bind:src = "restaurant.imageLink" id = "rest-image" alt="Restaurant">
                 </a>
             </b-row>
             <b-row id="status" class="closed">
                 CLOSED
             </b-row>
             <b-row>
-                <b-col class = "col-6">
+                <b-col class = "col-12">
                     <div class = "display-col">
                         <ul>
-                            <li>Italian</li>
-                            <li>Fast</li>
-                            <li>Economic</li>
+                            <li>ADDRESS: {{restaurant.address1}}</li>
                         </ul>
                     </div>    
                 </b-col>
-                <b-col class = "col-6">
-                    <div class = "display-col">
-                        <ul>
-                            <li>Italian</li>
-                            <li>Fast</li>
-                            <li>Economic</li>
-                        </ul>
-                    </div>
-                </b-col>
+            </b-row>
+            <b-row>
+                <b-col id="up-parent" class = "col-6"><div id = "thumb-down"><b-icon-hand-thumbs-down-fill id="thumb-down-icon"/></div></b-col>
+                <b-col id="down-parent" class = "col-6"><div id = "thumb-up"><b-icon-hand-thumbs-up-fill id="thumb-up-icon"/></div></b-col>
             </b-row>
         </div>
     </div>
@@ -40,7 +33,7 @@
 
 <script>
 export default {
-    name: "RestaurantCardV2",
+    name: "restaurant-card-v2",
     data()
     {
         return{
@@ -55,7 +48,7 @@ export default {
             {
                 let partyId = this.$route.params.partyId;
                 this.parties=this.$store.state.currentParties;
-                this.currentParty=this.parties.find(party => {return party.partyId===partyId});
+                this.currentParty=this.parties.find(party => {return party.partyId==partyId});
             }
     }
 };
@@ -72,7 +65,7 @@ export default {
 #rest-image
 {
     display: block;
-    max-height: 30vh;
+    max-height: 20vh;
     border-radius: 5px;
     margin: auto;
     object-fit: cover;
@@ -100,16 +93,47 @@ export default {
 {
     background: rgba(255,255,255,0.5);
     border-radius: 5px;
-    height: 91vh;
+    height: 85vh;
     box-shadow: 5px 5px 5px rgba(0,0,0,0.5);
 }
 .display-col
 {
     background: rgba(255,255,255,0.5);
     border-radius: 5px;
-    height: 75vh;
+    height: 5vh;
     width:95%;
     margin: 2.5%;
     box-shadow: 5px 5px 5px rgba(0,0,0,0.5);
+}
+#thumb-down
+{
+    background: crimson;
+    border-radius: 50%;
+    padding: 10px;
+    height: 7vh;
+    width: 7vh;
+    margin: 5%;
+    box-shadow: 5px 5px 5px rgba(0,0,0,0.5);
+}
+#thumb-down-icon
+{
+    height: 5vh;
+    width: 5vh;
+}
+#thumb-up
+{
+    background: rgb(105,145,255);
+    border-radius: 50%;
+    padding: 10px;
+    height: 7vh;
+    width: 7vh;
+    margin: 5%;
+    box-shadow: 5px 5px 5px rgba(0,0,0,0.5);
+
+}
+#thumb-up-icon
+{
+    height: 5vh;
+    width: 5vh;
 }
 </style>
