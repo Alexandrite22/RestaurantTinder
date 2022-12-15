@@ -60,17 +60,18 @@ export default {
           this.parties = response.data; 
           myVar = this.parties;
           console.log(myVar);
+          this.$store.commit("SET_CURRENT_PARTIES", response.data);
 
       })
       .catch((error) => {
         console.log(error);
       });
-      console.log("I think MyVar is: " + myVar);
-      console.log("This is the list of parties and all their properties on our page's properties");
-      console.log(this.parties);
-      this.$store.commit("SET_CURRENT_PARTIES", this.parties);
-      console.log("This is the list of parties in the vue data store");
-      console.log(this.$store.state.currentParties);
+      // console.log("I think MyVar is: " + myVar);
+      // console.log("This is the list of parties and all their properties on our page's properties");
+      // console.log(this.parties);
+      // this.$store.commit("SET_CURRENT_PARTIES", this.parties);
+      // console.log("This is the list of parties in the vue data store");
+      // console.log(this.$store.state.currentParties);
     }
   },
   created() {
