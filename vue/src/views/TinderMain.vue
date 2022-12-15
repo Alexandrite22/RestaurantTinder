@@ -17,9 +17,9 @@
             </ol>
             <h6>Restaurants: </h6>
             <ol>
-                <li v-for="restaurant in party.restaurants" :key="restaurant.restaurantId" class = "li">
+                <!-- <li v-for="restaurant in party.restaurants" :key="restaurant.restaurantId" class = "li">
                     {{restaurant.yelpLink}}
-                </li>
+                </li> -->
             </ol>
             <router-link to="#">Tind-RSVP (Haha get it like tinder but the r is rsvp)</router-link><!-- This is the link to voting and picking a name -->
         </col-3>
