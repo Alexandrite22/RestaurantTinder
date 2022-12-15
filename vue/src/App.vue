@@ -81,7 +81,8 @@ export default {
 </script>
 <style >
 body {
-  background: url("./imgs/Bg_11.jpg") no-repeat center center fixed;
+  background: url("./imgs/Background_img_flipped.jpg") no-repeat center center
+    fixed;
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
