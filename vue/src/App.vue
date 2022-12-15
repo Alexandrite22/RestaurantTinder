@@ -8,7 +8,7 @@
               class="content"
               id="menu"
               style="
-                box-shadow: 5px 5px 5px rgba(0,0,0,0.25);
+                box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.25);
                 background: rgba(255, 255, 255, 0.5);
                 border: transparent !important;
               "
@@ -26,7 +26,7 @@
               class="content"
               id="details"
               style="
-                box-shadow: 5px 5px 5px rgba(0,0,0,0.25);
+                box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.25);
                 background: rgba(255, 255, 255, 0.5);
               "
             />
@@ -44,7 +44,7 @@ import DetailsColumn from "./components/DetailsColumn.vue";
 export default {
   data() {
     return {
-      parties: [], 
+      parties: [],
     };
   },
   name: "app",
@@ -57,53 +57,35 @@ export default {
       let myVar;
       PartyService.getParties(1)
         .then((response) => {
-          myVar = response.data;
-          console.log("I think MyVar is: " + myVar);
-
-          let tempParties = [];
-          response.data.forEach((thing) => {
-            let tempBusinessList= thing.yelpBusinesses.businessesBusinesses;
-            let temp = {
-              PartyId: thing.partyId,
-              PartyLocation: thing.location,
-              PartyDate: thing.date,
-              PartyOwner: thing.owner,
-              PartyDescription: thing.description,
-              PartyName: thing.name,
-              PartyTime: thing.date,
-              PartyInviteLink: thing.inviteLink,
-              PartyRsvp: thing.guestList,
-              PartyRestaurants: tempBusinessList,
-            };
-          tempParties.push(temp);
-          this.parties = tempParties;
-          this.$store.commit("SET_CURRENT_PARTIES", this.parties);
+          // intake a list of parties and set it to the parties variable and add it to the store
+          this.parties = response.data;
+          myVar = this.parties;
+          console.log(myVar);
+          this.$store.commit("SET_CURRENT_PARTIES", response.data);
+        })
+        .catch((error) => {
+          console.log(error);
         });
-      })
-      .catch((error) => {
-        console.log(error);
-      });
-      console.log("I think MyVar is: " + myVar);
-      console.log("This is the list of parties and all their properties on our page's properties");
-      console.log(this.parties);
-      this.$store.commit("SET_CURRENT_PARTIES", this.parties);
-      console.log("This is the list of parties in the vue data store");
-      console.log(this.$store.state.currentParties);
-    }
+      // console.log("I think MyVar is: " + myVar);
+      // console.log("This is the list of parties and all their properties on our page's properties");
+      // console.log(this.parties);
+      // this.$store.commit("SET_CURRENT_PARTIES", this.parties);
+      // console.log("This is the list of parties in the vue data store");
+      // console.log(this.$store.state.currentParties);
+    },
   },
   created() {
     this.getParties();
-  }
+  },
 };
 </script>
 <style >
 body {
-  background: url("./imgs/Bg_11.jpg") no-repeat center center fixed; 
+  background: url("./imgs/Bg_11.jpg") no-repeat center center fixed;
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
   background-size: cover;
-
 }
 #header {
   display: flex;
@@ -114,18 +96,16 @@ body {
   margin: 1vw;
   width: 92vw;
   margin-bottom: 0vw;
-  box-shadow: 5px 5px 5px rgba(0,0,0,0.5);
-
+  box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.5);
 }
 .btn {
-    box-shadow: 5px 5px 5px rgba(0,0,0,0.5);
-    margin: 0.3rem;
+  box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.5);
+  margin: 0.3rem;
 }
 .btn:hover {
-    box-shadow: 5px 5px 5px rgba(0,0,0,0.5);
-    margin: 0.3rem;
-    background: white;
-
+  box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.5);
+  margin: 0.3rem;
+  background: white;
 }
 #app {
   height: 100%;
@@ -135,8 +115,13 @@ body {
   height: 80vh;
 }
 
+#logo {
+  text-align: center;
+  height: 320px;
+}
+
 .content {
-  box-shadow: 5px 5px 5px rgba(0,0,0,0.25);
+  box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.25);
   background: rgba(255, 255, 255, 0.5);
   min-height: 70vh;
   height: 95vh;
@@ -184,25 +169,22 @@ body {
 }
 ::-webkit-scrollbar-track {
   background: rgb(179, 177, 177);
-  box-shadow: 5px 5px 5px rgba(0,0,0,0.25);
+  box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.25);
   border-radius: 5px;
-
 }
 
 ::-webkit-scrollbar-thumb {
   background: rgb(136, 136, 136);
-  box-shadow: 5px 5px 5px rgba(0,0,0,0.25);
-  
+  box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.25);
 }
 
 ::-webkit-scrollbar-thumb:hover {
   background: rgb(100, 100, 100);
-  box-shadow: 5px 5px 5px rgba(0,0,0,0.25);
+  box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.25);
 }
 
 ::-webkit-scrollbar-thumb:active {
   background: rgb(68, 68, 68);
-  box-shadow: 5px 5px 5px rgba(0,0,0,0.25);
-  
+  box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.25);
 }
 </style>

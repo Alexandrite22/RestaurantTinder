@@ -137,9 +137,11 @@ namespace Capstone.DAO
             restaurant.address2 = Convert.ToString(reader["address2"]);
             //restaurant.address3 = Convert.ToString(reader["address3"]);
             restaurant.city = Convert.ToString(reader["city"]);
-            restaurant.zip = Convert.ToString(reader["zip_code"]);            restaurant.country = Convert.ToString(reader["country"]);
+            restaurant.zip = Convert.ToString(reader["zip_code"]);
+            restaurant.country = Convert.ToString(reader["country"]);
             restaurant.state = Convert.ToString(reader["state"]);
-            restaurant.longitude = Convert.ToDouble(reader["longitude"]);            restaurant.latitude = Convert.ToDouble(reader["latitude"]);
+            restaurant.longitude = Convert.ToDouble(reader["longitude"]);
+            restaurant.latitude = Convert.ToDouble(reader["latitude"]);
             return restaurant;
         }
 

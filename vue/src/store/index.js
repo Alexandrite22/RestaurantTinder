@@ -12,7 +12,7 @@ Vue.use(Vuex)
 const currentToken = localStorage.getItem('token')
 const currentUser = JSON.parse(localStorage.getItem('user'));
 
-if(currentToken != null) {
+if (currentToken != null) {
   axios.defaults.headers.common['Authorization'] = `Bearer ${currentToken}`;
 }
 
@@ -22,6 +22,9 @@ export default new Vuex.Store({
     user: currentUser || {},
     currentUserId: {},
     currentParties: [],
+    restaurant: [
+
+    ]
   },
   mutations: {
     SET_AUTH_TOKEN(state, token) {
@@ -31,7 +34,7 @@ export default new Vuex.Store({
     },
     SET_USER(state, user) {
       state.user = user;
-      localStorage.setItem('user',JSON.stringify(user));
+      localStorage.setItem('user', JSON.stringify(user));
     },
     LOGOUT(state) {
       localStorage.removeItem('token');
@@ -43,14 +46,15 @@ export default new Vuex.Store({
     SET_CURRENT_PARTIES(state, parties) {
       state.currentParties = parties;
     },
-    //
+
+    UPDATE_FILTER(state, filter) {
+      state.filter = filter;
+    },
+
     ADD_NEW_PARTY(state, party) {
       console.log("ADDING " + party + " to the currentParties in the state");
-
-
-      
       state.currentParties.shift(party);
     }
-    
+
   }
 })

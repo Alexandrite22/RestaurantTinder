@@ -1,4 +1,5 @@
 <template>
+<<<<<<< HEAD
     <div id = "rest-card">
         <div id = "border">
             <b-row id = "name">
@@ -34,15 +35,37 @@
             </b-row>
         </div>
     </div>
+=======
+  <div id="rest-card">
+    <b-row id="name"> Galucci's </b-row>
+    <b-row id="rest-image">
+      <img src="" alt="Restaurant{{RestaurantName}}" /><!--V-if img exists -->
+    </b-row>
+    <b-row id="link">
+      <a h-ref="#">Check us out on Yelp!</a>
+    </b-row>
+    <b-row>
+      <b-col class="col-6">
+        <ul>
+          <li>Italian</li>
+          <li>Fast</li>
+          <li>Economic</li>
+        </ul>
+      </b-col>
+      <b-col class="col-6">
+        <b-row> </b-row>
+      </b-col>
+    </b-row>
+  </div>
+>>>>>>> 9896bd7b89e03db80e02c1403a4dfedc6fd1cbba
 </template>
 
 <script>
-export default {
-
-}
+export default {};
 </script>
 
 <style>
+<<<<<<< HEAD
 #name
 {
     font-size: 35px;
@@ -91,4 +114,6 @@ export default {
     height: 91vh;
     box-shadow: 5px 5px 5px rgba(0,0,0,0.5);
 }
+=======
+>>>>>>> 9896bd7b89e03db80e02c1403a4dfedc6fd1cbba
 </style>
