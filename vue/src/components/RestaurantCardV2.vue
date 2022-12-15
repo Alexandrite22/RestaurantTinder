@@ -4,7 +4,7 @@
             Galucci's 
         </b-row>
         <b-row id = "rest-image">
-            <img src="" alt="Restaurant{{RestaurantName}}"><!--V-if img exists -->
+            <img src="" alt="Restaurant"><!--V-if img exists -->
         </b-row>
         <b-row id = "link">
             <a h-ref="#">Check us out on Yelp!</a>

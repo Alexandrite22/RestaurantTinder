@@ -92,6 +92,14 @@ const router = new Router({
       }
     },
     {
+      path: '/party/details/:partyId/vote',
+      name: 'party-vote',
+      component: () => import('../components/RestaurantCardV2.vue'),
+      meta: {
+        requiresAuth:false
+      }
+    },
+    {
       path: '/tinder/:partyId',
       name: 'tinderMain',
       component: () => import('../views/TinderMain.vue'),
