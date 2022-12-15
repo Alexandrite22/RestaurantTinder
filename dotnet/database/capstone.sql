@@ -35,12 +35,25 @@ CREATE TABLE party (
 CREATE TABLE restaurant (
 	restaurant_id int IDENTITY (1,1) NOT NULL,
 	party_id int NOT NULL,
-	name varchar(50) NOT NULL,
-	api_id varchar(200) NOT NULL,
-	yelp_link varchar(200) NOT NULL,
+	api_id varchar(200),
+	alias varchar(200),
+	name varchar(200),
+	yelp_link varchar(1000),
+	image_link varchar(1000),
+	review_count int,
+	rating float,
+	longitude float,
+	latitude float,
+	address1 varchar(1000),
+	address2 varchar(1000),
+	city varchar(1000),
+	zip_code varchar(10),
+	country varchar(100),
+	state varchar(2),
+	display_address1 varchar(2000),
+	display_address2 varchar(2000)
 	PRIMARY KEY (restaurant_id),
 	FOREIGN KEY (party_id) REFERENCES party (party_id)
-	
 )
 CREATE TABLE guest (
 	guest_id int IDENTITY (1,1) NOT NULL,
@@ -79,13 +92,13 @@ INSERT INTO users (username, password_hash, salt, user_role) VALUES ('Nick','Jg4
 INSERT INTO users (username, password_hash, salt, user_role) VALUES ('Colin','Jg45HuwT7PZkfuKTz6IB90CtWY4=','LHxP4Xh7bN0=','user');
 
 --Create 10 default parties for testing, invite link is https://localhost:44315/tinder/ + party_id and all parties are different dates, locations, and descriptions and names, but all have the owner 1.
-INSERT INTO party (location, date, owner, description, name_of_party, invite_link) VALUES ('Kalahari Resorts & Conventions, 7000 Kalahari Dr, Sandusky, OH 44870', '2023-01-13 12:00:00', 1, 'CodeMash 2023', 'Codemash 2023', '/tinder/4');
-INSERT INTO party (location, date, owner, description, name_of_party, invite_link) VALUES ('Cleveland Botanical Garden, 11030 East Blvd, Cleveland, OH 44106', '2022-12-17 12:00:00', 1, 'Kevin`s Botanical Garden Bash', 'Kevin`s Botanical Garden date', '/tinder/5');
-INSERT INTO party (location, date, owner, description, name_of_party, invite_link) VALUES ('Cleveland Metroparks Zoo, 3900 Wildlife Way, Cleveland, OH 44109', '2025-12-12 12:00:00', 1, 'Colin`s Zoo Bug out', 'Colin`s Zoo Bug out', '/tinder/6');
-INSERT INTO party (location, date, owner, description, name_of_party, invite_link) VALUES ('Cleveland Museum of Natural History, 1 Wade Oval Dr, Cleveland, OH 44106', '2023-12-12 12:00:00', 1, 'Nick`s Natural History Trip', 'Nick`s Natural History Trip', '/tinder/7');
-INSERT INTO party (location, date, owner, description, name_of_party, invite_link) VALUES ('Cleveland Museum of Art, 11150 East Blvd, Cleveland, OH 44106', '2022-12-12 12:00:00', 1, 'Alex`s Art Adventure', 'Alex`s Art Adventure', '/tinder/8');
-INSERT INTO party (location, date, owner, description, name_of_party, invite_link) VALUES ('Chuck E Cheese, 10000 Brookpark Rd, Parma, OH 44130', '2022-12-12 12:00:00', 1, 'Chuck E Cheese', 'Chuck E Cheese', '/tinder/9');
-INSERT INTO party (location, date, owner, description, name_of_party, invite_link) VALUES ('Tech Elevator, 1000 Carnegie Ave, Cleveland, OH 44115', '2022-12-12 12:00:00', 1, 'Tech Elevator', 'Tech Elevator', '/tinder/10');
+--INSERT INTO party (location, date, owner, description, name_of_party, invite_link) VALUES ('Kalahari Resorts & Conventions, 7000 Kalahari Dr, Sandusky, OH 44870', '2023-01-13 12:00:00', 1, 'CodeMash 2023', 'Codemash 2023', '/tinder/4');
+--INSERT INTO party (location, date, owner, description, name_of_party, invite_link) VALUES ('Cleveland Botanical Garden, 11030 East Blvd, Cleveland, OH 44106', '2022-12-17 12:00:00', 1, 'Kevin`s Botanical Garden Bash', 'Kevin`s Botanical Garden date', '/tinder/5');
+--INSERT INTO party (location, date, owner, description, name_of_party, invite_link) VALUES ('Cleveland Metroparks Zoo, 3900 Wildlife Way, Cleveland, OH 44109', '2025-12-12 12:00:00', 1, 'Colin`s Zoo Bug out', 'Colin`s Zoo Bug out', '/tinder/6');
+--INSERT INTO party (location, date, owner, description, name_of_party, invite_link) VALUES ('Cleveland Museum of Natural History, 1 Wade Oval Dr, Cleveland, OH 44106', '2023-12-12 12:00:00', 1, 'Nick`s Natural History Trip', 'Nick`s Natural History Trip', '/tinder/7');
+--INSERT INTO party (location, date, owner, description, name_of_party, invite_link) VALUES ('Cleveland Museum of Art, 11150 East Blvd, Cleveland, OH 44106', '2022-12-12 12:00:00', 1, 'Alex`s Art Adventure', 'Alex`s Art Adventure', '/tinder/8');
+--INSERT INTO party (location, date, owner, description, name_of_party, invite_link) VALUES ('Chuck E Cheese, 10000 Brookpark Rd, Parma, OH 44130', '2022-12-12 12:00:00', 1, 'Chuck E Cheese', 'Chuck E Cheese', '/tinder/9');
+--INSERT INTO party (location, date, owner, description, name_of_party, invite_link) VALUES ('Tech Elevator, 1000 Carnegie Ave, Cleveland, OH 44115', '2022-12-12 12:00:00', 1, 'Tech Elevator', 'Tech Elevator', '/tinder/10');
 
 
 
@@ -135,3 +148,4 @@ INSERT INTO party (location, date, owner, description, name_of_party, invite_lin
 --INSERT INTO restaurant (party_id, name, Api_address) VALUES (1, 'The Wine Spot', 'yelp.com/biz/the-wine-spot-cleveland');
 
 
+SELECT * FROM restaurant WHERE party_id = 1

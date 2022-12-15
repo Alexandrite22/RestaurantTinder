@@ -88,4 +88,8 @@ export default {
 {
   margin-top: 10px;
 }
+.form-control
+{
+  border: 5px !important;
+}
 </style>

@@ -1,21 +1,5 @@
 <template>
   <span id="app">
-    <!-- <b-row id="nav-bar">
-      <span id="header" v-if="$store.state.token != ''">
-        <router-link
-          class="btn btn-primary solid-text"
-          v-bind:to="'/'"
-          style="margin-right: 0.7em"
-          >Home</router-link
-        >
-        <router-link
-          class="btn btn-primary solid-text"
-          v-bind:to="{ name: 'logout' }"
-          v-if="$store.state.token != ''"
-          >Logout</router-link
-        >
-      </span>
-    </b-row> -->
     <div id="main-container">
       <b-row id="sub-container">
         <b-col id="menuColumn" class="col-2 panel">
@@ -24,8 +8,9 @@
               class="content"
               id="menu"
               style="
-                box-shadow: 5px 5px 5px rgba(0,0,0,0.25);
+                box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.25);
                 background: rgba(255, 255, 255, 0.5);
+                border: transparent !important;
               "
             />
           </div>
@@ -41,7 +26,7 @@
               class="content"
               id="details"
               style="
-                box-shadow: 5px 5px 5px rgba(0,0,0,0.25);
+                box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.25);
                 background: rgba(255, 255, 255, 0.5);
               "
             />
@@ -52,25 +37,55 @@
   </span>
 </template>
 <script>
+import PartyService from "./services/PartyService.js";
 import MenuColumn from "./components/MenuColumn.vue";
 import DetailsColumn from "./components/DetailsColumn.vue";
 
 export default {
+  data() {
+    return {
+      parties: [],
+    };
+  },
   name: "app",
   components: {
     MenuColumn,
     DetailsColumn,
   },
+  methods: {
+    getParties() {
+      let myVar;
+      PartyService.getParties(1)
+        .then((response) => {
+          // intake a list of parties and set it to the parties variable and add it to the store
+          this.parties = response.data;
+          myVar = this.parties;
+          console.log(myVar);
+          this.$store.commit("SET_CURRENT_PARTIES", response.data);
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+      // console.log("I think MyVar is: " + myVar);
+      // console.log("This is the list of parties and all their properties on our page's properties");
+      // console.log(this.parties);
+      // this.$store.commit("SET_CURRENT_PARTIES", this.parties);
+      // console.log("This is the list of parties in the vue data store");
+      // console.log(this.$store.state.currentParties);
+    },
+  },
+  created() {
+    this.getParties();
+  },
 };
 </script>
 <style >
 body {
-  background: url("./imgs/Bg_11.jpg") no-repeat center center fixed; 
+  background: url("./imgs/Bg_11.jpg") no-repeat center center fixed;
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
   background-size: cover;
-
 }
 #header {
   display: flex;
@@ -81,12 +96,16 @@ body {
   margin: 1vw;
   width: 92vw;
   margin-bottom: 0vw;
-  box-shadow: 5px 5px 5px rgba(0,0,0,0.5);
-
+  box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.5);
 }
 .btn {
-    box-shadow: 5px 5px 5px rgba(0,0,0,0.5);
-    margin: 0.3rem;
+  box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.5);
+  margin: 0.3rem;
+}
+.btn:hover {
+  box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.5);
+  margin: 0.3rem;
+  background: white;
 }
 #app {
   height: 100%;
@@ -96,13 +115,20 @@ body {
   height: 80vh;
 }
 
+#logo {
+  text-align: center;
+  height: 320px;
+}
+
 .content {
-  box-shadow: 5px 5px 5px rgba(0,0,0,0.25);
+  box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.25);
   background: rgba(255, 255, 255, 0.5);
   min-height: 70vh;
   height: 95vh;
   overflow: auto;
-  padding: 0.5em;
+  padding: 10px 10px 10px 10px !important;
+  border: transparent !important;
+  border-radius: 5px;
 }
 #main-container {
   padding: 4vw;
@@ -139,26 +165,26 @@ body {
 
 ::-webkit-scrollbar {
   width: 10px;
+  border-radius: 5px;
 }
 ::-webkit-scrollbar-track {
   background: rgb(179, 177, 177);
-  box-shadow: 5px 5px 5px rgba(0,0,0,0.25);
+  box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.25);
+  border-radius: 5px;
 }
 
 ::-webkit-scrollbar-thumb {
   background: rgb(136, 136, 136);
-  box-shadow: 5px 5px 5px rgba(0,0,0,0.25);
-  
+  box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.25);
 }
 
 ::-webkit-scrollbar-thumb:hover {
   background: rgb(100, 100, 100);
-  box-shadow: 5px 5px 5px rgba(0,0,0,0.25);
+  box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.25);
 }
 
 ::-webkit-scrollbar-thumb:active {
   background: rgb(68, 68, 68);
-  box-shadow: 5px 5px 5px rgba(0,0,0,0.25);
-  
+  box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.25);
 }
 </style>

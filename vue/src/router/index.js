@@ -1,12 +1,6 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import Home from '../views/Home.vue'
-import Login from '../views/Login.vue'
-import Logout from '../views/Logout.vue'
-import Register from '../views/Register.vue'
 import store from '../store/index'
-import Restaurant from '../views/Restaurant.vue'
-import AboutUs from '../views/AboutUs.vue'
 
 Vue.use(Router)
 
@@ -23,59 +17,59 @@ const router = new Router({
   mode: 'history',
   base: process.env.BASE_URL,
   routes: [
-    {
+    {//homepage
       path: '/',
       name: 'home',
-      component: Home,
+      component: () => ('../views/Home.vue'),
       meta: {
       }
     },
-    {
+    {//aboutPage
       path: "/about",
       name: "aboutUs",
-      component: AboutUs,
+      component: () => ('../views/AboutUs.vue'),
       meta: {
         requiresAuth: false
       }
     },
-    {
+    {//login
       path: "/login",
       name: "login",
-      component: Login,
+      component: () => import('../views/Login.vue'),
       meta: {
         requiresAuth: false
       }
     },
-    {
+    {//logout
       path: "/logout",
       name: "logout",
-      component: Logout,
+      component: () => import("../views/Logout.vue"),
       meta: {
         requiresAuth: false
       }
     },
-    {
+    {//register
       path: "/register",
       name: "register",
-      component: Register,
+      component: () => import('../views/Register.vue'),
       meta: {
         requiresAuth: false
       }
     },
-    {
+    {//restaurant Details
       path: "/restaurant/:restaurantId",
       name: "restaurant",
-      component: Restaurant,
+      component: () => import('../views/Restaurant.vue'),
       meta: {
         requiresAuth: false
       }
     },
-    {
+    {//dashboard
       path: '/dashboard',
       name: 'dashboard',
       component: () => import('../views/Dashboard.vue'),
     },
-    {
+    {//Create a party
       path: '/newParty',
       name: 'newParty',
       component: () => import('../views/NewPartyForm.vue'),
@@ -83,7 +77,7 @@ const router = new Router({
         requiresAuth: true
       }
     },
-    {
+    {//party details
       path: '/party/details/:partyId',
       name: 'party',
       component: () => import('../views/Party.vue'),
@@ -91,15 +85,7 @@ const router = new Router({
         requiresAuth:false
       }
     },
-    {
-      path: '/party/details/:partyId/vote',
-      name: 'party-vote',
-      component: () => import('../components/RestaurantCardV2.vue'),
-      meta: {
-        requiresAuth:false
-      }
-    },
-    {
+    {//party details for guests
       path: '/tinder/:partyId',
       name: 'tinderMain',
       component: () => import('../views/TinderMain.vue'),
