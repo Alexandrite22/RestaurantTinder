@@ -56,8 +56,10 @@ export default {
       let myVar;
       PartyService.getParties(1)
         .then((response) => {
-          myVar = response.data;
-          console.log("I think MyVar is: " + myVar);
+          // intake a list of parties and set it to the parties variable and add it to the store
+          this.parties = response.data;
+          myVar = this.parties;
+          console.log(myVar);
 
           let tempParties = [];
           response.data.forEach((thing) => {

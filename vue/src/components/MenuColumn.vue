@@ -247,33 +247,27 @@ export default {
 </script>
 
 <style>
-<<<<<<< HEAD
 .border {
   box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.25);
   border-style: hidden !important;
-=======
-.menu-button
-{
+}
+.menu-button {
   border-radius: 5px !important;
 }
 
 .border {
-  box-shadow: 5px 5px 5px rgba(0,0,0,0.25);
->>>>>>> main
+  box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.25);
 }
 
 .card-body {
   padding: 0 !important;
 }
-<<<<<<< HEAD
 
 #logo {
   max-height: 125px;
-=======
-.sub-list
-{
+}
+.sub-list {
   overflow: auto;
   white-space: nowrap;
->>>>>>> main
 }
 </style>
