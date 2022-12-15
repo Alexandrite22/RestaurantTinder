@@ -10,7 +10,7 @@
       </b-card-title>
 
       <b-list-group>
-        <router-link to="/" style="text-decoration: none">
+        <router-link v-bind:to="{ name: 'home' }" style="text-decoration: none">
           <b-button
             class="
               list-group-item list-group-item-action
@@ -56,7 +56,7 @@
           </b-button>
         </router-link>
 
-        <router-link to="/about" style="text-decoration: none">
+        <router-link v-bind:to="{ name: 'aboutUs' }" style="text-decoration: none">
           <b-button
             class="
               list-group-item list-group-item-action
@@ -93,7 +93,7 @@
           <h5><b-icon-people-fill variant="light" /> &nbsp; Create party</h5>
         </b-button>
 
-        <router-link to="/dashboard" style="text-decoration: none">
+        <router-link v-bind:to="{ name: 'dashboard' }" style="text-decoration: none">
           <b-button
             class="
               menu-button
