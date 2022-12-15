@@ -21,7 +21,7 @@ namespace Capstone.DAO
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
                 connection.Open();
-                SqlCommand command = new SqlCommand("INSERT INTO restaurant (party_id, api_id, yelp_link, image_link, review_count, rating, longitude, latitude, address1, address2, city, zip_code, country, state, display_address1, display_address2) VALUES (@party_id, @api_id, @yelp_link, @image_link, @review_count, @rating, @longitude, @latitude, @address1, @address2, @city, @zip_code, @country, @state, @display_address1, @display_address2); SELECT @@IDENTITY", connection);
+                SqlCommand command = new SqlCommand("INSERT INTO restaurant (name, party_id, api_id, yelp_link, image_link, review_count, rating, longitude, latitude, address1, address2, city, zip_code, country, state, display_address1, display_address2) VALUES (@name, @party_id, @api_id, @yelp_link, @image_link, @review_count, @rating, @longitude, @latitude, @address1, @address2, @city, @zip_code, @country, @state, @display_address1, @display_address2); SELECT @@IDENTITY", connection);
                 command.Parameters.AddWithValue("@party_id", restaurant.PartyId);
                 command.Parameters.AddWithValue("@api_id", restaurant.ApiId);
                 command.Parameters.AddWithValue("@yelp_link", restaurant.YelpLink);
@@ -36,6 +36,7 @@ namespace Capstone.DAO
                 command.Parameters.AddWithValue("@zip_code", restaurant.zip);
                 command.Parameters.AddWithValue("@country", restaurant.country);
                 command.Parameters.AddWithValue("@state", restaurant.state);
+                command.Parameters.AddWithValue("@name", restaurant.Name);
                 command.Parameters.AddWithValue("@display_address1", restaurant.display_address1);
                 command.Parameters.AddWithValue("@display_address2", restaurant.display_address2);
                 int myId = command.ExecuteNonQuery();
@@ -142,6 +143,8 @@ namespace Capstone.DAO
             restaurant.state = Convert.ToString(reader["state"]);
             restaurant.longitude = Convert.ToDouble(reader["longitude"]);
             restaurant.latitude = Convert.ToDouble(reader["latitude"]);
+            restaurant.display_address1 = Convert.ToString(reader["display_address1"]);
+            restaurant.display_address2 = Convert.ToString(reader["display_address2"]);
             return restaurant;
         }
 

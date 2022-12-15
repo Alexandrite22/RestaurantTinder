@@ -37,16 +37,18 @@
       </div>
 
       <div class="form-element">
-        <label for="time">Party Time:</label>
-        <input
-          class="input-field"
-          id="time"
-          type="text"
-          v-model="party.time"
-          placeholder="Party Time"
-        />
+        <label for="time">Select a time:</label>
+        <input type="time" id="time" name="time" v-model="party.time" placeholder="Party Time" />
       </div>
-
+       <!-- <div class="form-group">
+        <label class="control-label"><i class="fa fa-calendar"></i> Datetime picker</label><br>
+        <div class="form-group">
+          <input type="text" size="10" class="form-control" ng-model="sharedDate" data-autoclose="1" placeholder="Date" bs-datepicker>
+        </div>
+        <div class="form-group">
+          <input type="text" size="8" class="form-control" ng-model="sharedDate" data-time-format="h:mm:ss a" data-autoclose="1" placeholder="Time" bs-timepicker>
+        </div>
+      </div> -->
       <div class="form-element">
         <label for="location">Location:</label>
         <!--// TODO Make this a location picker -->
