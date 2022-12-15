@@ -60,6 +60,16 @@
           placeholder="Ex. Cleveland OH"
         />
       </div>
+          <div class="form-element">
+        <label for="location">Invite Code:</label>
+        <input
+          class="input-field"
+          id="party_invite_code"
+          type="text"
+          v-model="party.partyInviteCode"
+          placeholder="invitation code word"
+        />
+      </div>
       <input type="submit" value="Save" class="btn btn-success" />
 
       <!-- <b-button type="submit" variant="btn btn-default" >Create</b-button> -->
