@@ -1,4 +1,7 @@
-﻿using System;
+﻿using Capstone.DAO;
+using Capstone.Services;
+using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -7,6 +10,7 @@ namespace Capstone.Models
 {
     public class Party
     {
+
         public int PartyId { get; set; }
         public string Location { get; set; }
         public DateTime? Date { get; set; }
@@ -16,7 +20,6 @@ namespace Capstone.Models
 
         public string InviteLink { get; set; }
     }
-
     public class PartyViewModel
     {
         public int PartyId { get; set; }
@@ -25,18 +28,9 @@ namespace Capstone.Models
         public string Owner { get; set; }
         public string Description { get; set; }
         public string Name { get; set; }
-
         public string InviteLink { get; set; }
-
         public IList<Guest> GuestList { get; set; }
-        public IList<Restaurant> RestaurantList { get; set; }
-        
-        // Default Constructor to 
-        public PartyViewModel()
-        {
-            GuestList = new List<Guest>();
-            RestaurantList = new List<Restaurant>();
-        }
+        public IList<Restaurant> Restaurants { get; set; }
         public PartyViewModel(Party party, IList<Guest> guests, IList<Restaurant> restaurants)
         {
             PartyId = party.PartyId;
@@ -47,7 +41,7 @@ namespace Capstone.Models
             Name = party.Name;
             InviteLink = party.InviteLink;
             GuestList = guests;
-            RestaurantList = restaurants;
+            Restaurants = restaurants;
         }
     }
 }

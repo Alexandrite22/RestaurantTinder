@@ -1,21 +1,5 @@
 <template>
   <span id="app">
-    <!-- <b-row id="nav-bar">
-      <span id="header" v-if="$store.state.token != ''">
-        <router-link
-          class="btn btn-primary solid-text"
-          v-bind:to="'/'"
-          style="margin-right: 0.7em"
-          >Home</router-link
-        >
-        <router-link
-          class="btn btn-primary solid-text"
-          v-bind:to="{ name: 'logout' }"
-          v-if="$store.state.token != ''"
-          >Logout</router-link
-        >
-      </span>
-    </b-row> -->
     <div id="main-container">
       <b-row id="sub-container">
         <b-col id="menuColumn" class="col-2 panel">
@@ -53,28 +37,72 @@
   </span>
 </template>
 <script>
+import PartyService from "./services/PartyService.js";
 import MenuColumn from "./components/MenuColumn.vue";
 import DetailsColumn from "./components/DetailsColumn.vue";
 export default {
+  data() {
+    return {
+      parties: [], 
+    };
+  },
   name: "app",
   components: {
     MenuColumn,
     DetailsColumn,
   },
+  methods: {
+    getParties() {
+      let myVar;
+      PartyService.getParties(1)
+        .then((response) => {
+          myVar = response.data;
+          console.log("I think MyVar is: " + myVar);
+
+          let tempParties = [];
+          response.data.forEach((thing) => {
+            let tempBusinessList= thing.yelpBusinesses.businessesBusinesses;
+            let temp = {
+              PartyId: thing.partyId,
+              PartyLocation: thing.location,
+              PartyDate: thing.date,
+              PartyOwner: thing.owner,
+              PartyDescription: thing.description,
+              PartyName: thing.name,
+              PartyTime: thing.date,
+              PartyInviteLink: thing.inviteLink,
+              PartyRsvp: thing.guestList,
+              PartyRestaurants: tempBusinessList,
+            };
+          tempParties.push(temp);
+          this.parties = tempParties;
+          this.$store.commit("SET_CURRENT_PARTIES", this.parties);
+        });
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+      console.log("I think MyVar is: " + myVar);
+      console.log("This is the list of parties and all their properties on our page's properties");
+      console.log(this.parties);
+      this.$store.commit("SET_CURRENT_PARTIES", this.parties);
+      console.log("This is the list of parties in the vue data store");
+      console.log(this.$store.state.currentParties);
+    }
+  },
+  created() {
+    this.getParties();
+  }
 };
 </script>
 <style >
 body {
-  /* background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
-	background-size: 400% 400%;
-	animation: gradient 15s ease infinite;
-	height: 100vh; */
-  font-family: "Poppins", Helvetica, sans-serif;
-  background-image: url("./imgs/MainBack.jpg");
-  background-repeat: no-repeat;
-  background-size: 100vw;
-  margin: 1vw;
-  min-height: 95vh;
+  background: url("./imgs/Bg_11.jpg") no-repeat center center fixed; 
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+
 }
 #header {
   display: flex;

@@ -42,6 +42,14 @@ export default new Vuex.Store({
     },
     SET_CURRENT_PARTIES(state, parties) {
       state.currentParties = parties;
+    },
+    //
+    ADD_NEW_PARTY(state, party) {
+      console.log("ADDING " + party + " to the currentParties in the state");
+
+
+      
+      state.currentParties.shift(party);
     }
     
   }
