@@ -9,7 +9,7 @@
             <h5>Location: {{party.location}}</h5>
             <h6>Description: {{party.description}}</h6>   
             <h6>Host: {{party.owner}}</h6>
-            <h6>Attendees: </h6>
+            <h6>Attendees: {{party.guestList.length}} </h6>
             <ol>
                 <li v-for="guest in party.PartyRsvp" :key="guest.guest_Id">
                     {{guest.name}}
