@@ -26,7 +26,7 @@
                 <b-col class = "col-6">
                     <div class = "display-col">
                         <ul>
-                            <li>Italian</li>
+                            <li>ADDRESS: {{restaurant.address1}}</li>
                             <li>Fast</li>
                             <li>Economic</li>
                         </ul>
