@@ -1,36 +1,25 @@
 <template>
     <div>
-        <div id = "rest-card">
+        <div id = "rest-card" v-bind:key="restaurant.restaurantId" v-for="restaurant in currentParty.restaurants">
             <div id = "border">
             <b-row id = "name">
-                {{currentParty.name}} 
+                {{restaurant.name}} 
             </b-row>
             <b-row>
-                <a h-ref="#">
-                    <img id = "rest-image" src="{{}}" alt="Restaurant">
+                <a v-bind:href = "restaurant.yelpLink">
+                    <img v-bind:src = "restaurant.imageLink" id = "rest-image" alt="Restaurant">
                 </a>
             </b-row>
             <b-row id="status" class="closed">
                 CLOSED
             </b-row>
             <b-row>
-                <b-col class = "col-6">
+                <b-col class = "col-12">
                     <div class = "display-col">
                         <ul>
-                            <li>Italian</li>
-                            <li>Fast</li>
-                            <li>Economic</li>
+                            <li>ADDRESS: {{restaurant.address1}}</li>
                         </ul>
                     </div>    
-                </b-col>
-                <b-col class = "col-6">
-                    <div class = "display-col">
-                        <ul>
-                            <li>Italian</li>
-                            <li>Fast</li>
-                            <li>Economic</li>
-                        </ul>
-                    </div>
                 </b-col>
             </b-row>
             <b-row>
@@ -76,7 +65,7 @@ export default {
 #rest-image
 {
     display: block;
-    max-height: 30vh;
+    max-height: 20vh;
     border-radius: 5px;
     margin: auto;
     object-fit: cover;
@@ -104,14 +93,14 @@ export default {
 {
     background: rgba(255,255,255,0.5);
     border-radius: 5px;
-    height: 65vh;
+    height: 85vh;
     box-shadow: 5px 5px 5px rgba(0,0,0,0.5);
 }
 .display-col
 {
     background: rgba(255,255,255,0.5);
     border-radius: 5px;
-    height: 40vh;
+    height: 5vh;
     width:95%;
     margin: 2.5%;
     box-shadow: 5px 5px 5px rgba(0,0,0,0.5);
@@ -124,6 +113,7 @@ export default {
     height: 7vh;
     width: 7vh;
     margin: 5%;
+    box-shadow: 5px 5px 5px rgba(0,0,0,0.5);
 }
 #thumb-down-icon
 {
@@ -138,18 +128,12 @@ export default {
     height: 7vh;
     width: 7vh;
     margin: 5%;
+    box-shadow: 5px 5px 5px rgba(0,0,0,0.5);
+
 }
 #thumb-up-icon
 {
     height: 5vh;
     width: 5vh;
-}
-#up-parent
-{
-    align-items: right;
-}
-#down-parent
-{
-    
 }
 </style>
