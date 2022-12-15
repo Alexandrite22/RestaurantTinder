@@ -1,10 +1,11 @@
 <template>
   <div class="border new-party-form">
-    <h1>New Party Form</h1>
-    <form v-on:submit.prevent="addNewParty" v-show="showForm === true">
-      <div class="form-element">
+    <h1 id = "title">Make a Party</h1>
+    <form class = "col-6" v-on:submit.prevent="addNewParty" v-show="showForm === true">
+      <div class="form-element ">
         <label for="name">Name:</label>
         <input
+          class="input-field"
           id="name"
           type="text"
           v-model="party.name"
@@ -14,7 +15,8 @@
 
       <div class="form-element">
         <label for="description">Description:</label>
-        <input
+        <input 
+          class="input-field"
           id="description"
           type="text"
           v-model="party.description"
@@ -26,6 +28,7 @@
         <label for="date">Date:</label>
         --><!--// TODO Make this a date picker and bind for="date" again-->
         <input
+          class="input-field"
           id="date"
           type="date"
           v-model="party.date"
@@ -36,6 +39,7 @@
       <div class="form-element">
         <label for="time">Party Time:</label>
         <input
+          class="input-field"
           id="time"
           type="text"
           v-model="party.time"
@@ -47,6 +51,7 @@
         <label for="location">Location:</label>
         <!--// TODO Make this a location picker -->
         <input
+          class="input-field"
           id="location"
           type="text"
           v-model="party.location"
@@ -93,17 +98,24 @@ export default {
       console.log("Calling partyservice create method on this object");
       console.log(this.party);
       this.party.owner = this.$store.state.user.id;
+      let myVar;
       NewPartyService.create(this.party)
         .then((response) => {
-          console.log("Party created, response below");
           console.log(response);
           this.$emit("party-created", response.data);
+          myVar = response.data;
         })
         .catch((error) => {
           console.log(error);
         });
       this.party = { owner: 1 }; //empty out the review
       console.log("Party created, closing form");
+      console.log(myVar);
+      console.log(myVar);
+      console.log("Adding newParty to parties in dataStore");
+      this.$store.commit("ADD_NEW_PARTY", myVar);
+      console.log(this.$store.state.parties);
+
       this.showForm = false; //hide the form
     },
   },
@@ -111,4 +123,18 @@ export default {
 </script>
 
 <style>
+#title
+{
+  margin: 5px;
+  margin-bottom: 15px;
+}
+.form-element
+{
+  margin: 5px;
+}
+.input-field
+{
+  display: flex;
+}
+
 </style>

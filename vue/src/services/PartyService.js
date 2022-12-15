@@ -1,12 +1,11 @@
 import axios from 'axios';
 
 export default {
-
   // create a new party using http://localhost:/party
     async create(party) {
         console.log("createParty() in PartyService.js with:")
         console.log(party)
-        let response = axios.post('/Party', party)
+        let response = axios.post('/Party/', party)
         console.log("create party response:" + await response);
         return response;
     },
@@ -20,6 +19,7 @@ export default {
 
         console.log(`getParty(${partyId}) in PartyService.js`)
         let party = axios.get(`/Party/${partyId}`);
+
         console.log(party);
         return party;
     },
@@ -54,6 +54,16 @@ export default {
         let restaurants = axios.get(`/${restaurantId}/`);
         console.log(restaurants);
         return restaurants;
+    },
+
+
+
+    //create a new restaurant
+    createRestaurantsFromYelpObject(restaurants, partyId) {
+        console.log(`createRestaurants(${restaurants}) in PartyService.js`)
+        let newRestaurant = axios.post('/Party/restaurants/' + partyId, restaurants);
+        console.log(newRestaurant);
+        return newRestaurant;
     },
 
 

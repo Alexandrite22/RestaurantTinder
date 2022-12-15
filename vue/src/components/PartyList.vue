@@ -21,12 +21,12 @@
           <td class="td">{{ party.Date }}</td>
           <td class="td-2">{{ party.Location }}</td>
           <td class="td">
-            <router-link class="btn btn-success" :to="party.InviteLink">
+            <router-link class="btn btn-success" v-bind:to="party.PartyInviteLink">
               Invite Link
             </router-link>
             </td>
           <!-- TODO: FIX THE LINK ON THIS BUTTON TO GO TO THE PARTY DETAILS PAGE FOR THAT PARTY-->
-          <td class="td-2"><router-link class="btn btn-success" :party="party" to="#"  ><strike>Details</strike></router-link></td>
+          <td class="td-2"><router-link class="btn btn-success" :party="party" v-bind:to="party.PartyInviteLink"  ><strike>Details</strike></router-link></td>
           <!--<td>{{party.partyRsvp}}</td> should we have a count of guests as rsvp? -->
         </tr>
       </table>
@@ -77,7 +77,7 @@ export default {
         this.$store.commit("SET_CURRENT_PARTIES", this.parties);
         console.log("This is the list of parties in the store");
         console.log(this.$store.state.currentParties);
-    },
+    },//ADD_NEW_PARTY(state, party)
   },
 };
 </script>

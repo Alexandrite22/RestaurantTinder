@@ -1,6 +1,5 @@
 <template>
-    <div>
-        <h2>Make Party</h2>
+    <div class = "border">
         <new-party-form />
     </div>
 </template>
@@ -16,5 +15,10 @@ export default {
 </script>
 
 <style>
-
+.border
+{
+    border-radius: 5px;
+    border-style: hidden !important;
+    background: rgba(255,255,255,0.5);
+}
 </style>

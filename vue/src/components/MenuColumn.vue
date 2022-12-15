@@ -77,6 +77,76 @@
           </b-button>
         </router-link>
 
+        <router-link to="/" style="text-decoration: none">
+          <b-button
+            class="
+              menu-button
+              list-group-item list-group-item-action
+              p-0
+              m-0
+              d-flex
+              align-items-center
+              justify-content-center
+            "
+            variant="outline-primary"
+            style="
+              background-color: transparent;
+              height: 4rem;
+              box-shadow: none;
+            "
+          >
+            <h5><b-icon-house-door-fill variant="light" /> &nbsp; Home</h5>
+          </b-button>
+        </router-link>
+
+        <router-link
+          v-if="$store.state.token != ''"
+          v-bind:to="{ name: 'logout' }"
+          style="text-decoration: none"
+        >
+          <b-button
+            class="
+              menu-button
+              list-group-item list-group-item-action
+              p-0
+              m-0
+              d-flex
+              align-items-center
+              justify-content-center
+            "
+            variant="outline-primary"
+            style="
+              background-color: transparent;
+              height: 4rem;
+              box-shadow: none;
+            "
+          >
+            <h5><b-icon-key-fill variant="light" /> &nbsp; Logout</h5>
+          </b-button>
+        </router-link>
+
+        <router-link to="/about" style="text-decoration: none">
+          <b-button
+            class="
+              menu-button
+              list-group-item list-group-item-action
+              p-0
+              m-0
+              d-flex
+              align-items-center
+              justify-content-center
+            "
+            variant="outline-primary"
+            style="
+              background-color: transparent;
+              height: 4rem;
+              box-shadow: none;
+            "
+          >
+            <h5><b-icon-info-circle-fill variant="light" /> &nbsp; About Us</h5>
+          </b-button>
+        </router-link>
+
         <b-button
           class="
             list-group-item list-group-item-action
@@ -96,6 +166,7 @@
         <router-link to="/dashboard" style="text-decoration: none">
           <b-button
             class="
+              menu-button
               list-group-item list-group-item-action
               p-0
               m-0
@@ -116,6 +187,7 @@
 
         <b-button
           class="
+            menu-button
             list-group-item list-group-item-action
             p-0
             m-0
@@ -133,7 +205,7 @@
           </h5>
         </b-button>
 
-        <b-list-group>
+        <b-list-group class="sub-list">
           <router-link
             :to="party.InviteLink"
             v-for="party in this.$store.state.currentParties"
@@ -149,16 +221,25 @@
           </router-link>
         </b-list-group>
       </b-list-group>
+      <button @click="TestMethod()"></button>
     </b-card>
   </b-container>
 </template>
 
 <script>
+import YelpService from "../services/YelpService.js";
+
 export default {
   name: "MenuColumn",
   data() {
     return {};
   },
+  methods: {
+    TestMethod() {
+      console.log(YelpService.getRestaurants());
+    },
+  },
+
   created() {
     console.log("MenuColumn created");
   },
@@ -166,16 +247,33 @@ export default {
 </script>
 
 <style>
+<<<<<<< HEAD
 .border {
   box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.25);
   border-style: hidden !important;
+=======
+.menu-button
+{
+  border-radius: 5px !important;
+}
+
+.border {
+  box-shadow: 5px 5px 5px rgba(0,0,0,0.25);
+>>>>>>> main
 }
 
 .card-body {
   padding: 0 !important;
 }
+<<<<<<< HEAD
 
 #logo {
   max-height: 125px;
+=======
+.sub-list
+{
+  overflow: auto;
+  white-space: nowrap;
+>>>>>>> main
 }
 </style>
