@@ -85,7 +85,15 @@ const router = new Router({
         requiresAuth:false
       }
     },
-    {//party details for guests
+    {
+      path: '/party/details/:partyId/vote',
+      name: 'party-vote',
+      component: () => import('../components/RestaurantCardV2.vue'),
+      meta: {
+        requiresAuth:false
+      }
+    },
+    {
       path: '/tinder/:partyId',
       name: 'tinderMain',
       component: () => import('../views/TinderMain.vue'),
