@@ -23,7 +23,7 @@
           <td class="td">
             <router-link
               class="btn btn-success"
-              v-bind:to="party.PartyInviteLink"
+              v-bind:to="party.inviteLink"
             >
               Invite Link
             </router-link>
@@ -33,7 +33,7 @@
             <router-link
               class="btn btn-success"
               :party="party"
-              v-bind:to="party.PartyInviteLink"
+              v-bind:to="party.inviteLink"
               ><strike>Details</strike></router-link
             >
           </td>
@@ -66,7 +66,7 @@ export default {
       this.parties.forEach(party => {
         party.date = party.date.substring(5, 7) + " " + party.date.substring(8, 10);
       });
-
+    console.log(this.parties);
     },
   },
 };
