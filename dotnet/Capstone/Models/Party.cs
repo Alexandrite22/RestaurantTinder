@@ -19,6 +19,7 @@ namespace Capstone.Models
         public string Name { get; set; }
 
         public string InviteLink { get; set; }
+        public string PartyInviteCode { get; set; }
     }
     public class PartyViewModel
     {
@@ -29,6 +30,7 @@ namespace Capstone.Models
         public string Description { get; set; }
         public string Name { get; set; }
         public string InviteLink { get; set; }
+        public string PartyInviteCode { get; set; }
         public IList<Guest> GuestList { get; set; }
         public IList<Restaurant> Restaurants { get; set; }
         public PartyViewModel(Party party, IList<Guest> guests, IList<Restaurant> restaurants)
@@ -42,6 +44,7 @@ namespace Capstone.Models
             InviteLink = party.InviteLink;
             GuestList = guests;
             Restaurants = restaurants;
+            PartyInviteCode = party.PartyInviteCode;
         }
     }
 }

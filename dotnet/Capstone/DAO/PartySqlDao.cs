@@ -30,13 +30,14 @@ namespace Capstone.DAO
                 conn.Open(); //Open the connection to the DB    
 
                 // Create a new SQL command that inserts a new party into the database and returns the new party_id
-                SqlCommand cmd = new SqlCommand("INSERT INTO party (location, owner, name_of_party, description, invite_link, date) VALUES (@location, @owner, @name_of_party, @description, @invite_link, @date); SELECT @@IDENTITY;", conn);
+                SqlCommand cmd = new SqlCommand("INSERT INTO party (location, owner, name_of_party, description, invite_link, date, party_invite_code) VALUES (@location, @owner, @name_of_party, @description, @invite_link, @date, @party_invite_code); SELECT @@IDENTITY;", conn);
                 // Add the parameters to the SQL command
                 cmd.Parameters.AddWithValue("@location", party.Location);
                 cmd.Parameters.AddWithValue("@owner", 1);
                 cmd.Parameters.AddWithValue("@name_of_party", party.Name);
                 cmd.Parameters.AddWithValue("@description", party.Description);
                 cmd.Parameters.AddWithValue("@invite_link", party.InviteLink);                cmd.Parameters.AddWithValue("@date", party.Date);
+                cmd.Parameters.AddWithValue("@party_invite_code", party.PartyInviteCode);
 
                 party.PartyId = Convert.ToInt32(cmd.ExecuteScalar());
                 return party;
@@ -116,13 +117,14 @@ namespace Capstone.DAO
             using (SqlConnection conn = new SqlConnection(connectionString))
             {
                 conn.Open();
-                SqlCommand cmd = new SqlCommand("UPDATE party SET location = @location, owner = @owner, name_of_party = @nameOfParty, date = @date, description = @description WHERE party_id = @updatedPartyId", conn);
+                SqlCommand cmd = new SqlCommand("UPDATE party SET location = @location, owner = @owner, name_of_party = @nameOfParty, date = @date, @party_invite_code = party_invite_code, description = @description WHERE party_id = @updatedPartyId", conn);
                 cmd.Parameters.AddWithValue("@updatedPartyId", updatedPartyId);
                 cmd.Parameters.AddWithValue("@location", updatedParty.Location);
                 cmd.Parameters.AddWithValue("@owner", updatedParty.Owner);
                 cmd.Parameters.AddWithValue("@nameOfParty", updatedParty.Name);
                 cmd.Parameters.AddWithValue("@date", updatedParty.Date);
                 cmd.Parameters.AddWithValue("@description", updatedParty.Description);
+                cmd.Parameters.AddWithValue("@party_invite_code", updatedParty.PartyInviteCode);
 
             }
         }
@@ -184,6 +186,7 @@ namespace Capstone.DAO
             party.Date = Convert.ToDateTime(reader["date"]);
             party.Description = Convert.ToString(reader["description"]);
             party.InviteLink = Convert.ToString(reader["invite_link"]);
+            party.PartyInviteCode = Convert.ToString(reader["party_invite_code"]);
             return party;
         }
     }
