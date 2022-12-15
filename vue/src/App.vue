@@ -56,28 +56,11 @@ export default {
       let myVar;
       PartyService.getParties(1)
         .then((response) => {
-          myVar = response.data;
-          console.log("I think MyVar is: " + myVar);
+          // intake a list of parties and set it to the parties variable and add it to the store
+          this.parties = response.data; 
+          myVar = this.parties;
+          console.log(myVar);
 
-          let tempParties = [];
-          response.data.forEach((thing) => {
-            let tempBusinessList= thing.yelpBusinesses.businessesBusinesses;
-            let temp = {
-              PartyId: thing.partyId,
-              PartyLocation: thing.location,
-              PartyDate: thing.date,
-              PartyOwner: thing.owner,
-              PartyDescription: thing.description,
-              PartyName: thing.name,
-              PartyTime: thing.date,
-              PartyInviteLink: thing.inviteLink,
-              PartyRsvp: thing.guestList,
-              PartyRestaurants: tempBusinessList,
-            };
-          tempParties.push(temp);
-          this.parties = tempParties;
-          this.$store.commit("SET_CURRENT_PARTIES", this.parties);
-        });
       })
       .catch((error) => {
         console.log(error);
