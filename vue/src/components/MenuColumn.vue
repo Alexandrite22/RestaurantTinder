@@ -10,26 +10,21 @@
       </b-card-title>
 
       <b-list-group>
-        <router-link v-bind:to="{ name: 'home' }" style="text-decoration: none">
-          <b-button
-            class="
-              list-group-item list-group-item-action
-              p-0
-              m-0
-              d-flex
-              align-items-center
-              justify-content-center
-            "
-            variant="outline-primary"
-            style="
-              background-color: transparent;
-              height: 4rem;
-              box-shadow: none;
-            "
-          >
-            <h5><b-icon-house-door-fill variant="light" /> &nbsp; Home</h5>
-          </b-button>
-        </router-link>
+        <b-button
+          class="
+            list-group-item list-group-item-action
+            p-0
+            m-0
+            d-flex
+            align-items-center
+            justify-content-center
+          "
+          variant="outline-primary"
+          style="background-color: transparent; height: 4rem; box-shadow: none"
+          href="http://localhost:8080/"
+        >
+          <h5><b-icon-house-door-fill variant="light" /> &nbsp; Home</h5>
+        </b-button>
 
         <router-link
           v-if="$store.state.token != ''"
@@ -56,26 +51,21 @@
           </b-button>
         </router-link>
 
-        <router-link v-bind:to="{ name: 'aboutUs' }" style="text-decoration: none">
-          <b-button
-            class="
-              list-group-item list-group-item-action
-              p-0
-              m-0
-              d-flex
-              align-items-center
-              justify-content-center
-            "
-            variant="outline-primary"
-            style="
-              background-color: transparent;
-              height: 4rem;
-              box-shadow: none;
-            "
-          >
-            <h5><b-icon-info-circle-fill variant="light" /> &nbsp; About Us</h5>
-          </b-button>
-        </router-link>
+        <b-button
+          class="
+            list-group-item list-group-item-action
+            p-0
+            m-0
+            d-flex
+            align-items-center
+            justify-content-center
+          "
+          variant="outline-primary"
+          style="background-color: transparent; height: 4rem; box-shadow: none"
+          href="http://localhost:8080/about"
+        >
+          <h5><b-icon-info-circle-fill variant="light" /> &nbsp; About Us</h5>
+        </b-button>
 
         <b-button
           class="
@@ -93,7 +83,10 @@
           <h5><b-icon-people-fill variant="light" /> &nbsp; Create party</h5>
         </b-button>
 
-        <router-link v-bind:to="{ name: 'dashboard' }" style="text-decoration: none">
+        <router-link
+          v-bind:to="{ name: 'dashboard' }"
+          style="text-decoration: none"
+        >
           <b-button
             class="
               menu-button
