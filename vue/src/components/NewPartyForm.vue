@@ -39,12 +39,16 @@
       <div class="form-element">
         <label for="time">Select a time:</label>
         <input type="time" id="time" name="time" v-model="party.time" placeholder="Party Time" />
-        <!-- <div>
-          <label for="example-datepicker">Choose a date</label>
-          <b-form-datepicker id="example-datepicker" v-model="value" class="mb-2"></b-form-datepicker>
-          <p>Value: '{{ value }}'</p>
-        </div> -->
       </div>
+       <!-- <div class="form-group">
+        <label class="control-label"><i class="fa fa-calendar"></i> Datetime picker</label><br>
+        <div class="form-group">
+          <input type="text" size="10" class="form-control" ng-model="sharedDate" data-autoclose="1" placeholder="Date" bs-datepicker>
+        </div>
+        <div class="form-group">
+          <input type="text" size="8" class="form-control" ng-model="sharedDate" data-time-format="h:mm:ss a" data-autoclose="1" placeholder="Time" bs-timepicker>
+        </div>
+      </div> -->
       <div class="form-element">
         <label for="location">Location:</label>
         <!--// TODO Make this a location picker -->
@@ -62,7 +66,7 @@
           class="input-field"
           id="party_invite_code"
           type="text"
-          v-model="party.partyInviteCode"
+          v-model="party.partynviteCode"
           placeholder="invitation code word"
         />
       </div>
@@ -82,8 +86,6 @@
 
 <script>
 import NewPartyService from "../services/PartyService.js";
-      import {formatISO} from 'date-fns';
-
 export default {
   name: "new-party-form",
   data() {
@@ -105,34 +107,18 @@ export default {
   },
   methods: {
     addNewParty() {
-      const date = new Date();
-      const time = new Date();
-      const newDate = formatISO(date, {representation: 'date'});
-      const newTime = formatISO(time, {representation: 'time'});
-      const dateTime = `${newDate}T${newTime}`
-      this.party.date = dateTime;
       this.party.owner = this.$store.state.user.id;
-
-      console.log("Calling partyservice create method on this object");
-      console.log(this.party);
-      let myVar;
       NewPartyService.create(this.party)
         .then((response) => {
           console.log(response);
           this.$emit("party-created", response.data);
-          myVar = response.data;
+          this.party = response.data;
         })
         .catch((error) => {
           console.log(error);
         });
       this.party = { owner: 1 }; //empty out the review
-      console.log("Party created, closing form");
-      console.log(myVar);
-      console.log(myVar);
-      console.log("Adding newParty to parties in dataStore");
-      this.$store.commit("ADD_NEW_PARTY", myVar);
-      console.log(this.$store.state.parties);
-
+      this.$store.commit("ADD_NEW_PARTY", this.party);
       this.showForm = false; //hide the form
     },
   },
