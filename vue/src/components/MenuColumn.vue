@@ -3,7 +3,7 @@
     <b-card class="text-center h-100" style="background-color: transparent">
       <b-card-title
         class="d-flex align-items-center justify-content-center"
-        style="height: 5rem"
+        style="height: 10rem"
       >
         <!-- <h2>Menu</h2> -->
         <img id="logo" src="../imgs/Me(4).png" />
@@ -187,7 +187,7 @@ export default {
 }
 
 #logo {
-  max-height: 125px;
+  max-height: 250px;
 }
 .sub-list {
   overflow: auto;

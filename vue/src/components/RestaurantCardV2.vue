@@ -65,7 +65,7 @@ export default {
 #rest-image
 {
     display: block;
-    max-height: 20vh;
+    max-height: 40vh;
     border-radius: 5px;
     margin: auto;
     object-fit: cover;
