@@ -40,15 +40,7 @@
         <label for="time">Select a time:</label>
         <input type="time" id="time" name="time" v-model="party.time" placeholder="Party Time" />
       </div>
-       <!-- <div class="form-group">
-        <label class="control-label"><i class="fa fa-calendar"></i> Datetime picker</label><br>
-        <div class="form-group">
-          <input type="text" size="10" class="form-control" ng-model="sharedDate" data-autoclose="1" placeholder="Date" bs-datepicker>
-        </div>
-        <div class="form-group">
-          <input type="text" size="8" class="form-control" ng-model="sharedDate" data-time-format="h:mm:ss a" data-autoclose="1" placeholder="Time" bs-timepicker>
-        </div>
-      </div> -->
+
       <div class="form-element">
         <label for="location">Location:</label>
         <!--// TODO Make this a location picker -->
@@ -72,7 +64,6 @@
       </div>
       <input type="submit" value="Save" class="btn btn-success" />
 
-      <!-- <b-button type="submit" variant="btn btn-default" >Create</b-button> -->
     </form>
     <div v-if="showForm === false">
       <h2>Party Created!</h2>
@@ -94,15 +85,6 @@ export default {
         owner: 1, //TODO make this current user_id
       },
       showForm: true,
-
-      // party: {
-      //     name: 'name_placeholder_set_in_vue_Party_Form',
-      //     description: 'description_placeholder_set_in_vue_Party_Form',
-      //     date: 'date_placeholder_set_in_vue_Party_Form',
-      //     time: 'time_placeholder_set_in_vue_Party_Form',
-      //     location: 'location_placeholder_set_in_vue_Party_Form',
-      //     owner: 1,//TODO make this current user_id
-      // },
     };
   },
   methods: {
