@@ -1,11 +1,11 @@
 <template>
     <div>
         <row class = "row">
-        <col-3 class="col-3">
-            <h1>Name: {{party.name}}</h1>
-            <h2>ID: {{party.partyId}}</h2>
-            <h3>Date: {{party.date}}</h3>
-            <h4>Time: {{party.time}}</h4>
+        <col-3 id = "static" class="col-3">
+            <h2>Name: {{party.name}}</h2>
+            <h3>ID: {{party.partyId}}</h3>
+            <h4>Date: {{party.date}}</h4>
+            <h5>Time: {{party.time}}</h5>
             <h5>Location: {{party.location}}</h5>
             <h6>Description: {{party.description}}</h6>   
             <h6>Host: {{party.owner}}</h6>
@@ -20,7 +20,7 @@
             </ol>
             <router-link class="btn btn-success" v-bind:to="{name: 'rsvp', params:{partyId: party.partyId}}">Tind-RSVP (Haha get it like tinder but the r is rsvp)</router-link><!-- This is the link to voting and picking a name -->
         </col-3>
-        <col-9 class = "col-9">
+        <col-9 id = "rest-list" class = "col-9">
             <restaurant-card-v2/>
         </col-9>
         </row>
@@ -79,5 +79,17 @@ export default {
 </script>
 
 <style>
-
+#static
+{
+    border-radius: 5px;
+    background: rgba(255,255,255,0.5);
+    width: 13vw;
+    margin: 10px;
+    position: fixed;
+    margin-top: 0px;
+}
+#rest-list
+{
+    margin-left: 15vw;
+}
 </style>

@@ -1,5 +1,5 @@
 <template>
-  <b-container class="border">
+  <b-container id="padding" class="border">
     <b-card class="text-center h-100" style="background-color: transparent">
       <b-card-title
         class="d-flex align-items-center justify-content-center"
@@ -184,6 +184,9 @@ export default {
 
 .card-body {
   padding: 0 !important;
+  background: rgba(255, 255, 255, 0.5);
+  border-radius: 5px;
+  box-shadow: rgba(0, 0, 0, 0.25);
 }
 
 #logo {
@@ -192,5 +195,9 @@ export default {
 .sub-list {
   overflow: auto;
   white-space: nowrap;
+}
+#padding
+{
+  padding: 0px;
 }
 </style>

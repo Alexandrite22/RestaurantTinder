@@ -65,7 +65,7 @@ export default {
 #rest-image
 {
     display: block;
-    max-height: 40vh;
+    max-height: 54vh;
     border-radius: 5px;
     margin: auto;
     object-fit: cover;
@@ -100,25 +100,36 @@ export default {
 {
     background: rgba(255,255,255,0.5);
     border-radius: 5px;
-    height: 5vh;
+    height: 3vh;
     width:95%;
     margin: 2.5%;
     box-shadow: 5px 5px 5px rgba(0,0,0,0.5);
 }
-#thumb-down
+#up-parent
 {
-    background: crimson;
-    border-radius: 50%;
-    padding: 10px;
-    height: 7vh;
-    width: 7vh;
-    margin: 5%;
-    box-shadow: 5px 5px 5px rgba(0,0,0,0.5);
+    display: flex;
+    justify-content: left;
+}
+#down-parent
+{
+    display: flex;
+    justify-content: right;
+    position: relative;
+    bottom: 0px;
+}
+#thumb-up-icon
+{
+    height: 5vh;
+    width: 5vh;
+    align-self: center;
+    justify-self: center;
 }
 #thumb-down-icon
 {
     height: 5vh;
     width: 5vh;
+    align-self: center;
+    justify-self: center;
 }
 #thumb-up
 {
@@ -131,9 +142,14 @@ export default {
     box-shadow: 5px 5px 5px rgba(0,0,0,0.5);
 
 }
-#thumb-up-icon
+#thumb-down
 {
-    height: 5vh;
-    width: 5vh;
+    background: crimson;
+    border-radius: 50%;
+    padding: 10px;
+    height: 7vh;
+    width: 7vh;
+    margin: 5%;
+    box-shadow: 5px 5px 5px rgba(0,0,0,0.5);
 }
 </style>
