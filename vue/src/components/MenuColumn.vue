@@ -1,9 +1,9 @@
 <template>
-  <b-container class="border">
+  <b-container id="padding" class="border">
     <b-card class="text-center h-100" style="background-color: transparent">
       <b-card-title
         class="d-flex align-items-center justify-content-center"
-        style="height: 5rem"
+        style="height: 10rem"
       >
         <!-- <h2>Menu</h2> -->
         <img id="logo" src="../imgs/Me(4).png" />
@@ -108,7 +108,7 @@
           </b-button>
         </router-link>
 
-        <b-button
+        <!-- <b-button
           class="
             menu-button
             list-group-item list-group-item-action
@@ -126,9 +126,9 @@
             <b-icon-calendar-check-fill variant="light" /> &nbsp; My current
             plans
           </h5>
-        </b-button>
+        </b-button> -->
 
-        <b-list-group class="sub-list">
+        <!-- <b-list-group class="sub-list">
           <router-link
             :to="party.InviteLink"
             v-for="party in this.$store.state.currentParties"
@@ -141,10 +141,8 @@
             >
               {{ party.Name }}
             </b-list-group-item>
-          </router-link>
+          </router-link> -->
         </b-list-group>
-      </b-list-group>
-      <button @click="TestMethod()"></button>
     </b-card>
   </b-container>
 </template>
@@ -184,10 +182,13 @@ export default {
 
 .card-body {
   padding: 0 !important;
+  background: rgba(255, 255, 255, 0.5);
+  border-radius: 5px;
+  box-shadow: rgba(0, 0, 0, 0.25);
 }
 
 #logo {
-  max-height: 125px;
+  max-height: 250px;
 }
 .sub-list {
   overflow: auto;
