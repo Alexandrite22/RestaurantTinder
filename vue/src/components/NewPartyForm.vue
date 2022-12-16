@@ -58,7 +58,7 @@
           class="input-field"
           id="party_invite_code"
           type="text"
-          v-model="party.partynviteCode"
+          v-model="party.partyInviteCode"
           placeholder="invitation code word"
         />
       </div>
