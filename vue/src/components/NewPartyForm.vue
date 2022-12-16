@@ -77,6 +77,7 @@
 
 <script>
 import NewPartyService from "../services/PartyService.js";
+
 export default {
   name: "new-party-form",
   data() {
