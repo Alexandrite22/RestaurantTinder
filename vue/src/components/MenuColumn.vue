@@ -196,8 +196,4 @@ export default {
   overflow: auto;
   white-space: nowrap;
 }
-#padding
-{
-  padding: 0px;
-}
 </style>
