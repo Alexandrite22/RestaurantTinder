@@ -25,7 +25,10 @@ export default new Vuex.Store({
     currentParties: [],
     restaurant: [
 
-    ]
+    ],
+    current_likes: [],
+    current_dislikes: [],
+    user_likes_dictionary: []
   },
   mutations: {
     SET_AUTH_TOKEN(state, token) {
@@ -56,8 +59,25 @@ export default new Vuex.Store({
       console.log("ADDING " + party + " to the currentParties in the state");
       state.currentParties.shift(party);
     },
+
     SET_CURRENT_PARTY(state, party) {
       state.currentParty = party;
     },
+    
+    ADD_LIKE(state, restaurant) {
+      state.current_likes.push(restaurant);
+    },
+
+    ADD_DISLIKE(state, restaurant) {
+      state.current_dislikes.push(restaurant);
+    },
+
+    CLEAR_LIKES(state) { 
+      state.current_likes = []; 
+      state.current_dislikes = [];
+    },
+    ADD_USER_LIKES_ENTRY(state, entry) {
+      state.user_likes_dictionary.push(entry); 
+    } 
   }
 })

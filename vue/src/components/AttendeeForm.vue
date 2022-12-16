@@ -21,7 +21,8 @@ export default {
     data() {
         return {
             guest: {},
-            newGuests: []
+            newGuests: [],
+            rsvped: []
         }
     },
     methods: {

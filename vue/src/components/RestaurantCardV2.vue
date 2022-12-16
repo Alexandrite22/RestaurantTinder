@@ -1,6 +1,6 @@
 <template>
     <div>
-        <div id = "rest-card" v-bind:key="restaurant.restaurantId" v-for="restaurant in currentParty.restaurants">
+        <div id = "rest-card" v-bind:key="restaurant.restaurantId" v-for="restaurant in filteredRestaurants" >
             <div id = "border">
             <b-row id = "name">
                 {{restaurant.name}} 
@@ -23,8 +23,8 @@
                 </b-col>
             </b-row>
             <b-row>
-                <b-col id="up-parent" class = "col-6"><div id = "thumb-down"><b-icon-hand-thumbs-down-fill id="thumb-down-icon"/></div></b-col>
-                <b-col id="down-parent" class = "col-6"><div id = "thumb-up"><b-icon-hand-thumbs-up-fill id="thumb-up-icon"/></div></b-col>
+                <b-col id="up-parent" class = "col-6"><div id = "thumb-down" v-on:click="dislikeRestuarant(restaurant)"><b-icon-hand-thumbs-down-fill id="thumb-down-icon"/></div></b-col>
+                <b-col id="down-parent" class = "col-6"><div id = "thumb-up" v-on:click="likeRestuarant(restaurant)"><b-icon-hand-thumbs-up-fill id="thumb-up-icon"/></div></b-col>
             </b-row>
         </div>
     </div>
@@ -40,6 +40,12 @@ export default {
         parties:[],
         currentParty:{},
     }},
+    computed: {
+        filteredRestaurants() {
+            let filtered = this.currentParty.restaurants.filter((item) => {return !this.$store.state.current_dislikes.includes(item)})
+            return filtered;
+        }
+    },
     created(){
         this.getParties();
     },
@@ -49,7 +55,21 @@ export default {
                 let partyId = this.$route.params.partyId;
                 this.parties=this.$store.state.currentParties;
                 this.currentParty=this.parties.find(party => {return party.partyId==partyId});
+                this.$store.commit('SET_CURRENT_PARTY', this.currentParty);
+            },
+        likeRestuarant(restaurant) { 
+            if(!this.$store.state.current_likes.includes(restaurant)) {
+            this.$store.commit('ADD_LIKE',restaurant); 
             }
+        },
+        dislikeRestuarant(restaurant) { 
+            if(!this.$store.state.current_dislikes.includes(restaurant)) {
+            this.$store.commit('ADD_DISLIKE',restaurant); 
+            }
+        }
+    },
+    beforeDestroy() {
+        this.$store.commit('CLEAR_LIKES');
     }
 };
 </script>
