@@ -10,7 +10,6 @@ export default {
   components: {
     Description,
   },
-
 }
 </script>
 

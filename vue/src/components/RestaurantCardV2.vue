@@ -11,7 +11,7 @@
                 </a>
             </b-row>
             <b-row id="status" class="closed">
-                CLOSED
+                
             </b-row>
             <b-row>
                 <b-col class = "col-12">
@@ -151,5 +151,9 @@ export default {
     width: 7vh;
     margin: 5%;
     box-shadow: 5px 5px 5px rgba(0,0,0,0.5);
+}
+#rest-card
+{
+    align-content: space-between;
 }
 </style>

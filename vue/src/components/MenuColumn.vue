@@ -108,7 +108,7 @@
           </b-button>
         </router-link>
 
-        <b-button
+        <!-- <b-button
           class="
             menu-button
             list-group-item list-group-item-action
@@ -126,9 +126,9 @@
             <b-icon-calendar-check-fill variant="light" /> &nbsp; My current
             plans
           </h5>
-        </b-button>
+        </b-button> -->
 
-        <b-list-group class="sub-list">
+        <!-- <b-list-group class="sub-list">
           <router-link
             :to="party.InviteLink"
             v-for="party in this.$store.state.currentParties"
@@ -141,10 +141,8 @@
             >
               {{ party.Name }}
             </b-list-group-item>
-          </router-link>
+          </router-link> -->
         </b-list-group>
-      </b-list-group>
-      <button @click="TestMethod()"></button>
     </b-card>
   </b-container>
 </template>

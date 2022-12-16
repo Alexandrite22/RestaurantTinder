@@ -18,7 +18,7 @@
                     {{restaurant.yelpLink}}
                 </li> -->
             </ol>
-            <router-link class="btn btn-success" v-bind:to="{name: 'rsvp', params:{partyId: party.partyId}}">Tind-RSVP (Haha get it like tinder but the r is rsvp)</router-link><!-- This is the link to voting and picking a name -->
+            <!--<router-link class="btn btn-success" v-bind:to="{name: 'rsvp', params:{partyId: party.partyId}}">Tind-RSVP (Haha get it like tinder but the r is rsvp)</router-link>--><!-- This is the link to voting and picking a name -->
         </col-3>
         <col-9 id = "rest-list" class = "col-9">
             <restaurant-card-v2/>
